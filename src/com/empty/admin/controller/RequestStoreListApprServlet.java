@@ -43,7 +43,6 @@ public class RequestStoreListApprServlet extends HttpServlet {
 		String str = request.getParameter("userid");
 		System.out.println(str);
 		String[] temp = str.split(", ");
-		System.out.println(temp.length);
 		String idstr ="";
 		String emailstr = "";
 		

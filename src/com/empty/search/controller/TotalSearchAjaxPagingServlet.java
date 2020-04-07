@@ -35,9 +35,6 @@ public class TotalSearchAjaxPagingServlet extends HttpServlet {
 		int cPage=Integer.parseInt(request.getParameter("cPage"));
 		int numPerPage = Integer.parseInt(request.getParameter("numPerPage"));
 		String keyword = request.getParameter("keyword");
-		System.out.println(keyword);
-		System.out.println(cPage);
-		System.out.println(numPerPage);
 		List list = new SearchService().totalSearch(keyword,cPage,numPerPage);
 		int totalData = new SearchService().dataCount(keyword);
 		int totalPage = (int)Math.ceil((double)totalData/numPerPage);

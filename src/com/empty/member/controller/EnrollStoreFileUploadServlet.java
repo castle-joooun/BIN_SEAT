@@ -50,10 +50,8 @@ public class EnrollStoreFileUploadServlet extends HttpServlet {
 		String storeImg3 = "image/"+mr.getFilesystemName("empty2");
 		String storeImg4 = "image/"+mr.getFilesystemName("empty3");
 		String storeImg5 = "image/"+mr.getFilesystemName("empty4");
-		System.out.println(storeImg1);
 		StoreImg2 si = new StoreImg2();
 		new MemberService().insertStoreImg(si, storeImg1,storeImg2,storeImg3,storeImg4,storeImg5);
-		System.out.println("됐누!");
 	}
 
 	/**

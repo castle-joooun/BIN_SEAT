@@ -335,7 +335,6 @@ public class SearchDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
-			System.out.println(rs.next());
 			while(rs.next()) {
 				omdb = new outMoneyDB();
 				omdb.setUserId("USER_ID");

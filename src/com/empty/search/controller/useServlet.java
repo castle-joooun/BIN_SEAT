@@ -87,7 +87,6 @@ public class useServlet extends HttpServlet {
 		jsonObj.put("list", list2);
 		jsonObj.put("pageBar", pageBar);
 		
-		System.out.println(list2);
 		response.setContentType("application/json;charset=UTF-8");
 		new Gson().toJson(jsonObj,response.getWriter());
 		

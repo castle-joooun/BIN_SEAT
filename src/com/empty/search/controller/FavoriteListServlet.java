@@ -39,15 +39,12 @@ public class FavoriteListServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 
 		String userId = request.getParameter("userId");
-		System.out.println("즐겨찾기 인덱스 id : " + userId);
 
 		List ftList = new SearchService().favoriteList(userId);
-		System.out.println("ftList : " + ftList);
 
 		JSONObject jo = new JSONObject();
 		jo.put("list", ftList);
 
-		System.out.println(userId + "는 즐겨찾기 있어!");
 		new Gson().toJson(ftList,response.getWriter());
 
 	}
