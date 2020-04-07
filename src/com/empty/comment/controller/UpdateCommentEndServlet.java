@@ -33,12 +33,10 @@ public class UpdateCommentEndServlet extends HttpServlet {
 	 int no =Integer.parseInt(request.getParameter("commentNo"));
 	 String userComment=request.getParameter("userComment");
 	 
-
-	 
 	 int result=new CommentService().updateComment(no,userComment);
 	 
 	 String msg=result>0?"댓글수정 성공! " : "댓글수정 실패";
-	 String loc="/store";
+	 String loc="/storeView";
 	 
 	 request.setAttribute("msg", msg);
 	 request.setAttribute("loc", loc);

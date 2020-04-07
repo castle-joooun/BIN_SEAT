@@ -3,13 +3,12 @@
 
 <%@ include file="storeBaseTop.jsp"%>
 <%@ page import="com.empty.search.model.vo.Store, java.util.List"%>
-<<<<<<< HEAD
+
 <%@ page
 	import="com.empty.search.model.vo.StoreSeat, com.empty.member.model.vo.Member"%>
-=======
+
 <%@ page import="com.empty.search.model.vo.StoreSeat, com.empty.member.model.vo.Member"%>
-<%@ page import="com.empty.comment.model.vo.Comment,java.util.List"%>
->>>>>>> branch 'jms' of https://github.com/ique-coder/EMPTY_SEAT.git
+
 
 
 <link rel="stylesheet" href="css/store.css?ver=0" type="text/css">
@@ -26,21 +25,9 @@
 	String[] seatCheck = ss.getSeatNum().split(",");
 	String[] useCheck = ss.getSeatCheck().split(",");
 	int seatNum = 1;
-<<<<<<< HEAD
 	int seatNum2 = 1;
 	
-
-
-=======
-	
-	List<Comment> list = (List)request.getAttribute("list");
->>>>>>> branch 'jms' of https://github.com/ique-coder/EMPTY_SEAT.git
 %>
-<!-- 댓글 css -->
-	<link rel="stylesheet"`
-	href="<%=request.getContextPath()%>/css/storeComment/storeComment.css?ver=2" type="text/css" />
-<!-- 댓글 css -->
-
 
 
 <div id="imgBox">
@@ -151,153 +138,18 @@
 		</center>
 	</div>
 
-<<<<<<< HEAD
-<!-- 	<div id="comment">
-		<table>
-			<tr>
-				<th>댓글</th>
-				<td><button id="refresh">새로고침</button></td>
-			</tr>
-			<tr>
-				<td><textarea id="commentInput"></textarea></td>
-				<td><button id="commentBtn">등록</button></td>
-			</tr>
-		</table>
-	</div> -->
-=======
-
-	<!-- 댓글 -->
-	<div id="comment">
-	
-
-					<th>댓글</th>
-
-				</tr>
-				<tr>
-					<form
-						action="<%=request.getContextPath()%>/comment/storeCommentInsert"
-						method="post">
-						<td><input type="text" id="commentInput" name="userComment" /></td>
-						<td><button id="commentBtn" name="commentBtn"
-								onclick="fn_comment_btn">등록</button></td>
-						<td><input type="hidden" name="commentWriter"
-							value="<%=loginMember != null ? loginMember.getUserId() : ""%>" />
-						<td><input type="hidden" name="commentLevel" value="1" />
-				</tr>
-				</form>
-</div>
-	<script>
-//댓글 스크립트 
- $(function(){
-		$("#commentInput").focus(function(){
-			if(<%=loginMember == null%>){
-				alert("로그인 후 이용하세요");
-				$("#userId").focus();
-			}
-		});
-	});
-</script>
-		<table class="userTable">
-				<%
-					if (list != null && !list.isEmpty()) {
-						for (Comment c : list) {
-							if (c.getCommentLevel() == 1) {
-				%>
-			
-					<tr>
-						<sub><%=c.getCommentWriter()%></sub>
-
-								<div style="text-align: right;">
-									<sub><%=c.getCommentDate()%></sub>
-								</div> 
-								<%=c.getUserComment()%>
-
-								<div style="text-align: right;">
-
-									<button class="recommentBtn" value="<%=c.getCommentNo()%>">답글</button>
-
-									<form
-										action="<%=request.getContextPath()%>/comment/storeCommentUpdate"
-										method="post">
-										<button class="recommentBtn">수정</button>
-									</form>
-
-									<form
-										action="<%=request.getContextPath()%>/comment/storeCommentDelete"
-										method="post">
-										<button class="recommentBtn">삭제</button>
-									</form>
-								</div>
-					</tr>
-
-				</table>
 
 
-				<%
-					} else {
-				%>
-
-				<table class="storeTable">
-					<tr>
-						<td>
-						<th><%=c.getCommentWriter()%></th>
-						<td><%=c.getCommentDate()%></td>
-						<br />
-						<%=c.getUserComment()%>
-						</td>
-						<td></td>
-					</tr>
-					<%
-						}
-							} //for
-						} //if
-					%>
-				</table>
-			</table>
-	
-
-
-	<!-- 댓글 -->
-
-	<!--  뎃글 페이징  -->
-
-	<div id='pageBar'>
-		<%=request.getAttribute("pageBar")%>
-	</div>
->>>>>>> branch 'jms' of https://github.com/ique-coder/EMPTY_SEAT.git
-
-<<<<<<< HEAD
-<!--  댓글  -->
 
 <%@ include file="/views/comment/comment.jsp" %>
+
+
 
 
 	<%
 		if (loginMember != null) {
 	%>
-=======
-	<!--  뎃글 페이징  -->
 
-
-
-
-<script>
-
-	 	$(".recommentBtn").click(function(){
-				if(<%=loginMember != null%>){
-					const tr=$("<tr>");
-					const td=$("<td>").css({
-						"display":"none","text-align":"left"
-					}).attr("colspan",2);
-					const form=$("<form>").attr({
-						"action":"<%=request.getContextPath()%>/comment/storeCommentInsert",
-						"method":"post"
-					});
- </script>
-
-	<!-- 댓글 -->
-
->>>>>>> branch 'jms' of https://github.com/ique-coder/EMPTY_SEAT.git
 	<div id="reservation">
 <<<<<<< HEAD
 		<p id="storeReInfo">

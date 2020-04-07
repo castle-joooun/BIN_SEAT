@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 @charset "UTF-8";
     
      #pageBar {
@@ -7,18 +7,12 @@
 	
 } 
 
-
-
-.rebtn{
-	
-		width: 50px;
+.btn123{
+	width: 50px;
 		height: 30px;
 		color: white;
 		font-size: 12px;
 		background-color: #5e64b1;
-		position: relative;
-		top: -2px;
-		border: 1;
 }
 
 
@@ -28,9 +22,9 @@
     resize: none;
 }
 #commentInput2{
-    width: 50px;
+    width: 890px;
     height: 50px;
-    resize: none;
+  
 }
 #commentBtn{
 	position: relative;
@@ -125,109 +119,3 @@
     background: #fff;
     z-index: 11;
     padding: 10px;
-=======
-@charset "UTF-8";
-    
-     #pageBar {
-	text-align: center;
-	line-height: 50px;
-	
-} 
-
-
-
-.recommentBtn{
-	
-		width: 50px;
-		height: 30px;
-		background-color: #5e64b1;
-		color: white;
-		font-size: 12px;
-		background-color: #5e64b1;
-		position: relative;
-		top: -2px;
-		border: 1;
-}
-
-#commentInput{
-    width: 890px;
-    height: 60px;
-    resize: none;
-}
-#commentBtn{
-	position: relative;
-	top: -2px;
-	width: 100px;
-	height: 65px;
-	margin:0;
-	padding: 0;
-	border: 0;
-	background-color: #5e64b1;
-	color: white;
-	font-size: 18px;
-}
-#comment table td{
-	border: 0;
-	padding: 0;
-	margin: 0;
-}
-
-}
-#comment table tr th{
-	text-align:left;
-}
-
-/* 댓글 */
-.commentDiv{
-    position: relative;
-    width: 1000px;
-    border-top: solid 1px lightsteelblue;
-    padding-top: 15px;
-    margin-top: 10px;
-    padding-bottom: 15px;
-}
-.commentDiv table{
-    position: relative;
-    width: 1000px;
-}
-.userDate{
-    position: relative;
-    float: right;
-    text-align: left;
-}
-.storeDate{
-    position: relative;
-    float: right;
-}
-.storeTable{
-	padding-right:15px;
-    margin-left: 15px;
-}
-.storeTable th{
-    color: #5e64b1;
-}
-.storeTextarea{
-    width: 900px;
-    height: 40px;
-}
-.storeBtn{
-	position:relative;
-    width: 90px;
-    height: 48px;
-    top: -2px;
-    cursor: pointer;
-}
-.storeRe{
-    margin: 0;
-    padding: 0;
-    background-color: #5e64b1;
-    width: 5px;
-    height: auto;
-    cursor: pointer;
-}
-
-.tdTwo{
-    width: 10px;
-    margin-right: 5px;
->>>>>>> branch 'jms' of https://github.com/ique-coder/EMPTY_SEAT.git
-}

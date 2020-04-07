@@ -11,10 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.empty.comment.model.service.CommentService;
 import com.empty.comment.model.vo.Comment;
-<<<<<<< HEAD
+
 import com.empty.reservation.service.ReservationService;
-=======
->>>>>>> branch 'jms' of https://github.com/ique-coder/EMPTY_SEAT.git
+
 import com.empty.search.model.vo.Store;
 import com.empty.search.model.vo.StoreSeat;
 import com.empty.search.service.SearchService;
@@ -62,7 +61,7 @@ public class StoreServlet extends HttpServlet {
 			 numPerPage=5;
 		}
 //		List<Comment> commentList= new CommentService().selectComment();
-		List<Comment> list = new CommentService().searchComment(cPage,numPerPage);
+		List<Comment> commentList = new CommentService().searchComment(cPage, numPerPage);
 		int totalStore=new CommentService().commentCount();
 		int totalPage=(int)Math.ceil((double)totalStore/numPerPage);
 		
@@ -98,8 +97,7 @@ public class StoreServlet extends HttpServlet {
 			pageBar+="<a href='"+request.getContextPath()+"/store?cPage="+(pageNo)+"'>[다음]</a>";
 		}
 //		request.setAttribute("commentList", commentList);
-		request.setAttribute("pageBar", pageBar);
-		request.setAttribute("list", list);
+
 		
 //댓글 페이징	
 		String storeId = request.getParameter("storeId");
@@ -111,7 +109,7 @@ public class StoreServlet extends HttpServlet {
 		// getParameter로 받는거 3개.
 		// storeId, userId, searchText
 	    
-		List<Comment>commentList= new CommentService().selectComment(); //임시
+
 		
 		List<String> imgs = new SearchService().storeImgs(storeId);
 		System.out.println("imgs : " + imgs);
@@ -163,7 +161,7 @@ public class StoreServlet extends HttpServlet {
 		}
 		
 		StoreSeat ss = new SearchService().storeSeat(storeId);
-		System.out.println("storeSeat : " + ss);
+	
 		
 		// 즐겨찾기 되어 있는지 확인
 		String favoriteUrl = new SearchService().storeFavoriteCheck(userId, storeId);
@@ -181,13 +179,9 @@ public class StoreServlet extends HttpServlet {
 			request.setAttribute("searchText", searchText);
 			request.setAttribute("url", favoriteUrl);
 			
-<<<<<<< HEAD
-			request.setAttribute("commentList", commentList);//임시로
-			
-=======
-	
+			request.setAttribute("pageBar", pageBar);
+			request.setAttribute("commentList", commentList);
 
->>>>>>> branch 'jms' of https://github.com/ique-coder/EMPTY_SEAT.git
 			request.getRequestDispatcher("/views/search/store.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("/views/search/noneSearch.jsp").forward(request, response);

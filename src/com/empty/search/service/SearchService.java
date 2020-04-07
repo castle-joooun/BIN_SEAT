@@ -1,10 +1,10 @@
 package com.empty.search.service;
 
 import static com.empty.common.JDBCTemplate.close;
+
 import static com.empty.common.JDBCTemplate.commit;
 import static com.empty.common.JDBCTemplate.rollback;
-import static com.kh.common.JDBCTemplate.close;
-import static com.kh.common.JDBCTemplate.getConnection;
+
 import static com.empty.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
