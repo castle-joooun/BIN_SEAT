@@ -73,7 +73,7 @@
 				</div>
 				<%if(loginMember!=null&&loginMember.getUserId().equals("admin")){ %>
                     <p id="myPage" class="mainHover">
-                    	<a href="<%=request.getContextPath()%>/admin">ADMIN PAGE</a>
+                    	<a href="<%=request.getContextPath()%>/admin/manageUser">ADMIN PAGE</a>
                     </p>
                     <%}else if(loginMember!=null&&loginMember.isUserAppr()){ %>
                     <p id="myPage" class="mainHover">

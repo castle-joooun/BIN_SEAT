@@ -164,6 +164,9 @@ public class AdminDao {
 				m.setEmail(rs.getString("email"));
 				m.setAddress(rs.getString("address"));
 				m.setEnrollDate(rs.getDate("enrolldate"));
+				SimpleDateFormat sdf = new SimpleDateFormat("yy.MM.dd");
+				String date = sdf.format(rs.getDate("ENROLLDATE"));
+				m.setSdfDate(date);
 				list.add(m);
 			}
 			

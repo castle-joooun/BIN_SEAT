@@ -64,7 +64,7 @@
                     <p id="introduce" class="mainHover"><a href="<%=request.getContextPath()%>/views/introduce/introduceMain.jsp">INTRODUCE</a></p>
                     <p id="notice" class="mainHover"><a href="<%=request.getContextPath()%>/notice">NOTICE</a></p>
                     <%if(loginMember!=null&&loginMember.getUserId().equals("admin")){ %>
-                    <p id="myPage" class="mainHover"><a href="<%=request.getContextPath()%>/admin">ADMIN PAGE</a></p>
+                    <p id="myPage" class="mainHover"><a href="<%=request.getContextPath()%>/admin/manageUser">ADMIN PAGE</a></p>
                     <%}else if(loginMember!=null&&loginMember.isUserAppr()){ %>
                     <p id="myPage" class="mainHover"><a href="<%=request.getContextPath()%>/store/main">STORE PAGE</a></p>
                     <%}else if(loginMember!=null&& !loginMember.isUserAppr()) {%>

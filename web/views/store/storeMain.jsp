@@ -9,17 +9,17 @@
             <div class = "content">
                 <div class="content-item">
                     <div class="content-item-title">
-                        스토어 등록/수정하기
+                        정보 등록 수정하기
                     </div>
                     <div class="content-item-price">
                         
                     </div>
                     <div class="content-item-detail">
-                        스토어 등록과 <br>정보를 수정할 수 있습니다.
+                     개인정보 수정과 </br></br> 스토어 등록 혹은</br></br> 수정할 수 있습니다.
                     </div>
                     <div class="btn-container">
 	                    <button class="content-item-button">
-	                        <a>Click Me</a>
+	                        <a href="<%=request.getContextPath()%>/store/mypage">Click Me</a>
 	                    </button>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                         
                     </div>
                     <div class="content-item-detail">
-                        매출 보기
+                        나의 매장 매출 보기
                     </div>
                      <div class="btn-container">
 	                    <button class="content-item-button">
