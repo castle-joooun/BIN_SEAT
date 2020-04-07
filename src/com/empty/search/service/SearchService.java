@@ -125,6 +125,13 @@ public class SearchService {
 		return count;
 	}
 	
+	public Store crystalstore(String userId) {
+	      Connection conn = getConnection();
+	      Store s = dao.crystalstore(conn, userId);
+	      close(conn);
+	      return s;
+	   }
+	
 	
 	
 	

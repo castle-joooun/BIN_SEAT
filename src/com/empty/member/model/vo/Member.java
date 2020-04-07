@@ -171,22 +171,6 @@ public class Member {
 	public void setUserAppr(boolean userAppr) {
 		this.userAppr = userAppr;
 	}
-	public String getBank() {
-		return bank;
-	}
-	
-	public void setBank(String bank) {
-		this.bank = bank;
-	}
-	
-	public String getBankNumber() {
-		return bankNumber;
-	}
-	
-	public void setBankNumber(String bankNumber) {
-		this.bankNumber = bankNumber;
-	}
-	
 	public String getBankMaster() {
 		return bankMaster;
 	}
