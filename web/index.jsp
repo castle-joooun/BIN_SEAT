@@ -70,7 +70,7 @@
                     <%}else if(loginMember!=null&& !loginMember.isUserAppr()) {%>
                     <p id="myPage" class="mainHover"><a href="<%=request.getContextPath()%>/mypageMain">MY PAGE</a></p>
                     <%} %>
-                    <p id="service" class="mainHover"><a href="<%=request.getContextPath()%>/FAQMainServlet">SERVICE</a></p>
+                    <p id="service" class="mainHover"><a href="<%=request.getContextPath()%>/FAQMainServlet">FAQ</a></p>
                 </div>
             </center>
 

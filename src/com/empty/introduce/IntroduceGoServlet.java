@@ -16,7 +16,7 @@ public class IntroduceGoServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/views/member/introduceMain.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/introduce/introduceMain.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

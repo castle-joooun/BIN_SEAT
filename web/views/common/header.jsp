@@ -85,7 +85,7 @@
                     </p>
                     <%} %>
 				<p id="service" class="mainHover">
-					<a href="<%=request.getContextPath()%>/FAQMainServlet">SERVICE</a>
+					<a href="<%=request.getContextPath()%>/FAQMainServlet">FAQ</a>
 				</p>
 			</span>
 		</center>
