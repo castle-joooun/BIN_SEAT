@@ -229,6 +229,28 @@ public class EventDao {
 		return list;
 
 	}
+	
+	public String selectStoreName(Connection conn,String writer) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("selectStoreName");
+		String name = null;
+		try {
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1, writer);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				name = rs.getString(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return name;
+	}
 
 
 }

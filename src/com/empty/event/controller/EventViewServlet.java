@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.empty.event.model.vo.Event;
 import com.empty.event.service.EventService;
+import com.empty.search.model.vo.Store;
+import com.empty.search.service.SearchService;
 
 @WebServlet("/event/eventView")
 public class EventViewServlet extends HttpServlet {
@@ -47,6 +49,9 @@ public class EventViewServlet extends HttpServlet {
 		
 		Event e = new EventService().selectEvent(no,hasRead);
 		request.setAttribute("Event", e);
+		
+		Store s = new SearchService().searchName(e.getEventWriter());
+		request.setAttribute("store", s);
 		
 		
 		request.getRequestDispatcher("/views/event/eventView.jsp").forward(request, response);

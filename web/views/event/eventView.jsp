@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.empty.event.model.vo.Event"%>
+<%@ page import="com.empty.event.model.vo.Event, com.empty.search.model.vo.Store"%>
 <%
 	Event e = (Event) request.getAttribute("Event");
+	Store s = (Store) request.getAttribute("store");
 %>
 
 <%@ include file="/views/common/header.jsp"%>
@@ -15,14 +16,21 @@
 			<tr>
 				<th>번 호</th>
 				<th>제 목</th>
-				<th>작성자</th>
+				<th>PC방 ▼</th>
 				<th>작성일</th>
 				<th>조회 수</th>
 			</tr>
 			<tr>
 				<td><%=e.getEventNo()%></td>
 				<td id="eventTitleTd"><%=e.getEventTitle()%></td>
-				<td><%=e.getEventWriter()%></td>
+				<td>
+					<form id="storeMoving" action="<%=request.getContextPath() %>/storeView" method="post">
+							<input type="hidden" name="storeId" value="<%=s.getStoreId()%>">
+							<input type="hidden" name="userId" value="<%=loginMember!=null?loginMember.getUserId():""%>">
+							<input type="hidden" name="searchText" value="<%=s.getStoreName()%>">
+							<span id="storeMove"><%=e.getEventWriter()%></span>
+					</form>
+				</td>
 				<td><%=e.getEventDate()%></td>
 				<td><%=e.getEventCount()%></td>
 			</tr>
@@ -55,6 +63,10 @@
 			location.replace("<%=request.getContextPath()%>/event/eventDelete?no=<%=e.getEventNo()%>");
 		}else{
 			window.close();
-		}
+		} 
 	}
+	
+	$("#storeMove").click(function() {
+		$("#storeMoving").submit();
+	})
 </script>

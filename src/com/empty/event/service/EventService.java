@@ -86,8 +86,12 @@ public class EventService {
 		}
 		close(conn);
 		return flag;
-		
 	}
 	
-	
+	public String selectStoreName(String writer) {
+		Connection conn = getConnection();
+		String name = dao.selectStoreName(conn, writer);
+		close(conn);
+		return name;
+	}
 }
