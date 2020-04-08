@@ -363,7 +363,7 @@
 	    
 	    // 다음/예약하기 버튼 바꾸기
 	 	let reservationCheck = false;
-	 	let usePcMoney;
+	 	let usePcMoney=0;
 	 	<% if(loginMember!=null) { %>
 	    $("#reOk").click(function() {
 	    	if(typeof $('input:radio[name="time"]:checked').val() == 'undefined') {
@@ -379,7 +379,9 @@
 				
 				let usePcTime = $('input:radio[name="time"]:checked').val();
 				usePcMoney = <%=s.getStorePrice()%> * usePcTime;
+				console.log("usePcMoney : " + usePcMoney);
 				let afterMoney = <%=loginMember.getCash()%> - usePcMoney;
+				console.log("afterMoney : " + afterMoney);
 				
 				$("#willUseTime").html(usePcTime);
 				$("#willPayMoney").html(usePcMoney);
@@ -441,7 +443,7 @@
 	    				url:"<%=request.getContextPath()%>/reservation.do",
 	    				type:"post",
 	    				dataType:"json",
-	    				data:{"userId":"<%=loginMember.getUserId()!=null?loginMember.getUserId():""%>", "storeId":"<%=s.getStoreId()%>",
+	    				data:{"userId":"<%=loginMember.getUserId()%>", "storeId":"<%=s.getStoreId()%>",
 	    					"seat":selectedPcSeat, "pay":usePcMoney, "time":$('input:radio[name="time"]:checked').val(), "storeName":"<%=s.getStoreName()%>"},
 	    				success:function(data) {
 	    					console.log(data);
@@ -616,7 +618,7 @@
 
 </div>
 
-<script src="js/store.js?ver=1"></script>
-<script type="text/javascript" src="js/totalSearch.js?ver=1"></script>
+<script src="js/store.js?ver=2"></script>
+<script type="text/javascript" src="js/totalSearch.js?ver=2"></script>
 </body>
 </html>

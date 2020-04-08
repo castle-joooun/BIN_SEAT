@@ -263,6 +263,7 @@ html {
 	left: 35px;
 	top: 500px;
 	width: 600px;
+	margin-left:980px;
 	/* text-align: center; */
 	border: solid 3px rgb(94, 100, 177);
 	z-index: 2;
@@ -272,11 +273,12 @@ html {
 
 #searchBox+input[type="submit"] {
 	position: relative;
-	top: 500px;
+	top: 460px;
 	right: 20px;
 	width: 50px;
 	height: 38px;
 	border: 0px;
+	left: 1590px;
 	background-color: rgb(94, 100, 177);
 	outline: none;
 	color: #ffffff;
@@ -285,9 +287,9 @@ html {
 }
 
 #moniter {
-	position: relative;
-	width: 100%;
-	top: 40px;
+    position: relative;
+    width: 1366px;
+    margin-left: 94%;
 }
 
 #mainVideo {
@@ -313,7 +315,7 @@ html {
 }
 
 #slide ul {
-	width: 400%;
+	width:200%;
 	height: 100%;
 	transition: 1s;
 }

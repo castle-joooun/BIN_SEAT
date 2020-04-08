@@ -64,7 +64,7 @@
                     <p id="introduce" class="mainHover"><a href="<%=request.getContextPath()%>/goIntroduce">INTRODUCE</a></p>
                     <p id="notice" class="mainHover"><a href="<%=request.getContextPath()%>/notice">NOTICE</a></p>
                     <%if(loginMember!=null&&loginMember.getUserId().equals("admin")){ %>
-                    <p id="myPage" class="mainHover"><a href="<%=request.getContextPath()%>/admin">ADMIN PAGE</a></p>
+                    <p id="myPage" class="mainHover"><a href="<%=request.getContextPath()%>/admin/manageUser">ADMIN PAGE</a></p>
                     <%}else if(loginMember!=null&&loginMember.isUserAppr()){ %>
                     <p id="myPage" class="mainHover"><a href="<%=request.getContextPath()%>/store/main">STORE PAGE</a></p>
                     <%}else if(loginMember!=null&& !loginMember.isUserAppr()) {%>
@@ -195,7 +195,6 @@
     <div id="slide">
         <input type="radio" name="pos" id="pos1" class="pos">
         <input type="radio" name="pos" id="pos2" class="pos" checked>
-        <input type="radio" name="pos" id="pos3" class="pos">
 
         <ul id="slideMove">
             <li class="slideAttr"> <!-- 즐겨찾기 -->
@@ -205,27 +204,26 @@
                     추가하기
                 </div> -->
                 <div id="favoriteLine">
-                	<form action="storeView" method="post" onclick="submit()">
+                	<form action="<%=request.getContextPath() %>/storeView" method="post" onclick="submit()">
 	                    <div class="favoritePc">
 	                    </div>
                     </form>
-                	<form action="/storeName" method="post" onclick="submit()">
+                	<form action="<%=request.getContextPath() %>/storeView" method="post" onclick="submit()">
+	                    <div class="favoritePc">
+	                    </div>
+                    <form action="<%=request.getContextPath() %>/storeView" method="post" onclick="submit()">
 	                    <div class="favoritePc">
 	                    </div>
                     </form>
-                    <form action="/storeName" method="post" onclick="submit()">
+                    <form action="<%=request.getContextPath() %>/storeView" method="post" onclick="submit()">
 	                    <div class="favoritePc">
 	                    </div>
                     </form>
-                    <form action="/storeName" method="post" onclick="submit()">
+                    <form action="<%=request.getContextPath() %>/storeView" method="post" onclick="submit()">
 	                    <div class="favoritePc">
 	                    </div>
                     </form>
-                    <form action="/storeName" method="post" onclick="submit()">
-	                    <div class="favoritePc">
-	                    </div>
-                    </form>
-                    <form action="/store" method="post" onclick="submit()">
+                   	<form action="<%=request.getContextPath() %>/storeView" method="post" onclick="submit()">
 	                    <div class="favoritePc">
 	                    </div>
                     </form>
@@ -233,20 +231,14 @@
             </li>
             <li class="slideAttr"> <!-- 메인검색 -->
                 <form action="totalSearch" method="get" id="searchForm" onSubmit="false">
-                    <center>
                         <div id="searchBoxGra">
                             <input id="searchBox" type="text" name="searchBox" placeholder="빈시트 검색" onchange="change()">
                             <input type="submit" value="검색">
                         </div>
                         <img id="moniter" src="image/main-test.png" alt="">
-                    </center>
                 </form>
                 
                 
-            </li>
-            <li class="slideAttr"> <!-- 지역검색 -->
-                <img src="image/지역.png" alt="" id="searchRegion">
-                <img src="image/지도.png" alt="" id="region">
             </li>
         </ul>
     </div>
@@ -322,15 +314,8 @@
 					console.log(slideNum);
 				})
 				
-				$(function() {
-					if(slideNum==0) {
-						$("#back").css("visibility","hidden");
-					} 
-					if(slideNum==1) {
-						$("#back").css("visibility","visible");
-					}
-					
-				})
+				$("#back").css("visibility","hidden");
+				$("#next").css("visibility","hidden");
 		</script>
 	<%} %>
 	

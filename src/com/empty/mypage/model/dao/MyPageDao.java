@@ -176,7 +176,44 @@ public class MyPageDao {
 	}
 	
 	
+	public int insertStoreSeat(Connection conn, String storeId, int col, int row, String seatNum, String seatCheck) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("insertStoreSeat");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, storeId);
+			pstmt.setInt(2, col);
+			pstmt.setInt(3, row);
+			pstmt.setString(4, seatNum);
+			pstmt.setString(5, seatCheck);
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
+	public int insertStoreSeatCheck(Connection conn, String storeId, String num) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("insertStoreSeatCheck");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, storeId);
+			pstmt.setString(2, num);
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	

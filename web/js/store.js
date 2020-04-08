@@ -151,14 +151,14 @@ $("#storeTitle").click(function() {
 
 
 // 현재시간 표시
-//var clockTarget = document.getElementById("clock");
-//
-//function clock() {
-//    var date = new Date();
-//
-//    var hours = date.getHours();
-//    var minutes = date.getMinutes();
-//
-//    clockTarget.innerText = `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes }`  : minutes }`;
-//}
-//setInterval(clock, 1000);
+var clockTarget = document.getElementById("clock");
+
+function clock() {
+    var date = new Date();
+
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+
+    clockTarget.innerText = `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes }`  : minutes }`;
+}
+setInterval(clock, 1000);

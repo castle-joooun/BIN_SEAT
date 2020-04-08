@@ -68,5 +68,34 @@ public class MyPageService {
 		return result;
 	}
 	
+	public int insertStoreSeat(String storeId, int col, int row, String seatNum, String seatCheck) {
+		Connection conn = getConnection();
+		int result = dao.insertStoreSeat(conn, storeId, col, row, seatNum, seatCheck);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		
+		return result;
+	}
+	
+	public int insertStoreSeatCheck(String storeId, List<String> nums) {
+		int result = 0;
+		for(int i=0; i<nums.size(); i++) {
+			Connection conn = getConnection();
+			
+			int result1 = dao.insertStoreSeatCheck(conn, storeId, nums.get(i));
+			if(result1 > 0) {
+				commit(conn);
+				result++;
+			} else {
+				rollback(conn);
+			}
+			
+			close(conn);
+		}
+		
+		return result;
+	}
+	
 	
 }

@@ -96,7 +96,7 @@ public class ReservationServlet extends HttpServlet {
 	      String endUserTime = "";
 	      if (userTime!=null) {
 	         long dayTime1 = System.currentTimeMillis();
-	         long dayTime2 = new Date().getTime() + 1000*60*60*24;
+	         long dayTime2 = userTime.getTime();
 	         long nT = (dayTime2 - dayTime1) / (1000 * 60 * 60);
 	         long nM = (dayTime2 - dayTime1) % (1000 * 60 * 60) / (1000 * 60);
 	         endUserTime = nT + "시간 " + nM + "분";
@@ -107,7 +107,6 @@ public class ReservationServlet extends HttpServlet {
 	      int seatYN = new ReservationService().seatYN(storeId, seat);
 	      if(seatYN >0 ) {
 	      }
-
 
 	      JSONObject jo = new JSONObject();
 	      jo.put("userCash", userCash);
