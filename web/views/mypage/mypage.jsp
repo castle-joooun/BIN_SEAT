@@ -4,46 +4,46 @@
 <%@ page import="com.empty.member.model.vo.Member,com.empty.common.listener.SessionCheckListener"%>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=57f292cf81a06c030ca86c61e79b1b56"></script>
 	<script>
-   $(document).ready(function(){
-      var userId="<%=loginMember.getUserId()%>";
-      var cash=0;
-      $.ajax({
-         url:"<%=request.getContextPath()%>/mypage.do", 
-         type:"get",
-         dataType:"json",
-         data:{
-            "userId":userId   
-         },
-         success:function(data){
-            console.log(data['cash']);
-            cash=data['cash'];
-            $("#cashbox").text(cash+"원");
-            var bankNumber=data['bankNumber'];
-         }
-      })
-   })
-   $(document).ready(function(){
-      var userId="<%=loginMember.getUserId()%>";
-      $.ajax({
-         url:"<%=request.getContextPath()%>/mypage/pcdb", 
-         type:"get",
-         dataType:"json",
-         data:{
-            "userId":userId   
-         },
-         success:function(data){
-            console.log(data);
-            $("#storeNamebox").text(data['storeName']).css('width','400px').css('font-weight','400').css('text-align','left');
-            $("#storeNumberbox").text(data['storePhone']).css('font-weight','400').css('text-align','left');
-            $("#storeTimebox").text(data['storeTime']).css('font-weight','400').css('float','left');
-            $("#storecombox").text(data['storeInfo']).css('width','400px').css('font-weight','400').css('text-align','left');
-            $("#storeaddressbox").text(data['storeAddress']).css('width','400px').css('font-weight','400').css('text-align','left');
-            $("#storebudeabox").text(data['storeFacility']).css('width','400px').css('font-weight','400').css('text-align','left');
-         }
-      });
-   });
-   
-   </script>
+	$(document).ready(function(){
+		var userId="<%=loginMember.getUserId()%>";
+		var cash=0;
+		$.ajax({
+			url:"<%=request.getContextPath()%>/mypage.do", 
+			type:"get",
+			dataType:"json",
+			data:{
+				"userId":userId	
+			},
+			success:function(data){
+				console.log(data['cash']);
+				cash=data['cash'];
+				$("#cashbox").text(cash+"원");
+				var bankNumber=data['bankNumber'];
+			}
+		})
+	})
+	$(document).ready(function(){
+		var userId="<%=loginMember.getUserId()%>";
+		$.ajax({
+			url:"<%=request.getContextPath()%>/mypage/pcdb", 
+			type:"get",
+			dataType:"json",
+			data:{
+				"userId":userId	
+			},
+			success:function(data){
+				console.log(data);
+				$("#storeNamebox").text(data['storeName']).css('width','400px').css('font-weight','400').css('text-align','left');
+				$("#storeNumberbox").text(data['storePhone']).css('font-weight','400').css('text-align','left');
+				$("#storeTimebox").text(data['storeTime']).css('font-weight','400').css('float','left');
+				$("#storecombox").text(data['storeInfo']).css('width','400px').css('font-weight','400').css('text-align','left');
+				$("#storeaddressbox").text(data['storeAddress']).css('width','400px').css('font-weight','400').css('text-align','left');
+				$("#storebudeabox").text(data['storeFacility']).css('width','400px').css('font-weight','400').css('text-align','left');
+			}
+		});
+	});
+	
+	</script>
 <body>
 	<h3 class="mypagemain1">MY PAGE</h3>
 	<h3 class="mypagemain2"><a href="<%=request.getContextPath()%>/use/useList">USE</a></h3>
@@ -155,7 +155,7 @@
 						
 						</td>
 						<td rowspan='7' class='pcmainimgbox'>
-							<img alt="/image/퓨리.jpg" src="">
+							
 						</td>
 					</tr>
 					<tr>
@@ -203,8 +203,13 @@
 						
 						</td>
 						<td>
+<<<<<<< HEAD
+							<button type="button" id='goinsetColRow'>PC방 자리 등록</button>
+						</td>
+=======
                    			  <button type="button" onclick=''>PC방 자리 등록</button>
                 	 	 </td>
+>>>>>>> branch 'castle-joooun' of https://github.com/ique-coder/BIN_SEAT.git
 					</tr>
 					
 				</table>
@@ -219,6 +224,11 @@
 	
 	
 	<script>
+	$(function(){
+		$("#goinsetColRow").click(function(){
+			location.href="<%=request.getContextPath()%>/store/insertColRowmp";
+		});
+	});
 	<%-- $(function(){
 		$(".mypagemain2").click(function(){ //사용내역으로
 			$.ajax({

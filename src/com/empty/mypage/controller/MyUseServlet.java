@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.empty.member.model.service.MemberService;
+import com.empty.member.model.vo.Member;
 import com.empty.member.model.vo.outMoneyDB;
 
 /**
@@ -31,6 +33,9 @@ public class MyUseServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		Member m = (Member) session.getAttribute("loginMember");
+		String userId= m.getUserId();
 		int cPage;
 		try {
 			cPage=Integer.parseInt(request.getParameter("cPage"));
@@ -38,7 +43,7 @@ public class MyUseServlet extends HttpServlet {
 			cPage=1;
 		}
 		int numPerPage=5;
-		List<outMoneyDB> list=new MemberService().selectUseList(cPage,numPerPage);
+		List<outMoneyDB> list=new MemberService().selectUseList(userId,cPage,numPerPage);
 		int totalBoard=new MemberService().useListCount();
 		
 		int totalPage=(int)Math.ceil((double)totalBoard/numPerPage);

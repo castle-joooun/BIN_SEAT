@@ -12,14 +12,11 @@
 					<td>
 						개인정보 수정
 					</td>
-					<td>
-						<button class="crystalcom">수정</button>
-					</td>
 				</tr>
 			</table>
 		</div>
 	<div class="upzooinfobox">
-				<table class="upzoomyinfo1">
+				<table class="crystalinfobox">
 					<tr>
 						<td>
 							아이디
@@ -81,7 +78,7 @@
 							은행
 						</td>
 						<td>
-							<input type='text' placeholder='<%=loginMember.getAddress() %>'>
+							<input type='text' placeholder='<%=loginMember.getBank() %>'>
 						</td>
 					</tr>
 					<tr>
@@ -89,7 +86,7 @@
 							계좌번호
 						</td>
 						<td>
-							<input type='text' placeholder='<%=loginMember.getAddress() %>'>
+							<input type='text' placeholder='<%=loginMember.getBankNumber() %>'>
 						</td>
 					</tr>
 					<tr>
@@ -97,14 +94,17 @@
 							예금주
 						</td>
 						<td>
-							<input type='text' placeholder='<%=loginMember.getAddress() %>'>
+							<input type='text' placeholder='<%=loginMember.getBankMaster() %>'>
+						</td>
+					</tr>
+					<tr class='chobtnbox'>
+						<td>
+							<button class="crystalcom">수정</button>
+							<button class="byevin">탈퇴</button>
 						</td>
 					</tr>
 				</table>
 			</div>
-	
-	<button class="byevin">탈퇴</button>
-	
 	<script>
 	$(function(){
 		$(".crystalcom").click(function(){
