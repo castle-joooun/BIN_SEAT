@@ -49,9 +49,10 @@ public class EventViewServlet extends HttpServlet {
 		
 		Event e = new EventService().selectEvent(no,hasRead);
 		request.setAttribute("Event", e);
-		
 		Store s = new SearchService().searchName(e.getEventWriter());
+		System.out.println(e.getEventWriter());
 		request.setAttribute("store", s);
+		System.out.println(s);
 		
 		
 		request.getRequestDispatcher("/views/event/eventView.jsp").forward(request, response);

@@ -32,7 +32,7 @@ public class EventDeleteServlet extends HttpServlet {
 		}
 		
 		request.setAttribute("msg", msg);
-		request.setAttribute("loc", "/notice");
+		request.setAttribute("loc", "/event");
 		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 	}
 

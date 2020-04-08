@@ -55,3 +55,4 @@
 		<input type="button" value="취소" onclick="infoUpdateBackBtn()">
 	</form>
 	
+

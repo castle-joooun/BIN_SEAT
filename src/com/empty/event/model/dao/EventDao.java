@@ -240,7 +240,7 @@ public class EventDao {
 			pstmt.setString(1, writer);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				name = rs.getString(1);
+				name = rs.getString("store_name");
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();

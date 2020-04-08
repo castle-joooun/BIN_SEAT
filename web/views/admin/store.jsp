@@ -112,8 +112,15 @@ function runningStore(cPage,numPerPage){
 		}
 	})
 }
-
-
+$(function(){
+	
+	$("#storePage>a").css("color","#ff7531");
+})
+function deleteStore(){
+	var id = $(event.target).val();
+	location.href="<%=request.getContextPath()%>/admin/store/deleteStore?userId="+id;
+	
+}
 </script>
 
 
