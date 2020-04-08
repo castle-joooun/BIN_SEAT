@@ -236,6 +236,7 @@ public class ReservationDao {
 				
 				long check = end - now;
 				if(check <= 0) {
+					System.out.println(check);
 					list.add(rs1.getString("seat_num"));
 				}
 

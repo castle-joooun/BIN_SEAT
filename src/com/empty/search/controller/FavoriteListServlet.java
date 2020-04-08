@@ -41,7 +41,6 @@ public class FavoriteListServlet extends HttpServlet {
 		String userId = request.getParameter("userId");
 
 		List ftList = new SearchService().favoriteList(userId);
-
 		JSONObject jo = new JSONObject();
 		jo.put("list", ftList);
 

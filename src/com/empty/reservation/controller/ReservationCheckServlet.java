@@ -43,8 +43,9 @@ public class ReservationCheckServlet extends HttpServlet {
 		// store_seat_check에서 seat_yn의 값을 0으로 수정.
 		// 1. 받아오기
 		List<String> checkYN = new ReservationService().checkYN(storeId, now);
+		System.out.println(checkYN);
 		if (checkYN.size() != 0) {
-			
+			System.out.println("다르다!");
 			// 2-1. store_seat_check에 값 바꿔주기.
 			int changeYN1 = new ReservationService().changeYN1(storeId, checkYN);
 			if (changeYN1 > 0) {
