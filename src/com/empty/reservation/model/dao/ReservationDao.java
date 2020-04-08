@@ -137,7 +137,6 @@ public class ReservationDao {
 		//String sql = prop.getProperty("endTime");
 		String sql="update store_seat_check set seat_end_time=sysdate + interval '"+time+"' hour where store_id=? and seat_num=?";
 		//		int time2 = Integer.parseInt(time);
-		System.out.println("time :" + time + ",storeId:" + storeId + ",seat:" + seat);
 		try {
 			pstmt = conn.prepareStatement(sql);
 			//pstmt.setString(1, time);
@@ -237,6 +236,7 @@ public class ReservationDao {
 				
 				long check = end - now;
 				if(check <= 0) {
+					System.out.println(check);
 					list.add(rs1.getString("seat_num"));
 				}
 

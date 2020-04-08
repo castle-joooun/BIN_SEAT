@@ -1,6 +1,7 @@
 package com.empty.search.service;
 
 import static com.empty.common.JDBCTemplate.close;
+
 import static com.empty.common.JDBCTemplate.commit;
 import static com.empty.common.JDBCTemplate.rollback;
 
@@ -86,7 +87,6 @@ public class SearchService {
 		int result = dao.storeFavoriteCheck(conn, userId, storeId);
 		int favoriteSize = dao.favoriteSize(conn, userId);
 		String url = "";
-		System.out.println(favoriteSize);
 		if(favoriteSize!=6 && result>0) {
 			url = "image/favorite-use.png";
 		} else {
@@ -111,9 +111,9 @@ public class SearchService {
 		return favoriteSize;
 	}
 
-	public List outMoneyList(String userId, outMoneyDB omdb) {
+	public List outMoneyList(String userId, outMoneyDB omdb, int cPage, int numPerPage) {
 		Connection conn = getConnection();
-		List list = dao.outMoneyList(conn, userId, omdb);
+		List list = dao.outMoneyList(conn, userId, omdb, cPage, numPerPage);
 		close(conn);
 		return list;
 	}
@@ -123,6 +123,20 @@ public class SearchService {
 		int count=dao.omlCount(conn);
 		close(conn);
 		return count;
+	}
+	
+	public Store crystalstore(String userId) {
+	      Connection conn = getConnection();
+	      Store s = dao.crystalstore(conn, userId);
+	      close(conn);
+	      return s;
+	   }
+	
+	public Store searchName(String storeName) {
+		Connection conn = getConnection();
+		Store s = dao.searchName(conn, storeName);
+		close(conn);
+		return s;
 	}
 	
 	

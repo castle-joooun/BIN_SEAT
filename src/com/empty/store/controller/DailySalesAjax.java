@@ -34,14 +34,10 @@ public class DailySalesAjax extends HttpServlet {
 		// TODO Auto-generated method stub
 		String date = request.getParameter("date");
 		String id = request.getParameter("storeId");
-		System.out.println("서블릿"+date+id);
 		
 		int sumResult = new StoreService().selectPayUse(id,date);
 		int countCus = new StoreService().countPayUse(id,date);
 		String storeName = new StoreService().selectName(id);
-		System.out.println(sumResult);
-		System.out.println(countCus);
-		System.out.println(storeName);
 		
 		StoreSales s = null;
 		if(sumResult>0) {

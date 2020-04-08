@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.empty.member.model.service.MemberService;
-import com.empty.member.model.vo.StoreImg2;
+import com.empty.member.model.vo.StoreImg;
 import com.empty.search.model.vo.Store;
 
 /**
@@ -39,7 +39,7 @@ public class CrystalStoreDBServlet extends HttpServlet {
 		String storeInfo = request.getParameter("storeInfo");
 		int storePrice = Integer.parseInt(request.getParameter("storePrice"));
 		System.out.println(storeName);
-		StoreImg2 si= new StoreImg2();
+		StoreImg si= new StoreImg();
 		new MemberService().searchStoreImg(si);
 		Store s = new Store();
 		s.setStoreId(userId);

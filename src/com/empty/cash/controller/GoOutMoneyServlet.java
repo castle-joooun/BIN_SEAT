@@ -41,15 +41,12 @@ public class GoOutMoneyServlet extends HttpServlet {
 		int flag = 0;
 		m = new VinService().selectUser(m, userId);	   //내정보불러오기
 		if(m.getCash()<money) {
-			System.out.println("1");
 			msg="출금할 잔액부족합니다.";
 			flag=0;
 		}else if(money<=0 && money <999) {
-			System.out.println("2");
 			msg="최소 출금금액보다 작습니다.";
 			flag=0;
 		}else{
-			System.out.println("3");
 			new VinService().minusCash(m, money);    //내 db계정 캐시 감소
 			new VinService().outMoneyListDB(m, money);  //출금내역 db에 저장
 			msg="출금이 되었습니다.";

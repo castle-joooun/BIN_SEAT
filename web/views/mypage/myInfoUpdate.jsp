@@ -20,7 +20,7 @@
 			</tr>
 			<tr>
 				<th>비밀번호</th>
-				<td><input type="password" name="password" value="<%=loginMember.getPassword() %>" size="40"></td>
+				<td><input type="password" name="password" size="40"></td>
 			</tr>
 			<tr>
 				<th>이름</th>
@@ -55,3 +55,4 @@
 		<input type="button" value="취소" onclick="infoUpdateBackBtn()">
 	</form>
 	
+

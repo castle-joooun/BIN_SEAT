@@ -59,6 +59,7 @@
 						출금후 잔액
 					</td>
 				</tr>
+		<%if(list.size() !=0){ %>
 		<%for(outMoneyDB omdb : list) {%>
 				<tr>
 					<td>
@@ -74,6 +75,14 @@
 						<%=omdb.getAfterOm() %>
 					</td>
 				</tr>
+			<%} 
+			}else{%>
+			<tr>
+				<td></td>
+				<td colspan='2' style="text-align: center">출금 내역이 없습니다.</td>
+				<td></td>				
+
+			</tr>
 			<%} %>
 			</table>
 				<div id='useListpagebar'>

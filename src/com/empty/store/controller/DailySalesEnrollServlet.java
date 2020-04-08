@@ -50,13 +50,10 @@ public class DailySalesEnrollServlet extends HttpServlet {
 		s.setTotalProfit(totalProfit);
 		
 		int count = new StoreService().countDailySales(storeId,date);
-		System.out.println("카운트"+count);
 		if(count>0) {
 			int count2 = new StoreService().deleteDailySales(storeId,date);
-			System.out.println("삭제완료");
 		}
 		int result = new StoreService().updateDailySales(s);
-		System.out.println("결과"+result);
 		
 		String msg = "";
 		if(result>0) {

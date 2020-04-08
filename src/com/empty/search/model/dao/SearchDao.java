@@ -279,7 +279,7 @@ public class SearchDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List list = new ArrayList();
-		String sql = prop.getProperty("store"); 
+		String sql = prop.getProperty("favoriteList"); 
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
@@ -326,34 +326,6 @@ public class SearchDao {
 	}
 
 	
-	public List outMoneyList(Connection conn,String userId, outMoneyDB omdb) {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = prop.getProperty("outMoneyList");
-		List list = new ArrayList();
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userId);
-			rs = pstmt.executeQuery();
-			System.out.println(rs.next());
-			while(rs.next()) {
-				omdb = new outMoneyDB();
-				omdb.setUserId("USER_ID");
-				omdb.setOmNumber("OUTPUT_NUM");
-				omdb.setOmDate(rs.getDate("OMDATE"));
-				omdb.setOmNumber(rs.getString("BANK_NUMBER"));
-				omdb.setOm(rs.getInt("OM"));
-				omdb.setAfterOm(rs.getInt("AFTER_OM"));
-				list.add(omdb);
-			}
-		} catch(SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rs);
-			close(pstmt);
-		}
-		return list;
-	}
 	
 	public List outMoneyList(Connection conn,String userId,outMoneyDB omdb,int cPage, int numPerPage){
 		PreparedStatement pstmt=null;
@@ -424,6 +396,37 @@ public class SearchDao {
 				s.setStorePrice(rs.getInt("store_price"));
 			}
 			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return s;
+	}
+	
+	public Store searchName(Connection conn, String storeName) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("storeName");
+		Store s = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, storeName);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				s = new Store();
+				s.setStoreId(rs.getString("store_id"));
+				s.setStoreName(rs.getString("store_name"));
+				s.setStorePhone(rs.getString("store_phone"));
+				s.setStoreTime(rs.getString("store_time"));
+				s.setStoreInfo(rs.getString("store_info"));
+				s.setStoreFacility(rs.getString("store_facility"));
+				s.setStoreAddress(rs.getString("store_address"));
+				s.setStoreLogo(rs.getString("store_logo"));
+				s.setStorePrice(rs.getInt("store_price"));
+			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {

@@ -1,15 +1,15 @@
 package com.empty.member.model.vo;
 
-public class StoreImg2 {
+public class StoreImg {
 	private String storeImg;
 	
 	
-	public StoreImg2() {
+	public StoreImg() {
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public StoreImg2(String storeImg) {
+	public StoreImg(String storeImg) {
 		super();
 		this.storeImg = storeImg;
 	}

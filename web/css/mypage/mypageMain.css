@@ -76,6 +76,7 @@ table#mypageMainTable td{
 .pageBar2{
 	text-align:center;
 	width:700px;
+	margin-bottom:100px;
 }
 
 a{

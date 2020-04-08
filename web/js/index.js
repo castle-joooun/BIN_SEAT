@@ -57,7 +57,7 @@ var slidePosition = 2;
 var slideWidth = 100;
 $("#next").click(function() {
 
-    if(slidePosition < 3) {
+    if(slidePosition < 2) {
         slidePosition++;
         slideWidth+=100;
         $("#slideMove").css("marginLeft",("-" + slideWidth+"%"));

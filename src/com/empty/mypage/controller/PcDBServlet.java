@@ -36,22 +36,21 @@ public class PcDBServlet extends HttpServlet {
 		String userId = request.getParameter("userId");
 		Store s= new SearchService().crystalstore(userId);
 		String storeTimese []= new String[2];
+		String storeFacility []= new String[2];
 		String w = "";
-		System.out.println(s.getStoreTime());
-		System.out.println(s.getStoreName());
 		storeTimese= s.getStoreTime().split(" ~ ");
+		String storeFacilitys = s.getStoreFacility().substring(0,s.getStoreFacility().lastIndexOf(","));
 		JSONObject jsonObj=new JSONObject();
 		jsonObj=new JSONObject();
 		jsonObj.put("storeName", s.getStoreName());
 		jsonObj.put("storePhone", s.getStorePhone());
 		jsonObj.put("storeTime", s.getStoreTime());
 		jsonObj.put("storeInfo", s.getStoreInfo());
-		jsonObj.put("storeFacility", s.getStoreFacility());
+		jsonObj.put("storeFacility", storeFacilitys);
 		jsonObj.put("storeAddress", s.getStoreAddress());
 		jsonObj.put("storePrice", s.getStorePrice());
 		jsonObj.put("storeTimes", storeTimese[0].toString());
 		jsonObj.put("storeTimee", storeTimese[1].toString());
-		
 		response.setContentType("application/json;charset=UTF-8");
 		new Gson().toJson(jsonObj,response.getWriter());
 	}
