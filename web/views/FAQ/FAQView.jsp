@@ -11,7 +11,7 @@
 <center>
 <section>
 	<div id="FAQViewDiv">
-		<p id="FAQViewHead"><%=f.getTitle() %></p>
+		<p id="FAQViewHead">FAQ</p>
 		<table id="FAQViewTbl">
 			<tr>
 				<th>글번호</th>
