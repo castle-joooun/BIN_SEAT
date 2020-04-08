@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.empty.member.model.vo.Member;
-import com.empty.member.model.vo.StoreImg2;
+import com.empty.member.model.vo.StoreImg;
 import com.empty.member.model.vo.outMoneyDB;
 import com.empty.search.model.vo.Store;
 
@@ -239,7 +239,7 @@ public class MemberDao {
 		return result;
 	}
 	
-	public int insertStoreImg(Connection conn,String storeImg1,String storeImg2,String storeImg3,String storeImg4,String storeImg5) {
+	public int insertStoreImg(Connection conn,String userId,String storeImg1,String storeImg2,String storeImg3,String storeImg4,String storeImg5) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String sql = prop.getProperty("insertStoreImg2");
@@ -255,7 +255,7 @@ public class MemberDao {
 		return result;
 	}
 	
-	public StoreImg2 searchStoreImg(Connection conn, StoreImg2 si) {
+	public StoreImg searchStoreImg(Connection conn, StoreImg si) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = prop.getProperty("searchStoreImg");
@@ -315,15 +315,16 @@ public class MemberDao {
 		return result;
 	}
 	
-	public List selectUseList(Connection conn,int cPage, int numPerPage) {
+	public List selectUseList(Connection conn,String userId,int cPage, int numPerPage) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		List list=new ArrayList();
 		String sql=prop.getProperty("selectUseList");
 		try {
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setInt(1, (cPage-1)*numPerPage+1);
-			pstmt.setInt(2, cPage*numPerPage);
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, (cPage-1)*numPerPage+1);
+			pstmt.setInt(3, cPage*numPerPage);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				outMoneyDB omdb = new outMoneyDB();

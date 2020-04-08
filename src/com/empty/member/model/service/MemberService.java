@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.empty.member.model.dao.MemberDao;
 import com.empty.member.model.vo.Member;
-import com.empty.member.model.vo.StoreImg2;
+import com.empty.member.model.vo.StoreImg;
 import com.empty.search.model.vo.Store;
 
 public class MemberService {
@@ -85,16 +85,16 @@ public class MemberService {
 		return result; 
 	}
 	
-	public int insertStoreImg(StoreImg2 si,String storeImg1,String storeImg2,String storeImg3,String storeImg4,String storeImg5) {
+	public int insertStoreImg(String userId,String storeImg1,String storeImg2,String storeImg3,String storeImg4,String storeImg5) {
 		Connection conn = getConnection();
-		int result = dao.insertStoreImg(conn,storeImg1,storeImg2,storeImg3,storeImg4,storeImg5);
+		int result = dao.insertStoreImg(conn,userId,storeImg1,storeImg2,storeImg3,storeImg4,storeImg5);
 		if(result>0) commit(conn);
 		else rollback(conn);
 		close(conn);
 		return result; 
 	}
 	
-	public StoreImg2 searchStoreImg(StoreImg2 si) {
+	public StoreImg searchStoreImg(StoreImg si) {
 		Connection conn = getConnection();
 		si = dao.searchStoreImg(conn, si);
 		close(conn);
@@ -119,9 +119,9 @@ public class MemberService {
 		return result; 
 	}
 	
-	public List selectUseList(int cPage, int numPerPage) {
+	public List selectUseList(String userId,int cPage, int numPerPage) {
 		Connection conn=getConnection();
-		List list=dao.selectUseList(conn, cPage, numPerPage);
+		List list=dao.selectUseList(conn,userId, cPage, numPerPage);
 		close(conn);
 		return list;
 	}

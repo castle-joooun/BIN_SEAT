@@ -326,34 +326,6 @@ public class SearchDao {
 	}
 
 	
-	public List outMoneyList(Connection conn,String userId, outMoneyDB omdb) {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = prop.getProperty("outMoneyList");
-		List list = new ArrayList();
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userId);
-			rs = pstmt.executeQuery();
-			System.out.println(rs.next());
-			while(rs.next()) {
-				omdb = new outMoneyDB();
-				omdb.setUserId("USER_ID");
-				omdb.setOmNumber("OUTPUT_NUM");
-				omdb.setOmDate(rs.getDate("OMDATE"));
-				omdb.setOmNumber(rs.getString("BANK_NUMBER"));
-				omdb.setOm(rs.getInt("OM"));
-				omdb.setAfterOm(rs.getInt("AFTER_OM"));
-				list.add(omdb);
-			}
-		} catch(SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rs);
-			close(pstmt);
-		}
-		return list;
-	}
 	
 	public List outMoneyList(Connection conn,String userId,outMoneyDB omdb,int cPage, int numPerPage){
 		PreparedStatement pstmt=null;

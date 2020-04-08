@@ -19,7 +19,7 @@
                     </div>
                     <div class="btn-container">
 	                    <button class="content-item-button">
-	                        <a>Click Me</a>
+	                        <a href="<%=request.getContextPath()%>/views/mypage/mypage.jsp">Click Me</a>
 	                    </button>
                     </div>
                 </div>
