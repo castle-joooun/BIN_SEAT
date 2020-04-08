@@ -33,13 +33,12 @@ public class DeleteCommentServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		int no=Integer.parseInt(request.getParameter("no"));
 		
-		System.out.println(no);
 	
 
 	int result=new CommentService().deleteComment(no);
 	
 	 String msg=result>0?"댓글삭제 성공! " : "댓글삭제 실패";
-	 String loc="/store";
+	 String loc="/storeView";
 	 
 	 request.setAttribute("msg", msg);
 	 request.setAttribute("loc", loc);

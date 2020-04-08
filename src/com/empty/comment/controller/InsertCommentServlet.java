@@ -28,7 +28,7 @@ public class InsertCommentServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
+	/**	
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -46,7 +46,7 @@ public class InsertCommentServlet extends HttpServlet {
 	
 		
 		String msg=result>0?"댓글등록 성공! " : "댓글 등록 실패";
-		String loc="/store";
+		String loc="/storeView";
 		response.setContentType("application/jsop;charset=UTF-8");
 
 		

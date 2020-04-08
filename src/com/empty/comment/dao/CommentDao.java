@@ -29,68 +29,41 @@ public class CommentDao {
 		
 	}
 
-//	public List<Comment> searchComment(Connection conn,int cPage,int numPerPage){
-//		PreparedStatement pstmt = null;
-//		ResultSet rs= null;
-//		List<Comment>list =new ArrayList();
-//		String sql=prop.getProperty("searchComment");
-//		
-//		try {
-//			pstmt=conn.prepareStatement(sql);
-//			pstmt.setInt(1, (cPage-1)*numPerPage); //시작데이터번호 
-//			pstmt.setInt(2, cPage*numPerPage); // 끝 데이터 번호
-//			rs=pstmt.executeQuery();
-//	
-//			while(rs.next()) {
-//				Comment comment =new Comment();
-//				comment.setCommentNo(rs.getInt("COMMENT_NO"));
-//				comment.setCommentLevel(rs.getInt("COMMENT_LEVEL"));
-//				comment.setCommentWriter(rs.getString("COMMENT_WRITER"));
-//				comment.setUserComment(rs.getString("USER_COMMENT"));
-//				comment.setCommentRef(rs.getInt("COMMENT_REF"));
-//				comment.setCommentDate(rs.getDate("COMMENT_DATE"));
-//			
-//				
-//				list.add(comment);
-//			}
-//			
-//		}catch(SQLException e) {
-//			e.printStackTrace();	
-//		}finally {
-//			close(rs);
-//			close(pstmt);
-//		}
-//		return list;
-//		
-//	}
-	
-
-	public List<Comment>  selectComment(Connection conn) {
+	public List<Comment> searchComment(Connection conn,int cPage,int numPerPage){
 		PreparedStatement pstmt = null;
-		ResultSet rs =null;
-		List<Comment> commentList =new ArrayList();
-		String sql=prop.getProperty("selectComment");
+		ResultSet rs= null;
+		List<Comment>list =new ArrayList();
+		String sql=prop.getProperty("searchComment");
+		
 		try {
 			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, (cPage-1)*numPerPage); //시작데이터번호 
+			pstmt.setInt(2, cPage*numPerPage); // 끝 데이터 번호
 			rs=pstmt.executeQuery();
+	
 			while(rs.next()) {
 				Comment comment =new Comment();
 				comment.setCommentNo(rs.getInt("COMMENT_NO"));
 				comment.setCommentLevel(rs.getInt("COMMENT_LEVEL"));
+				comment.setCommentWriter(rs.getString("COMMENT_WRITER"));
 				comment.setUserComment(rs.getString("USER_COMMENT"));
 				comment.setCommentRef(rs.getInt("COMMENT_REF"));
 				comment.setCommentDate(rs.getDate("COMMENT_DATE"));
-				commentList.add(comment);
+			
+				
+				list.add(comment);
 			}
+			
 		}catch(SQLException e) {
-			e.printStackTrace();
+			e.printStackTrace();	
 		}finally {
 			close(rs);
-		close(pstmt);
+			close(pstmt);
+		}
+		return list;
+		
 	}
-		return commentList;
-	}
-
+	
 	public int commentCount(Connection conn) {
 			PreparedStatement pstmt =null;
 			ResultSet rs =null;
@@ -156,24 +129,6 @@ public class CommentDao {
 		return result;
 	}
 	
-	public int selCommNo(Connection conn, int no) {
-		PreparedStatement pstmt =null;
-		int result=0;
-		String sql=prop.getProperty("selCommNo");
-		try {
-		
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setInt(1, no);
-			result=pstmt.executeUpdate();
-	
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}
-		return result;
-	}
-	
 	public int delectComment(Connection conn, int no) {
 		PreparedStatement pstmt =null;
 		int result=0;
@@ -193,5 +148,4 @@ public class CommentDao {
 		System.out.println("dao값2"+ no);
 		return result;
 	}
-	
 	}

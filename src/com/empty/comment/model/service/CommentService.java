@@ -13,12 +13,12 @@ import com.empty.comment.model.vo.Comment;
 public class CommentService {
 	 private CommentDao dao =new CommentDao();
 	 
-//public List<Comment> searchComment (int cPage,int numPerPage){
-//	Connection conn = getConnection();
-//	List<Comment> list = dao.searchComment(conn,cPage,numPerPage);
-//	close(conn);
-//	return list;
-//}
+public List<Comment> searchComment (int cPage,int numPerPage){
+	Connection conn = getConnection();
+	List<Comment> list = dao.searchComment(conn,cPage,numPerPage);
+	close(conn);
+	return list;
+}
 public int commentCount() {
 		Connection conn=getConnection();
 		int count=dao.commentCount(conn);
@@ -34,12 +34,6 @@ public int insertComment(Comment c) {
 		return result;
 
 }
-public List<Comment> selectComment() {
-	 Connection conn= getConnection();
-	 List<Comment> commentList = dao.selectComment(conn);
-	 close(conn);
-	return commentList;
-}
 public int updateComment(int no, String userComment) {
 	Connection conn = getConnection();
 
@@ -49,14 +43,6 @@ public int updateComment(int no, String userComment) {
 	else rollback(conn);
 	close(conn);
 
-	return result;
-}
-public int selCommNo(int no) {
-	Connection conn = getConnection();
-	 int result = dao.selCommNo(conn,no);
-	 if(result>0) commit(conn);
-	 else rollback(conn);
-	 close(conn);
 	return result;
 }
 public int deleteComment(int no) {

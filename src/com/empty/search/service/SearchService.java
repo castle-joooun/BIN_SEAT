@@ -1,6 +1,7 @@
 package com.empty.search.service;
 
 import static com.empty.common.JDBCTemplate.close;
+
 import static com.empty.common.JDBCTemplate.commit;
 import static com.empty.common.JDBCTemplate.rollback;
 
