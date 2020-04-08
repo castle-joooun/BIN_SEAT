@@ -189,4 +189,22 @@ public class Member {
 				+ bankNumber + ", bankMaster=" + bankMaster + ", status=" + status + "]";
 	}
 
+	public String getBank() {
+		return bank;
+	}
+
+	public void setBank(String bank) {
+		this.bank = bank;
+	}
+
+	public String getBankNumber() {
+		return bankNumber;
+	}
+
+	public void setBankNumber(String bankNumber) {
+		this.bankNumber = bankNumber;
+	}
+	
+	
+
 }

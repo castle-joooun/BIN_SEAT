@@ -8,12 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.stream.events.Comment;
 
 import com.empty.comment.model.service.CommentService;
-import com.empty.comment.model.vo.Comment;
-
 import com.empty.reservation.service.ReservationService;
-
 import com.empty.search.model.vo.Store;
 import com.empty.search.model.vo.StoreSeat;
 import com.empty.search.service.SearchService;
@@ -61,7 +59,7 @@ public class StoreServlet extends HttpServlet {
 			 numPerPage=5;
 		}
 //		List<Comment> commentList= new CommentService().selectComment();
-		List<Comment> commentList = new CommentService().searchComment(cPage, numPerPage);
+//		List<Comment> commentList = new CommentService().searchComment(cPage, numPerPage);
 		int totalStore=new CommentService().commentCount();
 		int totalPage=(int)Math.ceil((double)totalStore/numPerPage);
 		
@@ -166,7 +164,7 @@ public class StoreServlet extends HttpServlet {
 			request.setAttribute("searchText", searchText);
 			request.setAttribute("url", favoriteUrl);
 			request.setAttribute("pageBar", pageBar);
-			request.setAttribute("commentList", commentList);
+//			request.setAttribute("commentList", commentList);
 
 			request.getRequestDispatcher("/views/search/store.jsp").forward(request, response);
 		} else {
