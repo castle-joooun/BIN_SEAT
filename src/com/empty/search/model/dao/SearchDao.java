@@ -433,6 +433,37 @@ public class SearchDao {
 		return s;
 	}
 	
+	public Store searchName(Connection conn, String storeName) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("storeName");
+		Store s = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, storeName);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				s = new Store();
+				s.setStoreId(rs.getString("store_id"));
+				s.setStoreName(rs.getString("store_name"));
+				s.setStorePhone(rs.getString("store_phone"));
+				s.setStoreTime(rs.getString("store_time"));
+				s.setStoreInfo(rs.getString("store_info"));
+				s.setStoreFacility(rs.getString("store_facility"));
+				s.setStoreAddress(rs.getString("store_address"));
+				s.setStoreLogo(rs.getString("store_logo"));
+				s.setStorePrice(rs.getInt("store_price"));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return s;
+	}
+	
 	/*
 	 * public List<Store> totalSearch(Connection conn, String keyword, int cPage,
 	 * int numPerPage) { PreparedStatement pstmt = null; ResultSet rs = null; String
