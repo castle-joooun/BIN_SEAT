@@ -29,7 +29,7 @@
 			<tr>
 			</tr>
 			<tr class="eventContent">
-				<td colspan="5"><%=e.getEventContent()%></td>
+				<td colspan="5"  style="white-space: pre-wrap;"><%=e.getEventContent()%></td>
 			</tr>
 		</table>
 	</div>

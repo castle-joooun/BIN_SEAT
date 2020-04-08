@@ -86,7 +86,6 @@ public class SearchService {
 		int result = dao.storeFavoriteCheck(conn, userId, storeId);
 		int favoriteSize = dao.favoriteSize(conn, userId);
 		String url = "";
-		System.out.println(favoriteSize);
 		if(favoriteSize!=6 && result>0) {
 			url = "image/favorite-use.png";
 		} else {
@@ -124,6 +123,13 @@ public class SearchService {
 		close(conn);
 		return count;
 	}
+	
+	public Store crystalstore(String userId) {
+	      Connection conn = getConnection();
+	      Store s = dao.crystalstore(conn, userId);
+	      close(conn);
+	      return s;
+	   }
 	
 	
 	

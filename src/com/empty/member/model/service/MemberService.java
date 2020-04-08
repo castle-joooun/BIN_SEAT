@@ -19,7 +19,6 @@ public class MemberService {
 		if(result>0) commit(conn);
 		else rollback(conn);
 		close(conn);
-		System.out.println(result);
 		return result;
 	}
 	

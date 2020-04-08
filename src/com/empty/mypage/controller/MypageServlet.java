@@ -34,7 +34,6 @@ public class MypageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String userId = request.getParameter("userId");
-		System.out.println(userId);
 		Member m = new Member();
 		m = new VinService().selectUser(m,userId);
 		

@@ -55,7 +55,6 @@ public class AdminUserAjaxPageServlet extends HttpServlet {
 		//검색 결과가 있을 때
 		if(list.size()>0) {
 			//list를 jasonlist(배열)에 넣어 전달하기
-			System.out.println("사이즈 있음");
 			int totalMember = new AdminService().memberCount();
 			int totalPage = (int)Math.ceil((double)totalMember/numPerPage);
 			int pageBarSize = 5;
@@ -120,8 +119,6 @@ public class AdminUserAjaxPageServlet extends HttpServlet {
 			ja.add(obj);
 			
 		}
-		System.out.println("ja: " +ja);
-		System.out.println("서블릿 끝");
 		response.setContentType("application/json;charset=UTF-8");
 		response.getWriter().print(ja);	
 	}

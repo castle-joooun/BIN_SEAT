@@ -92,7 +92,6 @@ public class FindPwServlet extends HttpServlet {
 			rd.forward(request, response);
 		}
 
-		System.out.println(m);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -45,7 +45,6 @@ public class RequestStoreApprServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		int result = new AdminService().updateAppr(userId);
 		if(result>0) {
-			System.out.println("등록 성공");
 			String host = "http://localhost:9090/EMPTY/";
 			String from = "qkrejrgus4713@gmail.com";
 			String to = email;

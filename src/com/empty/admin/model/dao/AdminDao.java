@@ -59,7 +59,6 @@ public class AdminDao {
 			close(rs);
 			close(pstmt);
 		}
-		System.out.println("다오 " + list);
 		return list;
 	}
 	
@@ -88,11 +87,6 @@ public class AdminDao {
 		ResultSet rs = null;
 		List <Member> list = new ArrayList();
 		String sql = prop.getProperty("selectMember"+type);
-		System.out.println("타입: "+type);
-		System.out.println("키워드: "+"%"+keyword+"%");
-		System.out.println(cPage);
-		System.out.println(numPerPage);
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+keyword+"%");
@@ -120,7 +114,6 @@ public class AdminDao {
 			close(rs);
 			close(pstmt);
 		}
-		System.out.println("검색조건다오 " + list);
 		return list;
 	}
 	public int memberCount(Connection conn,String type,String keyword) {
@@ -141,7 +134,6 @@ public class AdminDao {
 			close(rs);
 			close(pstmt);
 		}
-		System.out.println("검색카운트다오 " + result);
 		return result;
 	}
 	
@@ -213,7 +205,6 @@ public class AdminDao {
 			close(pstmt);
 		}
 		
-		System.out.println("updateAppr: "+result);
 		return result;
 	}
 
@@ -308,7 +299,6 @@ public class AdminDao {
 		}finally {
 			close(pstmt);
 		}
-		System.out.println("사진삭제"+result);
 		return result;
 	}
 
@@ -327,7 +317,6 @@ public class AdminDao {
 		}finally {
 			close(pstmt);
 		}
-		System.out.println("시트삭제"+result);
 		return result;
 	}
 	//유저코멘트 완성되면 이것도 추가해야함
@@ -363,7 +352,6 @@ public class AdminDao {
 		}finally {
 			close(pstmt);
 		}
-		System.out.println("스토어삭제"+result);
 		return result;
 	}
 

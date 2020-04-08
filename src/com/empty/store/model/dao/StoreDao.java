@@ -70,7 +70,6 @@ Properties prop = new Properties();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = prop.getProperty("sumPayUse");
-		System.out.println("다오"+id+date);
 		
 		int result = 0;
 		try {
@@ -88,7 +87,6 @@ Properties prop = new Properties();
 			close(rs);
 			close(pstmt);
 		}
-		System.out.println(result);
 		return result;
 		
 		
@@ -177,14 +175,12 @@ Properties prop = new Properties();
 		}finally {
 			close(pstmt);
 		}
-		System.out.println("삭제"+result);
 		return result;
 	}
 
 	public int updateDailySales(Connection conn, StoreSales s) {
 		Statement stmt = null;
 		int result = 0;
-		System.out.println(s.getSdfDate());
 		String sql = "INSERT INTO DAILY_SALES (STORE_ID,STORE_NAME,EN_DATE,DAY_OF_WEEK, CUSTOMER, NET_PROFIT, TAX, TOTAL_PROFIT)"
 				+ " VALUES('"+s.getStoreId()+"','"+s.getStoreName()+"',TO_DATE('"+s.getSdfDate()+"','RR/MM/DD'),'"+Character.toString(s.getDayOfWeek())+"',"
 				+s.getCustomer()+","+s.getNetProfit()+","+s.getTax()+","+s.getTotalProfit()+")";
@@ -193,7 +189,6 @@ Properties prop = new Properties();
 		try {
 			stmt = conn.createStatement();
 			result= stmt.executeUpdate(sql);
-			System.out.println("업데이트 됐니"+result);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {

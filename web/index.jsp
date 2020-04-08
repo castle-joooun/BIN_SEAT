@@ -33,7 +33,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>빈시트-pc방 자리찾기</title>
-    <link rel="stylesheet" href="css/index.css?ver=1" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/index.css?ver=1" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/login.css" type="text/css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/choiceSignUp.css" type="text/css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/signUp_terms.css">
@@ -61,7 +61,7 @@
                 <div id="menubar">
                     <!-- main페이지이면 main의 mainHover을 빼준다! ------------------------------------------------------------------->
                     <p id="main"><a href="<%=request.getContextPath() %>" style="color: white">MAIN</a></p>
-                    <p id="introduce" class="mainHover"><a href="<%=request.getContextPath()%>/views/introduce/introduceMain.jsp">INTRODUCE</a></p>
+                    <p id="introduce" class="mainHover"><a href="<%=request.getContextPath()%>/goIntroduce">INTRODUCE</a></p>
                     <p id="notice" class="mainHover"><a href="<%=request.getContextPath()%>/notice">NOTICE</a></p>
                     <%if(loginMember!=null&&loginMember.getUserId().equals("admin")){ %>
                     <p id="myPage" class="mainHover"><a href="<%=request.getContextPath()%>/admin/manageUser">ADMIN PAGE</a></p>
@@ -70,7 +70,7 @@
                     <%}else if(loginMember!=null&& !loginMember.isUserAppr()) {%>
                     <p id="myPage" class="mainHover"><a href="<%=request.getContextPath()%>/mypageMain">MY PAGE</a></p>
                     <%} %>
-                    <p id="service" class="mainHover"><a href="<%=request.getContextPath()%>/FAQMainServlet">SERVICE</a></p>
+                    <p id="service" class="mainHover"><a href="<%=request.getContextPath()%>/FAQMainServlet">FAQ</a></p>
                 </div>
             </center>
 

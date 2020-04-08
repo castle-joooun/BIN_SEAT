@@ -22,7 +22,7 @@
 				<td><%=n.getNoticeCount()%></td>
 			</tr>
 			<tr class="noticeContent">
-				<td colspan="6"><%=n.getNoticeContent()%></td>
+				<td colspan="6" style="white-space: pre-wrap;"><%=n.getNoticeContent()%></td>
 			</tr>
 		</table>
 	</div>

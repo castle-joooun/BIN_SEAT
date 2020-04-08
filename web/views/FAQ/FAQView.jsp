@@ -28,7 +28,7 @@
 			<tr>
 			</tr>
 			<tr class="FAQContent">
-				<td colspan="4"><%=f.getContent()%></td>
+				<td colspan="4"  style="white-space: pre-wrap;"><%=f.getContent()%></td>
 			</tr>
 		</table>
 	</div>

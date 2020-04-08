@@ -43,14 +43,6 @@ public class EnrollStoreDBgoServlet extends HttpServlet {
 		String storeAddress = request.getParameter("storeAddress");
 		String fileupload = request.getParameter("fileupload");
 		int storePrice = Integer.parseInt(request.getParameter("storePrice"));
-		System.out.println(storeName);
-		System.out.println(storePhone);
-		System.out.println(storeTimestart);
-		System.out.println(storeTimeclose);
-		System.out.println(storeInfo);
-		System.out.println(storeAddress);
-		System.out.println(storePrice);
-		System.out.println(userId);
 		String storeFaciritys="";
 		for(int i=0;i<storeFacirity.length;i++) {
 			storeFaciritys +=storeFacirity[i]+",";
@@ -68,7 +60,6 @@ public class EnrollStoreDBgoServlet extends HttpServlet {
 		s.setStorePrice(storePrice);
 		s.setStoreLogo(si.getStoreImg());
 		new MemberService().insertStore(s);
-	             System.out.println("됐누??");
 
 
 	}

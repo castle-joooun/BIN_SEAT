@@ -37,8 +37,6 @@ public class PcDBServlet extends HttpServlet {
 		Store s= new SearchService().crystalstore(userId);
 		String storeTimese []= new String[2];
 		String w = "";
-		System.out.println(s.getStoreTime());
-		System.out.println(s.getStoreName());
 		storeTimese= s.getStoreTime().split(" ~ ");
 		JSONObject jsonObj=new JSONObject();
 		jsonObj=new JSONObject();

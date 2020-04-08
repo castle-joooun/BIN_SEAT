@@ -63,7 +63,7 @@ html{
     font-size: 15px;
     display: inline-block;
     cursor: pointer;
-}
+} 
 html{
     width: 1366px;
     height: auto;
@@ -126,10 +126,10 @@ html{
     /* padding-bottom:2px; */
 }
 
-.mainHover>a:hover {
+/* .mainHover>a:hover {
     color: #ff7531;
     display:inline;
-    border-bottom:2px solid #ff7531;
+    border-bottom:2px solid #ff7531; */
     /* padding-bottom:2px; */
 }
 #baseSubMenu>a {
@@ -270,11 +270,6 @@ hr {
 
 /* ----------------------------------------------------------------------------------------------------------------------------------------------- */
 
-/* 筌롫뗄�뵥 筌롫뗀�뤀占쎈굶 占쎌뵠�뵳占� 獄쏅뗀占쎈슣竊쒏묾占� */
-#main { 
-    border-bottom: 2px solid #ff7531;
-    margin-bottom: 25px;
-}
 
 
 /* 캐시 */

@@ -44,19 +44,16 @@ public class ReservationCheckServlet extends HttpServlet {
 		// 1. 받아오기
 		List<String> checkYN = new ReservationService().checkYN(storeId, now);
 		if (checkYN.size() != 0) {
-			System.out.println("YN바뀌는 거 있음");
 			
 			// 2-1. store_seat_check에 값 바꿔주기.
 			int changeYN1 = new ReservationService().changeYN1(storeId, checkYN);
 			if (changeYN1 > 0) {
-				System.out.println("store_seat_check 값 바꿈쓰");
 			}
 
 			// 2-2.
 			// store_seat seat_check 불러오기
 			String seats = new ReservationService().seatList(storeId);
 			if (seats != null) {
-				System.out.println("시트리스트 불어왔어! : " + seats);
 			}
 
 			String[] list = seats.split(",");
@@ -79,7 +76,6 @@ public class ReservationCheckServlet extends HttpServlet {
 			// store_seat seat_check 반환하기 (1=사용중)
 			int useSeat = new ReservationService().inputSeat(storeId, tranSeats);
 			if (useSeat > 0) {
-				System.out.println("자리 비워줌!!");
 			}
 			
 		}
@@ -89,7 +85,6 @@ public class ReservationCheckServlet extends HttpServlet {
 		// store_seat_check에서 seat_yn의 값이 1인것만 가져온 것.
 		List reSeats = new ReservationService().bringSeat(storeId, now);
 		if (reSeats.size() != 0) {
-			System.out.println("reSeats 가져옴!");
 		}
 
 //		JSONObject jo = new JSONObject();

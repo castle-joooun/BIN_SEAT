@@ -43,7 +43,6 @@ public class UpdatePasswordServlet extends HttpServlet {
 		request.setAttribute("loc", loc);
 		RequestDispatcher rd = request.getRequestDispatcher("views/common/msg.jsp");
 		rd.forward(request, response);
-		System.out.println(m);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
