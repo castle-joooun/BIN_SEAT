@@ -175,7 +175,96 @@
 	margin:0;
 }
 
+#commentInput{
+    width: 890px;
+    height: 60px;
+    resize: none;
+}
+#commentBtn{
+	position: relative;
+	top: -2px;
+	width: 100px;
+	height: 65px;
+	margin:0;
+	padding: 0;
+	border: 0;
+	background-color: #5e64b1;
+	color: white;
+	font-size: 18px;
+}
+#comment table td{
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+#refresh{
+    position: relative;
+	top: -2px;
+	width: 100px;
+	height: 20px;
+	margin:0;
+	padding: 0;
+	border: solid 1px #ff7531;
+	background-color: white;
+	font-size: 13px;
+	
+}
+#comment table tr th{
+	text-align:left;
+}
 
+/* 댓글 */
+.commentDiv{
+    position: relative;
+    width: 1000px;
+    border-top: solid 1px lightsteelblue;
+    padding-top: 15px;
+    margin-top: 10px;
+    padding-bottom: 15px;
+}
+.commentDiv table{
+    position: relative;
+    width: 1000px;
+}
+.userDate{
+    position: relative;
+    float: right;
+}
+.storeDate{
+    position: relative;
+    float: right;
+}
+.storeTable{
+	padding-right:15px;
+    margin-left: 15px;
+}
+.storeTable th{
+    color: #5e64b1;
+}
+.storeTextarea{
+    width: 900px;
+    height: 40px;
+}
+.storeBtn{
+	position:relative;
+    width: 90px;
+    height: 48px;
+    top: -2px;
+    cursor: pointer;
+}
+.storeRe{
+    margin: 0;
+    padding: 0;
+    background-color: #5e64b1;
+    width: 5px;
+    height: auto;
+    cursor: pointer;
+}
+
+.tdTwo{
+    width: 10px;
+    margin-right: 5px;
+}
 
 
 #favorite{

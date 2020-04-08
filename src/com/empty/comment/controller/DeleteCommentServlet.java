@@ -1,4 +1,3 @@
-
 package com.empty.comment.controller;
 
 import java.io.IOException;
@@ -58,4 +57,3 @@ public class DeleteCommentServlet extends HttpServlet {
 	}
 
 }
-

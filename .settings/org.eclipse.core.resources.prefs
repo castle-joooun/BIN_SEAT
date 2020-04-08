@@ -2,6 +2,9 @@ eclipse.preferences.version=1
 encoding//web/css/base.css=UTF-8
 encoding//web/css/base2.css=UTF-8
 encoding//web/css/index.css=UTF-8
+<<<<<<< HEAD
+=======
 encoding//web/css/member/login.css=UTF-8
+>>>>>>> branch 'jinhyuk' of https://github.com/ique-coder/EMPTY_SEAT.git
 encoding//web/views/search/noneSearch.jsp=UTF-8
 encoding/<project>=UTF-8

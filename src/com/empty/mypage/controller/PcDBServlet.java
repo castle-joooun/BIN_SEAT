@@ -34,7 +34,7 @@ public class PcDBServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String userId = request.getParameter("userId");
-		Store s= new SearchService().store(userId);
+		Store s= new SearchService().crystalstore(userId);
 		String storeTimese []= new String[2];
 		String w = "";
 		storeTimese= s.getStoreTime().split(" ~ ");

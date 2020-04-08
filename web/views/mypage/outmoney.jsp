@@ -4,8 +4,6 @@
 	import="com.empty.member.model.vo.Member,com.empty.common.listener.SessionCheckListener"%>
 <%
 	Member loginMember = (Member) session.getAttribute("loginMember");
-	String msg = (String)request.getAttribute("msg");
-	String loc = (String)request.getAttribute("loc");
 %>
 <script>
 	$(document).ready(function(){
@@ -21,7 +19,8 @@
 			success:function(data){
 				console.log(data['cash']);
 				cash=data['cash'];
-				$(".cashcomp").text("출금가능잔액 : "+cash+"원");
+				$(".cashcomp1").text("출금가능 잔액");
+				$(".cashcomp2").text(cash+"원");
 			}
 		})
 	})
@@ -38,7 +37,9 @@
 		<div class="outMoneyBox">
 				<table class="cashouputbox">
 					<tr>
-						<td class="cashcomp">
+						<td class="cashcomp1">
+						</td>
+						<td class="cashcomp2" style="position:relative;left:-165px;">
 						</td>
 					</tr>
 					<tr>
@@ -50,15 +51,24 @@
 						<td>
 							은행
 						</td>
+						<td style="position:relative;left:-165px;">
+							<%=loginMember.getBank() %>은행
+						</td>
 					</tr>
 					<tr>
 						<td>
 							계좌번호
 						</td>
+						<td style="position:relative;left:-165px;">
+							<%=loginMember.getBankNumber() %>
+						</td>
 					</tr>
 					<tr>
 						<td>
 							예금주
+						</td>
+						<td style="position:relative;left:-165px;">
+							<%=loginMember.getBankMaster() %>
 						</td>
 					</tr>
 				</table>

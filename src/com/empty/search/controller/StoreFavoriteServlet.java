@@ -41,25 +41,17 @@ public class StoreFavoriteServlet extends HttpServlet {
 		String storeId = request.getParameter("storeId");
 		Store store = new SearchService().store(storeId);
 		
-		System.out.println("storeName은?? : " + store.getStoreName());
-		
 		// store_id, store_name, user_id, check(true, false) 다 있음!
 		
 		int result = 0;
 //		
-//		System.out.println("즐겨찾기 서블릿 userId : " + userId);
-//		System.out.println("즐겨찾기 서블릿 storeId : "  + store.getStoreId());
-//		System.out.println("즐겨찾기 서블릿 storeName : " + store.getStoreName());
 
-		System.out.println("check : " + check);
 		
 		// 즐겨찾기 갯수 제한하기
 		int favoriteSize = new SearchService().favoriteSize(userId);
-		System.out.println("즐겨찾기 최대개수 : " + favoriteSize);
 		
 		if(favoriteSize>=6) {
 			
-			System.out.println("즐겨찾기 최대개수 도달 오류!");
 			
 		} else {
 			
@@ -71,9 +63,7 @@ public class StoreFavoriteServlet extends HttpServlet {
 			
 			
 			if(result>0) {
-				System.out.println("즐겨찾기 추가/삭제 성공");
 			} else {
-				System.out.println("즐겨찾기 추가 실패");
 			}
 		}
 		

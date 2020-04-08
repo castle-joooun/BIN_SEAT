@@ -125,3 +125,16 @@ div#storeSubMenu>ul>li>a>span{
 	height:30px;
 	width:100px;
 }
+.btn-container form{
+	position:relative;
+}
+#tableContainer button{
+	position:relative;
+	left:270px;
+	border:1px black solid;
+	background:white;
+	height:30px;
+	width:100px;
+	margin-bottom:30px;
+	
+}

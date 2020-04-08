@@ -108,13 +108,35 @@ public class ReservationDao {
 		return result;
 	}
 
+
+	public int updatePayUse(Connection conn, String storeName, String userId, int pay, String storeId) {
+		PreparedStatement pstmt = null;
+		int result=0;
+		String sql=prop.getProperty("updatePayUse");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, storeName);
+			pstmt.setString(2, userId);
+			pstmt.setInt(3, pay);
+			pstmt.setString(4, storeId);
+			result = pstmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+		
+
 	public int endTime(Connection conn, String storeId, String seat, String time) {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		//String sql = prop.getProperty("endTime");
 		String sql="update store_seat_check set seat_end_time=sysdate + interval '"+time+"' hour where store_id=? and seat_num=?";
 		//		int time2 = Integer.parseInt(time);
-		System.out.println("time :" + time + ",storeId:" + storeId + ",seat:" + seat);
 		try {
 			pstmt = conn.prepareStatement(sql);
 			//pstmt.setString(1, time);
@@ -226,6 +248,7 @@ public class ReservationDao {
 		}
 		
 		return list;
+
 		
 	}
 	

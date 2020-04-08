@@ -17,24 +17,7 @@
 
 
 	<div class="list_btn_area">
-		
-		
-
-
 		<div class="searchDiv">
-			<div>
-				<form>
-					<select name="searchArray" class="searchPeriod" id="">
-						<optgroup label="정렬">
-							<option value="uName">이름 순</option>
-							<option value="lastest">최근 가입순</option>
-							<option value="bestUser">최다 이용 순</option>
-						</optgroup>
-					</select>
-				</form>
-			</div>
-			<div>
-
 				<div class="selectSearchType">
 					<select id="searchType" onchange="choiceType()">
 
@@ -69,10 +52,12 @@
 						</form>
 					</div>
 				</div>
+		</div>
 
-			</div>
-			
-			<div>
+	</div>
+	<div id="primaryContent">
+		<span id="totalSearch"></span>
+		
 				<form>
 					<input type="hidden" name="cPage" value="<%=cPage%>" id="cPage">
 					<select name="numPerPage" id="numPerPage">
@@ -82,20 +67,15 @@
 						<option value="50"<%=numPerPage==50?"selected":"" %>>목록 50개</option>
 					</select>
 				</form>
-			</div>
-		</div>
-
-	</div>
-	<div id="primaryContent">
-
+			
 		<table class="contentTable" summary="">
 
 			<thead>
 				<tr>
-					<th class="chk"><input id="allCheck" type="checkbox" value=""></th>
+					<!-- <th class="chk"><input id="allCheck" type="checkbox" value=""></th> -->
 					<th class="userid_">아이디</th>
 					<th class="username_">회원이름</th>
-					<th class="userdiv_">회원 구별</th>
+					<!-- <th class="userdiv_">회원 구별</th> -->
 					<th class="gender_">성별</th>
 					<th class="phone_">전화번호</th>
 					<th class="email_" nowrap="nowrap">이메일</th>
@@ -130,7 +110,7 @@
 		<div class="paging">
 			
 		</div>
-		<button></button>
+		
 	
 	</div>
 
@@ -163,13 +143,13 @@
 					console.log("성공했을때");
 					if(data.length>1){
 						const attach = $("#tbody");
-						
-						for (let i = 0; i < data.length-1; i++) {
+						console.log(data);
+						for (let i = 0; i < data.length-2; i++) {
 							const tr = $("<tr>");
-							tr.append($("<td>").append($("<input>").attr({name:"dataid",type : "checkbox",class :"chkone",value : data[i]['userid']})));
+							/* tr.append($("<td>").append($("<input>").attr({name:"dataid",type : "checkbox",class :"chkone",value : data[i]['userid']}))); */
 							tr.append($("<td>").html(data[i]['userid']).addClass('userid_'));
 							tr.append($("<td>").html(data[i]['username']).addClass('username_'));
-							tr.append($("<td>").html(data[i]['userdiv']).addClass('userdiv_'));
+							/* tr.append($("<td>").html(data[i]['userdiv']).addClass('userdiv_')); */
 							tr.append($("<td>").html(data[i]['gender']).addClass('gender_'));
 							tr.append($("<td>").html(data[i]['phone']).addClass('phone_'));
 							tr.append($("<td>").html(data[i]['email']).addClass('email_'));
@@ -178,7 +158,7 @@
 							i==0?attach.html(tr):attach.append(tr);
 
 						}
-						
+						$("#totalSearch").html("검색결과 : "+data[data.length-2]['result']+ "개 입니다.");
 						$(".paging").html(data[data.length-1]['pageBar']);
 						
 					}else{

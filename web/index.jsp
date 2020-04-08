@@ -33,7 +33,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>빈시트-pc방 자리찾기</title>
-    <link rel="stylesheet" href="css/index.css?ver=1" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/index.css?ver=1" type="text/css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/login.css" type="text/css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/choiceSignUp.css" type="text/css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/signUp_terms.css">
@@ -61,12 +61,16 @@
                 <div id="menubar">
                     <!-- main페이지이면 main의 mainHover을 빼준다! ------------------------------------------------------------------->
                     <p id="main"><a href="<%=request.getContextPath() %>" style="color: white">MAIN</a></p>
-                    <p id="introduce" class="mainHover"><a href="<%=request.getContextPath()%>/views/introduce/introduceMain.jsp">INTRODUCE</a></p>
-                    <p id="myPage" class="mainHover"><a href="<%=request.getContextPath()%>/views/mypage/mypage.jsp">MY PAGE</a></p>
+                    <p id="introduce" class="mainHover"><a href="<%=request.getContextPath()%>/goIntroduce">INTRODUCE</a></p>
                     <p id="notice" class="mainHover"><a href="<%=request.getContextPath()%>/notice">NOTICE</a></p>
-                    <p id="myPage" class="mainHover"><a href="<%=request.getContextPath()%>/views/mypage/mypage.jsp">MY PAGE</a></p>
-                    <p id="myPage" class="mainHover"><a href="<%=request.getContextPath()%>/store/salesView">DAILY SALES</a></p>
-                    <p id="service" class="mainHover"><a href="<%=request.getContextPath()%>/FAQMainServlet">SERVICE</a></p>
+                    <%if(loginMember!=null&&loginMember.getUserId().equals("admin")){ %>
+                    <p id="myPage" class="mainHover"><a href="<%=request.getContextPath()%>/admin/manageUser">ADMIN PAGE</a></p>
+                    <%}else if(loginMember!=null&&loginMember.isUserAppr()){ %>
+                    <p id="myPage" class="mainHover"><a href="<%=request.getContextPath()%>/store/main">STORE PAGE</a></p>
+                    <%}else if(loginMember!=null&& !loginMember.isUserAppr()) {%>
+                    <p id="myPage" class="mainHover"><a href="<%=request.getContextPath()%>/mypageMain">MY PAGE</a></p>
+                    <%} %>
+                    <p id="service" class="mainHover"><a href="<%=request.getContextPath()%>/FAQMainServlet">FAQ</a></p>
                 </div>
             </center>
 
@@ -191,7 +195,6 @@
     <div id="slide">
         <input type="radio" name="pos" id="pos1" class="pos">
         <input type="radio" name="pos" id="pos2" class="pos" checked>
-        <input type="radio" name="pos" id="pos3" class="pos">
 
         <ul id="slideMove">
             <li class="slideAttr"> <!-- 즐겨찾기 -->
@@ -201,27 +204,26 @@
                     추가하기
                 </div> -->
                 <div id="favoriteLine">
-                	<form action="storeView" method="post" onclick="submit()">
+                	<form action="<%=request.getContextPath() %>/storeView" method="post" onclick="submit()">
 	                    <div class="favoritePc">
 	                    </div>
                     </form>
-                	<form action="/storeName" method="post" onclick="submit()">
+                	<form action="<%=request.getContextPath() %>/storeView" method="post" onclick="submit()">
+	                    <div class="favoritePc">
+	                    </div>
+                    <form action="<%=request.getContextPath() %>/storeView" method="post" onclick="submit()">
 	                    <div class="favoritePc">
 	                    </div>
                     </form>
-                    <form action="/storeName" method="post" onclick="submit()">
+                    <form action="<%=request.getContextPath() %>/storeView" method="post" onclick="submit()">
 	                    <div class="favoritePc">
 	                    </div>
                     </form>
-                    <form action="/storeName" method="post" onclick="submit()">
+                    <form action="<%=request.getContextPath() %>/storeView" method="post" onclick="submit()">
 	                    <div class="favoritePc">
 	                    </div>
                     </form>
-                    <form action="/storeName" method="post" onclick="submit()">
-	                    <div class="favoritePc">
-	                    </div>
-                    </form>
-                    <form action="/store" method="post" onclick="submit()">
+                   	<form action="<%=request.getContextPath() %>/storeView" method="post" onclick="submit()">
 	                    <div class="favoritePc">
 	                    </div>
                     </form>
@@ -229,20 +231,14 @@
             </li>
             <li class="slideAttr"> <!-- 메인검색 -->
                 <form action="totalSearch" method="get" id="searchForm" onSubmit="false">
-                    <center>
                         <div id="searchBoxGra">
                             <input id="searchBox" type="text" name="searchBox" placeholder="빈시트 검색" onchange="change()">
                             <input type="submit" value="검색">
                         </div>
                         <img id="moniter" src="image/main-test.png" alt="">
-                    </center>
                 </form>
                 
                 
-            </li>
-            <li class="slideAttr"> <!-- 지역검색 -->
-                <img src="image/지역.png" alt="" id="searchRegion">
-                <img src="image/지도.png" alt="" id="region">
             </li>
         </ul>
     </div>
@@ -318,15 +314,8 @@
 					console.log(slideNum);
 				})
 				
-				$(function() {
-					if(slideNum==0) {
-						$("#back").css("visibility","hidden");
-					} 
-					if(slideNum==1) {
-						$("#back").css("visibility","visible");
-					}
-					
-				})
+				$("#back").css("visibility","hidden");
+				$("#next").css("visibility","hidden");
 		</script>
 	<%} %>
 	

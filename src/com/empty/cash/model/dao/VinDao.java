@@ -62,6 +62,9 @@ public class VinDao {
 				m.setGender(rs.getString("GENDER"));
 				m.setCash(rs.getInt("CASH"));
 				m.setEnrollDate(rs.getDate("ENROLLDATE"));
+				m.setBank(rs.getString("bank"));
+				m.setBankNumber(rs.getString("bank_number"));
+				m.setBankMaster(rs.getString("bank_master"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();

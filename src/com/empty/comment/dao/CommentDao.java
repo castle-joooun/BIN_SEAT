@@ -1,4 +1,3 @@
-
 package com.empty.comment.dao;
 
 import static com.empty.common.JDBCTemplate.close;
@@ -149,6 +148,4 @@ public class CommentDao {
 		System.out.println("dao값2"+ no);
 		return result;
 	}
-	
 	}
-

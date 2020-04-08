@@ -8,9 +8,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -33,6 +33,7 @@ Properties prop = new Properties();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = prop.getProperty("selectStoreSales");
+		
 		List<StoreSales> list = new ArrayList();
 		try {
 			pstmt= conn.prepareStatement(sql);
@@ -64,7 +65,139 @@ Properties prop = new Properties();
 		return list;
 		
 	}
-	
+
+	public int selectPayUse(Connection conn, String id, String date) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("sumPayUse");
+		
+		int result = 0;
+		try {
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1,id);
+			pstmt.setString(2, date);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return result;
+		
+		
+	}
+
+	public int countPayUse(Connection conn, String id, String date) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("countPayUse");
+		int result = 0;
+		try {
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1,id);
+			pstmt.setString(2, date);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return result;
+	}
+	public String selectName(Connection conn,String id) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("selectName");
+		String name =null;
+		try {
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1,id);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				name = rs.getString(1);
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return name;
+	}
+
+	public int countDailySales(Connection conn, String id, String date) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("countDailySales");
+		int count = 0;
+		try {
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1,id);
+			pstmt.setString(2, date);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				count = rs.getInt(1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return count;
+	}
+
+	public int deleteDailySales(Connection conn, String id, String date) {
+		PreparedStatement pstmt = null;
+		int result =0;
+		String sql = prop.getProperty("deleteSales");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,id);
+			pstmt.setString(2, date);
+			result=pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateDailySales(Connection conn, StoreSales s) {
+		Statement stmt = null;
+		int result = 0;
+		String sql = "INSERT INTO DAILY_SALES (STORE_ID,STORE_NAME,EN_DATE,DAY_OF_WEEK, CUSTOMER, NET_PROFIT, TAX, TOTAL_PROFIT)"
+				+ " VALUES('"+s.getStoreId()+"','"+s.getStoreName()+"',TO_DATE('"+s.getSdfDate()+"','RR/MM/DD'),'"+Character.toString(s.getDayOfWeek())+"',"
+				+s.getCustomer()+","+s.getNetProfit()+","+s.getTax()+","+s.getTotalProfit()+")";
+		
+		
+		try {
+			stmt = conn.createStatement();
+			result= stmt.executeUpdate(sql);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(stmt);
+		}
+		
+		return result;
+		
+	}
 	
 	
 	

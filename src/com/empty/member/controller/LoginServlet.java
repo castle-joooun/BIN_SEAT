@@ -28,17 +28,15 @@ public class LoginServlet extends HttpServlet {
 		String userId = request.getParameter("uname");
 		String password = request.getParameter("psw");
 		Member m = new MemberService().login(userId, password);
-		System.out.println(m);
 		String msg = "";
 		HttpSession session = request.getSession();
 		
-		if(m != null) {
+		if(m != null && m.getStatus().equals("Y")) {
 			session.setAttribute("loginMember", m);
 			Cookie mem = new Cookie("loginMember", userId);
 			mem.setMaxAge(7*24*60*60);
 			response.addCookie(mem);
 			String saveId = request.getParameter("saveId");
-			System.out.println("saveId : " + saveId);
 			if(saveId != null) {
 				Cookie c = new Cookie("saveId", userId);
 				c.setMaxAge(7*24*60*60);
@@ -50,7 +48,6 @@ public class LoginServlet extends HttpServlet {
 			}
 		}else {
 			msg = URLEncoder.encode("입력하신 정보가 없습니다.", "UTF-8");
-			System.out.println("로그인 실패");
 			Cookie cookies = new Cookie("loginFail", msg);
 			cookies.setMaxAge(60);
 			response.addCookie(cookies);

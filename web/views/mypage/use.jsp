@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.empty.member.model.vo.Member,com.empty.common.listener.SessionCheckListener"%>
+<%@ page import="com.empty.member.model.vo.Member,com.empty.common.listener.SessionCheckListener,java.util.List"%>
 <%
 	Member loginMember = (Member) session.getAttribute("loginMember");
 %>
@@ -12,27 +12,32 @@
 			type:"get",
 			dataType:"json",
 			data:{
-				"userId":userId	
+				"userId":userId	,
+				"cPage":1
 			},
 			success:function(data){
 				console.log(data);
+				console.log(data['list'][0]['omDate']);
+				console.log(data['list'].length);
 				const tr=$("<tr>");
 				const tr3=$("<tr>");
-				tr3.append($("<td>").html("출금날짜").css('font-size','17px').css('font-weight','bold'));
-				tr3.append($("<td>").html("출금 계좌번호").css('font-size','17px').css('font-weight','bold'));
-				tr3.append($("<td>").html("금액").css('font-size','17px').css('font-weight','bold'));
-				tr3.append($("<td>").html("출금후 금액").css('font-size','17px').css('font-weight','bold'));
+				tr3.append($("<td>").html("출금날짜").css('font-size','18px').css('font-weight','bold'));
+				tr3.append($("<td>").html("출금 계좌번호").css('font-size','18px').css('font-weight','bold'));
+				tr3.append($("<td>").html("금액").css('font-size','18px').css('font-weight','bold'));
+				tr3.append($("<td>").html("출금후 금액").css('font-size','18px').css('font-weight','bold'));
 				tr.append(tr3);
-				for(let i=0;i<data.length;i++){
+				for(let i=0;i<data['list'].length;i++){
 					const tr2=$("<tr>");
-						tr2.append($("<td>").html(data[i]['omDate']));
-						tr2.append($("<td>").html(data[i]['omNumber']));
-						tr2.append($("<td>").html(data[i]['om']));
-						tr2.append($("<td>").html(data[i]['afterOm']));
+						tr2.append($("<td>").html(data['list'][i]['omDate']));
+						tr2.append($("<td>").html(data['list'][i]['omNumber']));
+						tr2.append($("<td>").html(data['list'][i]['om']));
+						tr2.append($("<td>").html(data['list'][i]['afterOm']));
 						tr.append(tr2);
 				}
-				$(".myuseList:last-child").html(tr);
+				$(".myuseList table").html(tr);
+				$("#useListpagebar").html(data['pageBar']);
 			}
+			
 		})
 	})
 	</script>
@@ -61,7 +66,6 @@
 				</tr>
 			</table>
 		</div>
-		
 		<div class="useList">
 			<table>
 				<tr>
@@ -75,4 +79,7 @@
 		<div class="myuseList">
 			<table>
 			</table>
+		</div>
+		<div id='useListpagebar'>
+		
 		</div>

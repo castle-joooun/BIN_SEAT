@@ -36,7 +36,7 @@ div#storeSubMenu>ul>li>a>span{
     position: relative;
     padding-bottom: 20px;
 }
-div#storeSubMenu>ul>li>a>span:after{
+.text-item:after{
   position: absolute;
     bottom: 0;
     left: 0;

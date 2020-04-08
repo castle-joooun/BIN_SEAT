@@ -1,0 +1,72 @@
+#findTitle{
+    text-align: center;
+    margin: 10px;
+    margin-top: 70px;
+}
+
+.line{
+    width: 800px;
+    margin-bottom: 30px;
+}
+
+.tab-content {
+    background: rgb(218, 216, 216);
+    padding: 15px;
+    height: 350px;
+    width: 750px;
+}
+
+.findInp{
+    margin-top: 20px;
+    margin-bottom: 15px;
+    width: 700px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.spanText{
+	font-size: 15px;
+	margin-left: 15px;
+}
+
+.findInpModal{
+    margin-left: 15px;
+    display: block;
+    width: 600px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.findBtn{
+    background-color: rgb(94, 100, 177);
+    color: seashell;
+    font-weight: bold;
+    font-size: 15px;
+    width: 120px;
+    height: 30px;
+    margin-top: 20px;
+    border-radius: 5px;
+    margin-right: 40px;
+}
+
+.h3{
+    margin: 12px;
+}
+
+.tabContainer {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.textInfor{
+    margin-top: 20px;
+}
+
+.pointSpan{
+    color: rgb(94, 100, 177);
+}
+
+.findPwinforText{
+    margin: 15px 0 10px 20px;
+    text-align: left;
+}

@@ -118,16 +118,27 @@
 					</tr>
 					<tr>
 						<td>
-							매장사진
+							매장로고
 						</td>
 						<td>
-							<input type="file" id="fileupload" multiple>
+							<input type="file" id="fileupload">
+							<div id="filemiribogi">
+								
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							매장인테리어사진
+						</td>
+						<td>
+							<input type="file" id="itfileupload" multiple>
+							<div id='filemiribogilist'>
+							
+							</div>
 						</td>
 					</tr>
 				</table>
-				<div id="filemiribogi">
-					
-			</div>
 				<button id="storeEnrollbtn">등록</button>
 			</div>
 			
@@ -232,9 +243,13 @@
 					var userId="<%=loginMember.getUserId()%>";
 					var form=$("#frm").serialize();
 					var fileupload=$("#fileupload").val();
+					var itfileupload=[]
+					
+					console.log(fileupload);
+					console.log(itfileupload);
 					
 					const fd=new FormData();
-					$.each($("#fileupload")[0].files,function(i,item){
+					$.each($("#itfileupload")[0].files,function(i,item){
 						fd.append("empty"+i,item);
 					});
 					
@@ -269,6 +284,7 @@
 							  "storeFacirity":storeFacirity,
 							  "storeAddress":storeAddress,
 							  "storePrice":storePrice,
+							  "fileupload":fileupload
 						},
 						traditional : true,
 						dataType:"json",
@@ -285,7 +301,21 @@
 						reader.onload=function(e){
 							var img=$("<img>").attr("src",e.target.result)
 							.css({width:"100px",height:"100px"});
-							$("#filemiribogi").append(img);
+							$("#filemiribogi").html(img);
+						}
+						reader.readAsDataURL(item);
+					});
+					
+				})
+				
+				$("#itfileupload").change(function(){   //미리버기
+					const reader=new FileReader();
+					$.each($(this)[0].files,function(i,item){
+						const reader=new FileReader();
+						reader.onload=function(e){
+							var img=$("<img>").attr("src",e.target.result)
+							.css({width:"100px",height:"100px"});
+							$("#filemiribogilist").append(img);
 						}
 						reader.readAsDataURL(item);
 					});

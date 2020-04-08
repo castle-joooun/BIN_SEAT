@@ -29,6 +29,587 @@ html{
 
 
 #popMenu{   
+    position: absolute;
+    float:right;
+    left: 1100px;
+    cursor: pointer;
+}
+
+
+#menubar>p>a {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#menubar>p>a:hover {
+    color: #ff7531;
+}
+
+#menubar>p{
+    position: relative;
+    top: 60px;
+    left: 25px;
+    margin: 25px;
+    margin-right: 55px;
+    font-size: 15px;
+    display: inline-block;
+    cursor: pointer;
+}
+.mainHover:hover{
+    position: relative;
+    top: 60px;
+    margin-bottom: 22px;
+    font-size: 15px;
+    display: inline-block;
+    cursor: pointer;
+} 
+html{
+    width: 1366px;
+    height: auto;
+}
+
+#middle{
+    height: 44px;
+    z-index: 5;
+    background-color: lightsteelblue;
+}
+
+#middleText{
+    color: black;
+    font-weight: 600;
+    margin: 0;
+    display: inline-block;
+    padding-left: 130px;
+    padding-top: 10px;
+}
+
+.clearr{
+    clear: right;
+}
+
+
+
+/* �꽌釉뚮찓�돱 */
+#subMenu{
+    position: relative;
+    left: 367px;
+    top: -18px;
+    color: white;
+    width: 400px;
+}
+
+#mainSub>span>a {
+    margin-right: 35px;
+    cursor: pointer;
+}
+#mainSub{
+    /* display: inline-block; */
+    display: inline-block;
+}
+
+#mainSub>span>a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+
+#mainSub>span>a:hover {
+    color: #ff7531;
+}
+
+.subHover>a:hover {
+    color: #ff7531;
+    display:inline;
+    border-bottom:2px solid #ff7531;
+    
+    /* padding-bottom:2px; */
+}
+
+/* .mainHover>a:hover {
+    color: #ff7531;
+    display:inline;
+    border-bottom:2px solid #ff7531; */
+    /* padding-bottom:2px; */
+}
+#baseSubMenu>a {
+    border-bottom: 2px solid #ff7531;
+    /* text-shadow:
+    -1px -1px 3px white,
+    1px -1px 3px white,
+    -1px 1px 3px white,
+    1px 1px 3px white;   */
+}
+
+
+
+/* -------------------------------------------------------------------------------------------- */
+
+
+
+/* 占쎌뿯占쎌젾筌∽옙 占쎈뮞占쏙옙占쎌뵬 */
+.input {
+    width: 100%;
+    height: 40px;
+    padding: 8px 16px;
+    margin: 15px 0 15px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#login {
+    text-align: center;
+}
+
+/* �뿆�뫁�꺖甕곌쑵�뱣 占쎈뮞占쏙옙占쎌뵬 */
+.buttonStyle{
+    width: 150px;
+    height: 40px;
+    background-color: tomato;
+    font-size: 17px;
+    border: none;
+    color: white;
+}
+
+/* 嚥≪뮄�젃占쎌뵥 甕곌쑵�뱣 占쎈뮞占쏙옙占쎌뵬 */
+#loginBtn{
+    background-color: rgb(94, 100, 177);
+    font-size: 17px;
+    color: white;
+}
+
+/* 占쎌돳占쎌뜚揶쏉옙占쎌뿯 / �④쑴�젟筌≪뼐由� 筌띾뜆�뒭占쎈뮞 占쎌궞�뵳�됥늺 獄쏅쵐夷� */
+.link:hover{
+    text-decoration: underline;
+}
+
+.link{
+    text-decoration: none;
+    float: left;
+    color: gray;
+}
+
+b{
+    float: left;
+}
+
+#msg{
+    display: inline-block;
+}
+
+
+hr {
+    border: 1px solid rgb(94, 100, 177);
+    margin-bottom: 5%;
+    margin-top: 3%;
+}
+
+#inputData{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+}
+
+
+/* 筌뤴뫀�뼎筌∽옙 獄쏄퀗瑗� */
+.modal {
+    /* 占쎈떜野꺿뫀�꼦疫뀐옙 */
+    display: none;
+    position: fixed;
+    z-index: 6;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* 占쎈뮞占쎄쾿嚥∽옙 占쎌쁽占쎈짗 */
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+/* 筌뤴뫀�뼎筌∽옙 �굜�꼹�쀯옙�뱜 占쎈뮞占쏙옙占쎌뵬 */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    border: 1px solid #888;
+    /* 占쎈퉸占쎄맒占쎈즲 占쎈툧筌띿쉸�뼚�걡占� */
+    height: 450px;
+    width: 350px;
+    top: 150px;
+    padding-top: 15px;
+}
+
+
+/* openLogin */
+#openLogin {
+    width: 1366px;
+}
+
+#openLogout{
+	width: 1366px;
+}
+
+.checkBox{
+	text-align: left;
+	margin-left: 20px;
+	margin-bottom: 10px
+}
+
+.logoutBtn{
+	position: absolute;
+    float:right;
+    left: 1100px;
+    cursor: pointer;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+
+/* 캐시 */
+.alldiv{
+    padding-left: 200px;
+    padding-right: 200px;
+}
+.cashTop{
+    height: 130px;
+    border-left: solid 4px lightsteelblue;
+    border-right: solid 4px lightsteelblue; 
+    padding-top:50px;
+}
+.myname{
+	position:relative;
+    font-size: 28px;
+    padding-left:200px;
+    padding-right:100px;
+    display:inline-block;
+}
+.mycash{
+	position:relative;
+	left:-40px;
+    font-size: 28px;
+    display: inline-block;
+}
+.mywon{
+	font-size: 28px;
+	display:inline-block;
+}
+.whatcharge h2{
+	text-align: center;
+	background-color: lightsteelblue;
+	padding-bottom: 0px;
+	color:tomato;
+	height: 50px;
+	padding-top:15px;
+	margin: 0px;
+}
+.chargingmoney{
+	display: inline-block;
+	padding-left:415px;
+	font-size:20px;
+}
+.whatcharge{
+	border-left: solid 4px lightsteelblue;
+    border-right: solid 4px lightsteelblue; 
+    border-bottom: solid 4px lightsteelblue;
+}
+#thisismoney{
+	font-size: 17px;
+}
+.gomoney{
+	position: relative;
+	left:40%;
+	right:50%;
+	font-size:50px;
+	background: lightsteelblue;
+	border-radius: 10px;
+	color:tomato;
+}
+
+
+
+a{color:#000;}
+ 
+.mask{
+    width:100%; 
+    height:100%; 
+    position:fixed; 
+    left:0; 
+    top:0; 
+    z-index:10; 
+    background:#000; 
+    opacity:.5;
+    filter:alpha(opacity=50);
+    }
+.paytag{
+	padding-left:110px;
+	display:inline;
+}
+.robot{
+	padding-top:20px;
+	display:block;
+	 margin: 0px auto;
+}
+
+
+
+/*업주용 마이페이지  */
+.mypagemain1{
+	padding-left:200px;
+	display:inline-block;
+	font-size:22px;
+}
+.mypagemain2{
+	display:inline-block;
+	padding-left:50px;
+}
+.myinfobox{
+	padding-top: 10px;
+    padding-bottom: 10px;
+    background: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 966px;
+    font-size: 19px;
+    border: solid 5px lightsteelblue;
+}
+.myinfobox table tr td{
+	font-size: 19px;
+    padding-left: 10px;
+    font-weight: bold;
+    color: tomato;
+}
+.upzooinfobox{
+	border: solid 5px lightsteelblue;
+    width: 966px;
+    position: relative;
+    top: -10px;
+    border-top: solid 0px;
+}
+.upzoomyinfo1{
+	width: 966px;	
+}
+.upzoomyinfo1 tr td{
+	width:966px;
+	font-size:18px;
+}
+.upzoomyinfo1 tr td:first-child{
+	padding-top: 7px;
+    text-align: right;
+    padding-right: 28px;
+    width: 291px;
+    font-weight: bold;
+}
+.upzoomyinfo1 tr td button{
+	font-size: 16px;
+    position: relative;
+    left: 211px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: solid 2px lightsteelblue;
+    background-color: lightsteelblue;
+    color: white;
+    font-weight: bold;
+}
+.upzooinfobox1{
+	border: solid 5px lightsteelblue;
+    width: 966px;
+    position: relative;
+    top: -10px;
+    border-top: solid 0px;
+}
+.upzoomyinfo2 tr td{
+	width:966px;
+	font-size:18px;
+	padding-top: 7px;
+    text-align: right;
+    padding-right: 28px;
+    width: 126px;
+    font-weight: bold;
+    position: relative;
+    left:-2px;
+}
+.crystal{
+	font-size: 16px;
+    position: relative;
+    left: 520px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: solid 2px lightsteelblue;
+    background-color: lightsteelblue;
+    color: white;
+    font-weight: bold;
+}
+
+/*업주용 내역페이지  */
+.useList{
+	padding-top: 10px;
+    padding-bottom: 10px;
+    background: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 966px;
+    font-size: 19px;
+    border: solid 5px lightsteelblue;
+}
+.enrollstore{
+	font-size: 16px;
+    position: relative;
+    left: 418px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border: solid 2px lightsteelblue;
+    background-color: lightsteelblue;
+    color: white;
+    font-weight: bold;
+}
+
+/*업주용 개인정보수정페이지  */
+.crystalcom{
+	position: relative;
+	left:590px;
+}
+
+/* 매장등록 페이지 */
+/* .storeFacirity{
+	width:50px;
+} */
+.enrollbox{
+	width:966px;
+}
+.enrollbox tr td:first-child{
+	padding-left:20px;
+	width:30px;
+}
+.enrollbox tr td:last-child{
+}    
+.upzooinfobox table{
+	width:966px;
+}
+.upzooinfobox table tr td{
+	position:relative;
+	left:2px;
+	font-weight: bold;
+	font-size: 18px;
+}
+#goOutMoneySV{
+	font-size: 16px;
+    position: relative;
+    left: 45%;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: solid 2px lightsteelblue;
+    background-color: lightsteelblue;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+#map div{
+	width:200px;!important;
+}
+.outMoneyBox{
+	position: relative;
+    font-weight: bold;
+    font-size: 17px;
+    top:-10px;
+    border: solid 5px lightsteelblue;
+    width: 966px;
+    position: relative;
+    border-top: solid 0px;
+}
+.outMoneyBox tr td{
+	position: relative;
+    left: 28px;
+    font-weight: bold;
+    font-size: 17px;
+    position: relative;
+}
+.myuseList{
+border: solid 5px lightsteelblue;
+    width: 966px;
+    position: relative;
+    top: -10px;
+    border-top: solid 0px;
+}
+.useList table tr td{
+	font-size: 19px;
+    padding-left: 10px;
+    font-weight: bold;
+    color: tomato;
+}
+.inmoneyList{
+	border: solid 5px lightsteelblue;
+    width: 966px;
+    position: relative;
+    top: -10px;
+    border-top: solid 0px;
+}
+.inmoneyList table tr td{
+	font-weight: bold;
+    font-size: 18px;
+}
+#useListpagebar{
+	position: relative;
+    left: 45%;
+}
+.enrollgyoja{
+	font-size: 16px;
+    position: relative;
+    left: 418px;
+    border: solid 2px lightsteelblue;
+    background-color: lightsteelblue;
+    color: white;
+    font-weight: bold;
+}
+#enrollgyojagirit{
+	font-size: 16px;
+    position: relative;
+    left: 45%;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: solid 2px lightsteelblue;
+    background-color: lightsteelblue;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+=======
+body{
+    width: 1366px;
+    height: auto;
+    margin: 0px;
+}
+html{
+    width: 1366px;
+}
+#mainLogo{
+    position: absolute;
+    left:140px;
+    top:40px;
+    z-index: 3;
+    cursor: pointer;
+}
+#transLogo{
+    position: absolute;
+    left:140px;
+    top:40px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.hover:hover{
+    visibility: hidden;
+    cursor: pointer;
+    transform: 2s;
+}
+
+
+#popMenu{   
 	position: absolute;
 	float: right;
 	/* position: absolute;
@@ -483,7 +1064,6 @@ html{
     color: #ff7531;
     display:inline;
     border-bottom:2px solid #ff7531;
-    
     /* padding-bottom:2px; */
 }
 
@@ -605,105 +1185,17 @@ hr {
 /* ----------------------------------------------------------------------------------------------------------------------------------------------- */
 
 
-/* 캐시 */
-.alldiv{
-    padding-left: 200px;
-    padding-right: 200px;
-}
-.cashTop{
-    height: 130px;
-    border-left: solid 4px lightsteelblue;
-    border-right: solid 4px lightsteelblue; 
-    padding-top:50px;
-}
-.myname{
-	position:relative;
-    font-size: 28px;
-    padding-left:200px;
-    padding-right:100px;
-    display:inline-block;
-}
-.mycash{
-	position:relative;
-	left:-40px;
-    font-size: 28px;
-    display: inline-block;
-}
-.mywon{
-	font-size: 28px;
-	display:inline-block;
-}
-.whatcharge h2{
-	text-align: center;
-	background-color: lightsteelblue;
-	padding-bottom: 0px;
-	color:tomato;
-	height: 50px;
-	padding-top:15px;
-	margin: 0px;
-}
-.chargingmoney{
-	display: inline-block;
-	padding-left:415px;
-	font-size:20px;
-}
-.whatcharge{
-	border-left: solid 4px lightsteelblue;
-    border-right: solid 4px lightsteelblue; 
-    border-bottom: solid 4px lightsteelblue;
-}
-#thisismoney{
-	font-size: 17px;
-}
-.gomoney{
-	position: relative;
-	left:40%;
-	right:50%;
-	font-size:50px;
-	background: lightsteelblue;
-	border-radius: 10px;
-	color:tomato;
-}
-
-
-
-a{color:#000;}
- 
-.mask{
-    width:100%; 
-    height:100%; 
-    position:fixed; 
-    left:0; 
-    top:0; 
-    z-index:10; 
-    background:#000; 
-    opacity:.5;
-    filter:alpha(opacity=50);
-    }
-.paytag{
-	padding-left:110px;
-	display:inline;
-}
-.robot{
-	padding-top:20px;
-	display:block;
-	 margin: 0px auto;
-}
-
-
-
-/*업주용 마이페이지  */
 .mypagemain1{
-	padding-left:200px;
-	display:inline-block;
-	font-size:22px;
+   padding-left:200px;
+   display:inline-block;
+   font-size:22px;
 }
 .mypagemain2{
-	display:inline-block;
-	padding-left:50px;
+   display:inline-block;
+   padding-left:50px;
 }
 .myinfobox{
-	padding-top: 10px;
+   padding-top: 10px;
     padding-bottom: 10px;
     background: white;
     margin-top: 10px;
@@ -713,34 +1205,34 @@ a{color:#000;}
     border: solid 5px lightsteelblue;
 }
 .myinfobox table tr td{
-	font-size: 19px;
+   font-size: 19px;
     padding-left: 10px;
     font-weight: bold;
     color: tomato;
 }
 .upzooinfobox{
-	border: solid 5px lightsteelblue;
+   border: solid 5px lightsteelblue;
     width: 966px;
     position: relative;
     top: -10px;
     border-top: solid 0px;
 }
 .upzoomyinfo1{
-	width: 966px;	
+   width: 966px;   
 }
 .upzoomyinfo1 tr td{
-	width:966px;
-	font-size:18px;
+   width:966px;
+   font-size:18px;
 }
 .upzoomyinfo1 tr td:first-child{
-	padding-top: 7px;
+   padding-top: 7px;
     text-align: right;
     padding-right: 28px;
     width: 291px;
     font-weight: bold;
 }
 .upzoomyinfo1 tr td button{
-	font-size: 16px;
+   font-size: 16px;
     position: relative;
     left: 314px;
     padding-left: 30px;
@@ -751,16 +1243,16 @@ a{color:#000;}
     font-weight: bold;
 }
 .upzooinfobox1{
-	border: solid 5px lightsteelblue;
+   border: solid 5px lightsteelblue;
     width: 966px;
     position: relative;
     top: -10px;
     border-top: solid 0px;
 }
 .upzoomyinfo2 tr td{
-	width:966px;
-	font-size:18px;
-	padding-top: 7px;
+   width:966px;
+   font-size:18px;
+   padding-top: 7px;
     text-align: right;
     padding-right: 28px;
     width: 126px;
@@ -769,7 +1261,7 @@ a{color:#000;}
     left:-2px;
 }
 .crystal{
-	font-size: 16px;
+   font-size: 16px;
     position: relative;
     left: 520px;
     padding-left: 30px;
@@ -782,7 +1274,7 @@ a{color:#000;}
 
 /*업주용 내역페이지  */
 .useList{
-	padding-top: 10px;
+   padding-top: 10px;
     padding-bottom: 10px;
     background: white;
     margin-top: 10px;
@@ -792,7 +1284,7 @@ a{color:#000;}
     border: solid 5px lightsteelblue;
 }
 .enrollstore{
-	font-size: 16px;
+   font-size: 16px;
     position: relative;
     left: 416px;
     padding-left: 14px;
@@ -805,40 +1297,34 @@ a{color:#000;}
 
 /*업주용 개인정보수정페이지  */
 .crystalcom{
-	position: relative;
-	left:590px;
+   position: relative;
+   left:590px;
 }
 
 /* 매장등록 페이지 */
 /* .storeFacirity{
-	width:50px;
+   width:50px;
 } */
 .enrollbox{
-	width:966px;
+   width:966px;
 }
 .enrollbox tr td:first-child{
-	padding-left:20px;
-	width:30px;
+   padding-left:20px;
+   width:30px;
 }
 .enrollbox tr td:last-child{
 }    
-#storeEnrollbtn{
-	margin-left:45%;
-	margin-bottom:10px;
-	font-size:50px;
-}
-}
 .upzooinfobox table{
-	width:966px;
+   width:966px;
 }
 .upzooinfobox table tr td{
-	position:relative;
-	left:2px;
-	font-weight: bold;
-	font-size: 17px;
+   position:relative;
+   left:2px;
+   font-weight: bold;
+   font-size: 17px;
 }
 #goOutMoneySV{
-	font-size: 16px;
+   font-size: 16px;
     position: relative;
     left: 45%;
     padding-left: 30px;
@@ -850,10 +1336,10 @@ a{color:#000;}
     margin-bottom: 10px;
 }
 #map div{
-	width:200px;!important;
+   width:200px;!important;
 }
 .outMoneyBox{
-	position: relative;
+   position: relative;
     font-weight: bold;
     font-size: 17px;
     top:-10px;
@@ -863,7 +1349,7 @@ a{color:#000;}
     border-top: solid 0px;
 }
 .outMoneyBox tr td{
-	position: relative;
+   position: relative;
     left: 28px;
     font-weight: bold;
     font-size: 17px;
@@ -877,20 +1363,57 @@ border: solid 5px lightsteelblue;
     border-top: solid 0px;
 }
 .useList table tr td{
-	font-size: 19px;
+   font-size: 19px;
     padding-left: 10px;
     font-weight: bold;
     color: tomato;
 }
 .inmoneyList{
-	border: solid 5px lightsteelblue;
+   border: solid 5px lightsteelblue;
     width: 966px;
     position: relative;
     top: -10px;
     border-top: solid 0px;
 }
 .inmoneyList table tr td{
-	font-weight: bold;
+   font-weight: bold;
     font-size: 17px;
 }
-
+#choiceOutMoney{
+	position: relative;
+    left: 15px;
+}
+.mypagemain2 a{
+	display: inline-block;
+   position: relative;
+    left: 15px;
+}
+.mypagemain2 a{
+   display: inline-block;
+    font-size: 22px;
+    text-decoration: none;
+}
+#storecrystalbtn{
+	font-size: 16px;
+    position: relative;
+    left: 45%;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: solid 2px lightsteelblue;
+    background-color: lightsteelblue;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+#storecrystalbtn{
+font-size: 16px;
+    position: relative;
+    left: 45%;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: solid 2px lightsteelblue;
+    background-color: lightsteelblue;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+}

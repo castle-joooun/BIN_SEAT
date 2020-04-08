@@ -37,8 +37,7 @@ public class CrystalStoreDBServlet extends HttpServlet {
 		String storeTimestart = request.getParameter("storeTimestart");
 		String storeTimeclose = request.getParameter("storeTimeclose");
 		String storeInfo = request.getParameter("storeInfo");
-		String storePrice = request.getParameter("storePrice");
-		System.out.println(storeName);
+		int storePrice = Integer.parseInt(request.getParameter("storePrice"));
 		StoreImg2 si= new StoreImg2();
 		new MemberService().searchStoreImg(si);
 		Store s = new Store();

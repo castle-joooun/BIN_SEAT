@@ -1,6 +1,7 @@
 package com.empty.search.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.empty.cash.model.service.VinService;
@@ -17,8 +17,6 @@ import com.empty.member.model.vo.Member;
 import com.empty.member.model.vo.outMoneyDB;
 import com.empty.search.service.SearchService;
 import com.google.gson.Gson;
-import com.kh.board.model.service.BoardService;
-import com.kh.board.model.vo.Board;
 
 /**
  * Servlet implementation class useServlet
@@ -44,7 +42,7 @@ public class useServlet extends HttpServlet {
 		Member m = new Member();
 		outMoneyDB omdb = new outMoneyDB();
 		m = new VinService().selectUser(m,userId);
-		List list =new SearchService().outMoneyList(userId, omdb); 
+		//List list =new SearchService().outMoneyList(userId, omdb); 
 		int cPage;
 		try {
 			cPage=Integer.parseInt(request.getParameter("cPage"));
@@ -52,7 +50,7 @@ public class useServlet extends HttpServlet {
 			cPage=1;
 		}
 		int numPerPage=5;
-		List list2=new SearchService().outMoneyList(cPage,numPerPage);
+		List list2=new SearchService().outMoneyList(userId, omdb,cPage,numPerPage);
 		int totalBoard=new SearchService().omlCount();
 		
 		int totalPage=(int)Math.ceil((double)totalBoard/numPerPage);
@@ -66,14 +64,14 @@ public class useServlet extends HttpServlet {
 		if(pageNo==1) {
 			pageBar+="<span>[이전]</span>";
 		}else {
-			pageBar+="<a href='"+request.getContextPath()+"/board/boardList?cPage="+(pageNo-1)+"'>[이전]</a>";					
+			pageBar+="<a href='"+request.getContextPath()+"/use/use.do?cPage="+(pageNo-1)+"&userId=" + userId + "'>[이전]</a>";					
 		}
 		
 		while(!(pageNo>pageEnd||pageNo>totalPage)) {
 			if(pageNo==cPage) {
 				pageBar+="<span>"+pageNo+"</span>";
 			}else {
-				pageBar+="<a href='"+request.getContextPath()+"/board/boardList?cPage="+(pageNo)+"'>"+pageNo+"</a>";
+				pageBar+="<a href='"+request.getContextPath()+"/use/use.do?cPage="+(pageNo)+"&userId=" + userId + "'>"+pageNo+"</a>";
 			}
 			pageNo++;
 		}
@@ -81,16 +79,18 @@ public class useServlet extends HttpServlet {
 		if(pageNo>totalPage) {
 			pageBar+="<span>[다음]</span>";
 		}else {
-			pageBar+="<a href='"+request.getContextPath()+"/board/boardList?cPage="+(pageNo)+"'>[다음]</a>";					
+			pageBar+="<a href='"+request.getContextPath()+"/use/use.do?cPage="+(pageNo)+"'>[다음]</a>";					
 		}
-				
-		request.setAttribute("list",list);
-		request.setAttribute("pageBar", pageBar);
-		request.getRequestDispatcher("/views/board/boardList.jsp").forward(request, response);
-		
+			
+		JSONObject jsonObj=new JSONObject();
+		jsonObj=new JSONObject();
+		jsonObj.put("list", list2);
+		jsonObj.put("pageBar", pageBar);
 		
 		response.setContentType("application/json;charset=UTF-8");
-		new Gson().toJson(list,response.getWriter());
+		new Gson().toJson(jsonObj,response.getWriter());
+		
+		
 	}
 
 	/**

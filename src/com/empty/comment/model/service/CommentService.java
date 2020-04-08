@@ -1,4 +1,3 @@
-
 package com.empty.comment.model.service;
 
 import static com.empty.common.JDBCTemplate.close;
@@ -35,7 +34,6 @@ public int insertComment(Comment c) {
 		return result;
 
 }
-
 public int updateComment(int no, String userComment) {
 	Connection conn = getConnection();
 
@@ -47,7 +45,6 @@ public int updateComment(int no, String userComment) {
 
 	return result;
 }
-
 public int deleteComment(int no) {
 	 Connection conn = getConnection();
 	 int result = dao.delectComment(conn,no);

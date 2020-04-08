@@ -152,7 +152,8 @@ org.jsoup.select.Elements"%>
 											'<p class="resultTag">'+
 												'<input type="hidden" name="storeId" value="'+data[i]['storeId']+'">'+
 												'<input type="hidden" name="storeName" value="'+data[i]['storeName']+'">'+
-												'<input type="hidden" name="userId" value="'+data[i]["storeId"]+'">'+
+												'<input type="hidden" name="userId" value="<%=loginMember!=null?loginMember.getUserId():""%>">'+
+												<%-- '<input type="hidden" name="userId" value="'+<%=loginMember!=null?loginMember.getUserId():""%>+'">'+ --%>
 												'<input type="hidden" name="searchText" value="<%=searchBox%>">'+
 												str+
 											'</p>'+

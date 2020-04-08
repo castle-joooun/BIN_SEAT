@@ -38,8 +38,6 @@ public class AdminSearchTypeAjaxServlet extends HttpServlet {
 		String type = request.getParameter("searchType");//검색 타입 , userName, gender,phone
 		String keyword = request.getParameter("searchKeyword").trim();//검색 키워드 
 		 
-		System.out.println(type);
-		System.out.println(keyword);
 		//페이징 처리 
 		int cPage;
 		try{
@@ -105,8 +103,12 @@ public class AdminSearchTypeAjaxServlet extends HttpServlet {
 			}
 			//pagebar add
 			JSONObject obj=new JSONObject();
+			obj.put("result", totalMember);
+			ja.add(obj);
+			obj=new JSONObject();
 			obj.put("pageBar", pageBar);
 			ja.add(obj);
+			
 		}else {
 			//검색 결과가 없을 때
 			JSONObject obj=new JSONObject();

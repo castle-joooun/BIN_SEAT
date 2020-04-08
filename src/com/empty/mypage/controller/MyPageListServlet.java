@@ -28,11 +28,6 @@ public class MyPageListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		String userId = request.getParameter("userId");
-//		Member m = new Member();
-//		m = new VinService().selectUser(m,userId);
-//		request.setAttribute("m", m);
 		request.getRequestDispatcher("/views/mypage/mypagelist.jsp").forward(request,response);
 	}
 

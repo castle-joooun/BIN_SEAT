@@ -3,13 +3,8 @@
 
 <%@ include file="storeBaseTop.jsp"%>
 <%@ page import="com.empty.search.model.vo.Store, java.util.List"%>
-
 <%@ page
 	import="com.empty.search.model.vo.StoreSeat, com.empty.member.model.vo.Member"%>
-
-<%@ page import="com.empty.search.model.vo.StoreSeat, com.empty.member.model.vo.Member"%>
-
-
 
 <link rel="stylesheet" href="css/store.css?ver=0" type="text/css">
 
@@ -26,7 +21,6 @@
 	String[] useCheck = ss.getSeatCheck().split(",");
 	int seatNum = 1;
 	int seatNum2 = 1;
-	
 %>
 
 
@@ -138,32 +132,29 @@
 		</center>
 	</div>
 
-
-
-
-<%@ include file="/views/comment/comment.jsp" %>
-
-
-
-
+	<div id="comment">
+		<table>
+			<tr>
+				<th>댓글</th>
+				<td><button id="refresh">새로고침</button></td>
+			</tr>
+			<tr>
+				<td><textarea id="commentInput"></textarea></td>
+				<td><button id="commentBtn">등록</button></td>
+			</tr>
+		</table>
+	</div>
 	<%
 		if (loginMember != null) {
 	%>
-
 	<div id="reservation">
-<<<<<<< HEAD
 		<p id="storeReInfo">
 			매장 : <strong><%=s.getStoreName()%></strong>&nbsp;&nbsp;&nbsp;&nbsp;
 			선택자리 : <strong><span id="selectedSeatText"></span></strong>
 		</p>
-=======
-		<p id="storeReInfo">매장 : <strong><%=s.getStoreName() 
-		%></strong></p>
->>>>>>> branch 'jms' of https://github.com/ique-coder/EMPTY_SEAT.git
 		<p id="userInfo">
 			ID : <strong><%=loginMember.getUserId()%></strong>&nbsp;&nbsp;&nbsp;&nbsp;
-			빈캐시 : <strong><span id="userCash"><%=loginMember.getCash()%>
-			</span></strong>원
+			빈캐시 : <strong><span id="userCash"><%=loginMember.getCash()%></span></strong>원
 		</p>
 		<div id="underLine"></div>
 
@@ -371,9 +362,9 @@
 	    
 	    
 	    // 다음/예약하기 버튼 바꾸기
-	 	
 	 	let reservationCheck = false;
-	 	let usePcMoney;
+	 	let usePcMoney=0;
+	 	<% if(loginMember!=null) { %>
 	    $("#reOk").click(function() {
 	    	if(typeof $('input:radio[name="time"]:checked').val() == 'undefined') {
 	    		alert("이용시간을 선택해주세요.");
@@ -388,7 +379,9 @@
 				
 				let usePcTime = $('input:radio[name="time"]:checked').val();
 				usePcMoney = <%=s.getStorePrice()%> * usePcTime;
+				console.log("usePcMoney : " + usePcMoney);
 				let afterMoney = <%=loginMember.getCash()%> - usePcMoney;
+				console.log("afterMoney : " + afterMoney);
 				
 				$("#willUseTime").html(usePcTime);
 				$("#willPayMoney").html(usePcMoney);
@@ -451,7 +444,7 @@
 	    				type:"post",
 	    				dataType:"json",
 	    				data:{"userId":"<%=loginMember.getUserId()%>", "storeId":"<%=s.getStoreId()%>",
-	    					"seat":selectedPcSeat, "pay":usePcMoney, "time":$('input:radio[name="time"]:checked').val()},
+	    					"seat":selectedPcSeat, "pay":usePcMoney, "time":$('input:radio[name="time"]:checked').val(), "storeName":"<%=s.getStoreName()%>"},
 	    				success:function(data) {
 	    					console.log(data);
 		    					alert("성공적으로 예약이 되었습니다.");
@@ -461,6 +454,7 @@
 		    	    			$(".reSeat").removeClass("selectSeat");
 		    	    			$(".reSeat").html("");
 		    	    			$("#userCash").html(data["userCash"]);
+		    	    			console.log(data["userCash"]);
 		    	    			$("#reOk").html("다음");
 		    					$("#reCan").html("취소");
 		    	    			$("#reStep1").toggle();
@@ -492,6 +486,7 @@
 	    		
 	    	} 
 	    })
+	    <%}%>
 		$("#reCan").click(function() {
 			if(checkOk==0) {
 				$(".reSeat").each(function() {
@@ -536,7 +531,7 @@
    			})
    		}
    	})
-   	
+   	<%-- 
    	setInterval(function() {
    	   	$.ajax({
    	   		url:"<%=request.getContextPath()%>/reservationCheck",
@@ -571,7 +566,7 @@
    	   			})
    	   		}
    	   	})
-   	}, 60000)
+   	}, 60000) --%>
 	  
    	
    		var intervalCount = 0;
@@ -624,6 +619,6 @@
 </div>
 
 <script src="js/store.js?ver=2"></script>
-<script type="text/javascript" src="js/totalSearch.js?ver=0"></script>
+<script type="text/javascript" src="js/totalSearch.js?ver=2"></script>
 </body>
 </html>

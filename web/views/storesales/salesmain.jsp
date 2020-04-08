@@ -3,8 +3,11 @@
 <%@ include file="/views/common/header.jsp"%>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/storesales/salesmain.css?ver=2" type="text/css">
 <% 
-	String date =(String)request.getAttribute("date");
-
+	String dateYoil = (String)request.getAttribute("dateYoil");
+	String date = (String)request.getAttribute("date");
+	String yoil = (String)request.getAttribute("yoil");
+	String minusDate = (String)request.getAttribute("minusDate");
+	String plusDate = (String)request.getAttribute("plusDate");
 %>
 
 <div class="subMenuContainer">
@@ -21,39 +24,75 @@
 </div>
 <div id="contentContainer">
 	<div id="dayContainer">
-		<div><img src="<%=request.getContextPath()%>/image/left.png"></div>
-		<div id="dateStyle"><%=date %></div>
-		<div><img src="<%=request.getContextPath()%>/image/right.png"></div>
+		<div>
+			<form action="<%=request.getContextPath()%>/store/salesView">
+				<input type="hidden" name ="date" value="<%=minusDate%>">
+				<button><img src="<%=request.getContextPath()%>/image/left.png"></button>
+			</form>
+		</div>
+		<div id="dateStyle"><%=dateYoil %></div>
+		<div>
+			<form action="<%=request.getContextPath()%>/store/salesView">
+				<input type="hidden" name ="date" value="<%=plusDate%>">
+				<button><img src="<%=request.getContextPath()%>/image/right.png"></button>
+			</form>
+		</div>
+	</div>
+	<div class="btn-container">
+	
 	</div>
 	<div id="tableContainer">
-		<table>
-			<tr >
-				<td colspan='2'>상호 명</td>
-			</tr>
-			<tr>
-				<td>고객수</td>
-				<td>10명</td>
-			</tr>
-			<tr>
-				<td>공급가액</td>
-				<td>00000</td>
-			</tr>
-			<tr>
-				<td>부가세</td>
-				<td>0000</td>
-			</tr>
-			<tr>
-				<td>총 매출</td>
-				<td>000000</td>
-			</tr>
-			<tr>
-				<td>객단가</td>
-				<td>매출/고객수</td>
-			</tr>
-			
-		</table>
+		
 	</div>
 </div>
+<script>
+	$(function(){
+		var date = '<%=date%>';
+		console.log(date);
+		requestSales(date);
+	})
+	function requestSales(date){
+		$.ajax({
+			url:"<%=request.getContextPath()%>/store/dailySales/ajax",
+			dataType:"json",
+			type:"post",
+			data:{"date":date,"storeId":'<%=loginMember.getUserId()%>'},
+			success:function(data){
+				console.log(data);
+				if(data!=null){
+					const table = $("<table>");
+					table.append($("<tr>").append($("<td colspan='2'>").html(data['storeName'])));
+					table.append($("<tr>").append($("<td>").html("고객수")).append($("<td>").html(data['customer']+"명")));
+					table.append($("<tr>").append($("<td>").html("공급가액")).append($("<td>").html(data['netProfit']+"원")));
+					table.append($("<tr>").append($("<td>").html("부가세")).append($("<td>").html(data['tax']+"원")));
+					table.append($("<tr>").append($("<td>").html("총매출")).append($("<td>").html(data['totalProfit']+"원")));
+					table.append($("<tr>").append($("<td>").html("객단가")).append($("<td>").html(data['netProfit']/data['customer']+"원")));
+					
+					$("#tableContainer").append("<form action='<%=request.getContextPath()%>/store/enrollDailySales' method='post'>"+
+							"<button>마감하기</button>"+
+							"<input type='hidden' name='storeId' value='"+data['storeId']+"'>"+
+							"<input type='hidden' name='customer' value='"+data['customer']+"'>"+
+							"<input type='hidden' name='netProfit' value='"+data['netProfit']+"'>"+
+							"<input type='hidden' name='tax' value='"+data['tax']+"'>"+
+							"<input type='hidden' name='totalProfit' value='"+data['totalProfit']+"'>"+
+							"<input type='hidden' name='storeName' value='"+data['storeName']+"'>"+
+							"<input type='hidden' name='date' value='"+'<%=date%>'+"'>"+
+							"<input type='hidden' name='yoil' value='"+'<%=yoil%>'+"'>"+
+							"</form>");
+					$("#tableContainer").append(table);
+					
+				}else{
+					$("#tableContainer").append("검색된 정보가 없습니다.");
+				}
+			}
+			
+		})
+	}
+	
+</script>
+
+
 </body>
+
 
 </html>

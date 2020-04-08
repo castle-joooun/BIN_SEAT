@@ -51,6 +51,15 @@ public class ReservationService {
 		
 		return result;
 	}
+
+	public int updatePayUse(String storeName, String userId, int pay, String storeId) {
+		Connection conn = getConnection();
+		int result = dao.updatePayUse(conn,storeName, userId, pay,storeId);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result ;
+	}
 	
 	
 	public int endTime(String storeId, String seat, String time) {

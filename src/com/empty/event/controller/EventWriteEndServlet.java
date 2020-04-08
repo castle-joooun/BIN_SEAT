@@ -24,8 +24,6 @@ public class EventWriteEndServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		String writer = request.getParameter("writer");
-		System.out.println(title);
-		System.out.println(content);
 		Event e = new Event(0, title, writer, content, null, 0);
 		
 		int result = new EventService().insertEvent(e);

@@ -89,14 +89,19 @@ input.search-btn{
 	position: relative;
 	left:50px;
 } */
+.list_btn_area{
+	position:relative;
+}
 .selectSearchType{
     display: inline-block;
     position :relative;
-    right:0px;
-    margin-left:50px;
+    left:170px;
+   
+    
 }
 .selectSearchType>select{
-	float:left;
+	/* float:left; */
+	margin-right:20px;
 }
 div#search-username{display:inline-block;}
 div#search-gender{display:none;}
@@ -105,6 +110,9 @@ div#search-phone{display:none;}
 /* 셀렉트박스 디자인 */
 .list_btn_area{
     margin:50px 15% 10px 15%;
+}
+.searchDiv{
+	
 }
 .searchDiv select{
 	border-radius: 0;
@@ -122,6 +130,7 @@ div#search-phone{display:none;}
     z-index: 5;
     box-shadow: 5px 5px 10px lightgray;
     outline: none;
+   
 }
 select.searchBox{
 	height:39px;
@@ -133,10 +142,14 @@ select.searchBox{
     
     height: 100%;
     /* border-top:   rgb(220,224,229) solid 1px; */
-    margin-top: 23px;
+    margin-top: 50px;
     padding-top: 50px;
     margin: 0 15%;
 
+}
+#primaryContent>sapn{
+	display:inline-block;
+	margin-top:100px;
 }
 .contentTable>caption{
     text-align: left;
@@ -297,6 +310,21 @@ select.searchBox{
     margin-left: 10px;
     
 
+}
+select{
+	border-radius: 0;
+    border: none;
+    font-size: 14px;
+    height: 36px;
+    margin-left: 5px;
+    outline: none;
+}
+#primaryContent select{
+	position:relative;
+	float:right;
+	margin-right:10px;
+	margin-bottom:20px;
+	
 }
 
 /* 섹션 */

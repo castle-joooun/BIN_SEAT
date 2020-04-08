@@ -1,0 +1,108 @@
+body {
+    width: 1366px;
+    height: auto;
+    margin: 0px;
+
+}
+
+#checkIdBtn{
+    float:right;
+    left: 360px;
+    cursor: pointer;
+    border-radius: 1 1 1 1 ;
+}
+
+.postNum{
+	border: none;
+    background: rgb(218, 216, 216);
+}
+
+.enrollInput {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    display: inline-block;
+    border: none;
+    background: rgb(218, 216, 216);
+}
+
+#userGender {
+    width: 25%;
+    padding: 10px;
+    margin: 5px 0 15px 0;
+    display: block;
+    border: none;
+    background: rgb(218, 216, 216);
+}
+
+/* 입력란 누르면 진해짐 */
+.enrollInput:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* 버튼 스타일 */
+.signupbtn,
+.cancelbtn{
+    background-color: rgb(94, 100, 177);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+/* 버튼에 마우스 올리면 진해짐 */
+button:hover {
+    opacity: 1;
+}
+
+/* 이용약관 버튼 */
+#termsCheck{
+    border: none;
+    background-color: white;
+    color: blue;
+    text-decoration: underline;
+}
+
+/* 취소버튼 스타일 */
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: tomato;
+    float: left;
+    width: 50%;
+    font-size: 20px;
+}
+
+/* 회원가입 버튼이랑 취소버튼 너비 맞추기 */
+.signupbtn {
+    float: left;
+    width: 50%;
+    font-size: 20px;
+}
+
+.container {
+    padding: 16px;
+}
+
+.line {
+    border: 1px solid rgb(94, 100, 177);
+    margin-bottom: 5px;
+    margin-top: 3px;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.span{
+	margin-left: 15px;
+}
+
+
+
+

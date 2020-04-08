@@ -1,0 +1,74 @@
+#test {
+    padding: 30px 30px 30px;
+    border-top: 0.5px solid #e1e1e1;
+    border-bottom: 0.5px solid #e1e1e1;
+    background-color: #fbfbfb;
+    margin-left: 160px;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    height: 150px;
+}
+
+#cancel {
+    width: 150px;
+    height: 40px;
+    background-color: tomato;
+    font-size: 17px;
+    border: none;
+    color: white;
+    margin-left: 500px;
+}
+
+#ok {
+    width: 150px;
+    height: 40px;
+    background-color: rgb(94, 100, 177);
+    font-size: 17px;
+    border: none;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#img {
+    left: 70px;
+    top: 20px;
+    z-index: 3;
+}
+
+th {
+    width: 200px;
+}
+
+td,
+p {
+    margin: 0;
+}
+
+.list {
+    font-size: 20px;
+}
+
+table{
+    margin-top: 200px;
+    margin-left: 100px;
+    padding-left: 180px;
+    margin: 30px;
+    padding-top: 40px;
+}
+
+#userPw{
+    width: 40%;
+    height: 30px;
+    padding: 8px 16px;
+    margin: 15px 0 15px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#textColorChange{
+    color: rgb(77, 85, 185);
+}
