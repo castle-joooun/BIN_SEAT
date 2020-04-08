@@ -75,6 +75,7 @@ public class ReservationServlet extends HttpServlet {
 	            tranSeats += list[i] + ",";
 	         }
 	      }
+	      System.out.println("tranSeats : " + tranSeats);
 
 	      // store_seat seat_check 반환하기 (1=사용중)
 	      int useSeat = new ReservationService().inputSeat(storeId, tranSeats);

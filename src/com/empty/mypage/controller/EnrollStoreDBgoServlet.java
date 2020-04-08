@@ -8,9 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+
 import com.empty.member.model.service.MemberService;
-import com.empty.member.model.vo.StoreImg2;
+import com.empty.member.model.vo.StoreImg;
 import com.empty.search.model.vo.Store;
+import com.google.gson.Gson;
 
 
 /**
@@ -43,25 +46,37 @@ public class EnrollStoreDBgoServlet extends HttpServlet {
 		String storeAddress = request.getParameter("storeAddress");
 		String fileupload = request.getParameter("fileupload");
 		int storePrice = Integer.parseInt(request.getParameter("storePrice"));
+		String fileuploadName = "image/"+fileupload.substring(fileupload.lastIndexOf("\\")+1);
 		String storeFaciritys="";
+		String msg="";
 		for(int i=0;i<storeFacirity.length;i++) {
 			storeFaciritys +=storeFacirity[i]+",";
 		}
-		StoreImg2 si= new StoreImg2();
-		new MemberService().searchStoreImg(si);
+		String storeFacirityss = storeFaciritys.substring(0,storeFaciritys.lastIndexOf(","));
+		System.out.println(storeFacirityss);
 		Store s = new Store();
 		s.setStoreId(userId);
 		s.setStoreName(storeName);
 		s.setStorePhone(storePhone);
 		s.setStoreTime(storeTimestart+" ~ "+storeTimeclose);
 		s.setStoreInfo(storeInfo);
-		s.setStoreFacility(storeFaciritys);
+		s.setStoreFacility(storeFacirityss);
 		s.setStoreAddress(storeAddress);
+		s.setStoreLogo(fileuploadName);
 		s.setStorePrice(storePrice);
-		s.setStoreLogo(si.getStoreImg());
-		new MemberService().insertStore(s);
-
-
+		int result = new MemberService().insertStore(s);
+		if(result > 0) {
+			msg="매장이 등록되었습니다.";
+		}else {
+			msg="매장등록에 실패하였습니다.";
+		}
+		
+		JSONObject jsonObj=new JSONObject();
+		jsonObj=new JSONObject();
+		jsonObj.put("msg", msg);
+		
+		response.setContentType("application/json;charset=UTF-8");
+		new Gson().toJson(jsonObj,response.getWriter());
 	}
 
 	/**

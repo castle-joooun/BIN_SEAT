@@ -4,9 +4,9 @@
 
 <div class="alldiv clearl">
 		<div class="cashTop">
-            <p class="myname">이진혁 님의</p>
+            <p class="myname"><%=loginMember.getUserName() %> 님의</p>
             <p class="mycash">My bin Cash : </p>
-            <p class="mywon">1000000원</p> 
+            <p class="mywon"><%=loginMember.getCash() %>원</p> 
         </div>
        		 
        	<form method="post" class="whatcharge"> 

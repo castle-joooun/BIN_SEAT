@@ -111,9 +111,9 @@ public class SearchService {
 		return favoriteSize;
 	}
 
-	public List outMoneyList(String userId, outMoneyDB omdb) {
+	public List outMoneyList(String userId, outMoneyDB omdb, int cPage, int numPerPage) {
 		Connection conn = getConnection();
-		List list = dao.outMoneyList(conn, userId, omdb);
+		List list = dao.outMoneyList(conn, userId, omdb, cPage, numPerPage);
 		close(conn);
 		return list;
 	}
@@ -131,6 +131,13 @@ public class SearchService {
 	      close(conn);
 	      return s;
 	   }
+	
+	public Store searchName(String storeName) {
+		Connection conn = getConnection();
+		Store s = dao.searchName(conn, storeName);
+		close(conn);
+		return s;
+	}
 	
 	
 	

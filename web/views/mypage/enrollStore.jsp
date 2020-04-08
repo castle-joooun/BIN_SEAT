@@ -245,9 +245,6 @@
 					var fileupload=$("#fileupload").val();
 					var itfileupload=[]
 					
-					console.log(fileupload);
-					console.log(itfileupload);
-					
 					const fd=new FormData();
 					$.each($("#itfileupload")[0].files,function(i,item){
 						fd.append("empty"+i,item);
@@ -264,11 +261,9 @@
 						processData:false,
 						contentType:false,
 						success:function(data){
-							alert("등록 성공");
-						 	$("#fileupload").val("");
+							
 						},
 						error:function(r,e,m){
-							alert("등록 실패");
 						}
 					})
 					
@@ -290,7 +285,8 @@
 						dataType:"json",
 						type:"post",
 						success:function(data){
-						},
+							alert("등록되었습니다.");
+						}
 					})
 				});
 				

@@ -29,6 +29,12 @@ body{
    margin-bottom: 5px;
 }
 
+#storeMove:hover{
+	border-bottom: 2px solid #ff7531;
+	color: blue;
+	cursor: pointer;
+}
+
 
 
 thead>tr>th{
