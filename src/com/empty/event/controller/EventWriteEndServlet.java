@@ -23,8 +23,10 @@ public class EventWriteEndServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		String writer = request.getParameter("writer");
+		String writer = request.getParameter("writer"); // loginMember - id
 		String storeName = new EventService().selectStoreName(writer);
+		// storeName
+		System.out.println("storeName : " + storeName);
 		Event e = new Event(0, title, storeName, content, null, 0);
 		
 		int result = new EventService().insertEvent(e);
