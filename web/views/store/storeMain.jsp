@@ -25,7 +25,7 @@
                 </div>
                 <div class="content-item">
                     <div class="content-item-title">
-                        스토어 탈퇴하기
+                        계정 탈퇴하기
                     </div>
                     <div class="content-item-price">
                         

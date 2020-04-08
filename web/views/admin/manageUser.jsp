@@ -178,7 +178,10 @@
 			})
 
             }
-	
+	$(function(){
+		
+			$("#userPage>a").attr("style","color:#ff7531");
+	})
 		
 	</script>
 

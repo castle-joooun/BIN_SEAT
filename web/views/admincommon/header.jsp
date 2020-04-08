@@ -62,9 +62,9 @@
 			
 				<span id="menubar">
                 <!-- main페이지이면 main의 mainHover을 빼준다! ------------------------------------------------------------------->
-                <p id="main" class="mainHover"><a href="<%=request.getContextPath() %>/" style="color: #ff7531">MAIN</a></p>
-                <p id="userPage" class="mainHover"><a href="<%=request.getContextPath()%>/admin/manageUser">USER</a></p>
-                <p id="storePage" class="mainHover"><a href="<%=request.getContextPath()%>/admin/manageStore">STORE</a></p>
+                <p id="main" class="mainHover"><a href="<%=request.getContextPath() %>/" >MAIN</a></p>
+                <p id="userPage" ><a href="<%=request.getContextPath()%>/admin/manageUser">USER</a></p>
+                <p id="storePage"><a href="<%=request.getContextPath()%>/admin/manageStore">STORE</a></p>
                 </span>
 		</center>
 		

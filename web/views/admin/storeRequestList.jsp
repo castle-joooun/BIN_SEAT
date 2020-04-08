@@ -69,6 +69,10 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/base.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/adminPage/store.js"></script>
 <script>
+$(function(){
+	
+	$("#storePage>a").css("color","#ff7531");
+})
 	$(function(){
 		requestStore(1,10);
 	})
@@ -118,5 +122,11 @@
 			}
 		})
 	}
+function storeAppr(){
+	var value = $(event.target).val().split("|");
+	var id = value[0]; 
+	var email = value[1];
 	
+	location.href="<%=request.getContextPath()%>/admin/store/requestAppr?userId="+id+"&email="+email;
+}
 </script>

@@ -159,7 +159,7 @@
 						const attach = $("#tbody");
 					if(data.length>1){
 						
-						for (let i = 0; i < data.length-1; i++) {
+						for (let i = 0; i < data.length-2; i++) {
 							const tr = $("<tr>");
 							tr.append($("<td>").append($("<input>").attr({name:"dataid",type : "checkbox",class :"chkone",value : data[i]['userid']})));
 							tr.append($("<td>").html(data[i]['userid']).addClass('userid_'));
@@ -196,7 +196,10 @@
 
 			})
 		}
-		
+        $(function(){
+    		
+			$("#userPage>a").css("color","#ff7531");
+	})
 	</script>
 
 </body>
