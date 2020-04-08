@@ -82,4 +82,14 @@
 					})
 				});			
 			});
+			
+			$("#gyojanumber").bind("keyup", function(event) {
+			    var regNumber = /^[0-9]*$/;
+			    var temp = $("#gyojanumber").val();
+			    if(!regNumber.test(temp))
+			    {
+			        alert('숫자만 입력하세요');
+			        $("#gyojanumber").val(temp.replace(/[^0-9]/g,""));
+			    }
+			});
 			</script>

@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.List,com.empty.member.model.vo.outMoneyDB" %>	
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/base2.css?ver=3.6" type="text/css">
+<%@ page import="java.util.List,com.empty.member.model.vo.outMoneyDB,com.empty.member.model.vo.InputMoneyDB" %>	
 <%@ include file="/views/common/header.jsp"%>
 <%
 	List<outMoneyDB> list=(List)request.getAttribute("list");
 %>
-	<h3 class="mypagemain1">MY PAGE</h3>
+	<h3 class="mypagemain3"><a href="<%=request.getContextPath()%>/store/mypage">MY PAGE</a></h3>
 	<h3 class="mypagemain2"><a href="<%=request.getContextPath()%>/use/useList">USE</a></h3>
 		<div class="alldiv">
 		<div class="useList">
@@ -30,7 +29,16 @@
 					<td>
 						금액
 					</td>
+					<td>
+						입금후 잔액
+					</td>
 				</tr>
+			<tr>
+				<td></td>
+				<td colspan='2' style="text-align: center">입금 내역이 없습니다.</td>
+				<td></td>				
+
+			</tr>
 			</table>
 		</div>
 		<div class="useList">
@@ -45,7 +53,7 @@
 		
 		<div class="myuseList">
 			<table>
-				<tr>
+				<tr class="myuseListbaby">
 					<td>
 						출금날짜
 					</td>

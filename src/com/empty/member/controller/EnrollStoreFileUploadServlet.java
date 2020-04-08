@@ -1,6 +1,8 @@
 package com.empty.member.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -56,9 +58,13 @@ public class EnrollStoreFileUploadServlet extends HttpServlet {
 		  String storeImg3 ="image/"+mr.getFilesystemName("empty2"); 
 		  String storeImg4 ="image/"+mr.getFilesystemName("empty3"); 
 		  String storeImg5 ="image/"+mr.getFilesystemName("empty4"); 
-		  StoreImg si = new StoreImg(); 
-		  int result = new MemberService().insertStoreImg(userId, storeImg1,storeImg2,storeImg3,storeImg4,storeImg5);
-		  System.out.println("됐누!");
+		  List list = new ArrayList();
+		  list.add(storeImg1);
+		  list.add(storeImg2);
+		  list.add(storeImg3);
+		  list.add(storeImg4);
+		  list.add(storeImg5);
+		  int result = new MemberService().insertStoreImg(userId, list);
 	}
 
 	/**

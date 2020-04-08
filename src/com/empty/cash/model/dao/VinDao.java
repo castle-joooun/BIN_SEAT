@@ -127,7 +127,7 @@ public class VinDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, m.getUserId());
 			pstmt.setString(2, m.getUserId());
-			pstmt.setString(3, "12612318801010기업은행");
+			pstmt.setString(3, m.getBankNumber()+m.getBank());
 			pstmt.setInt(4, money);
 			pstmt.setInt(5, m.getCash()-money);
 			result=pstmt.executeUpdate();
