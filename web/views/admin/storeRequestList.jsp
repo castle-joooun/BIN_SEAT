@@ -12,7 +12,7 @@
 			<ul>
 				<li><a href="<%=request.getContextPath() %>/admin/manageStore"><span class="">스토어 이용현황</span></a></li>
 				<li><a href="<%=request.getContextPath()%>/admin/store/requestStoreList"><span class="text-item">스토어 신청현황</span></a></li>
-				<li><a href="#"><span class="">스토어 매출보기</span></a></li>
+				
 			</ul>
 		</div>
 		
@@ -41,7 +41,7 @@
 					<th class="userid_">아이디</th>
 					<th class="username_">신청이름</th>
 					<th class="phone_">전화번호</th>
-					<th class="email_" nowrap="nowrap">이메일</th>
+					<!-- <th class="email_" nowrap="nowrap">이메일</th> -->
 					<th class="addr_" nowrap="nowrap">주소</th>
 					<th class="enrolldate_" nowrap="nowrap">신청 일자</th>
 					<th  nowrap="nowrap">수락하기</th>
@@ -92,9 +92,9 @@
 						tr.append($("<td>").html(data[i]['userId']).addClass("userid_"));
 						tr.append($("<td>").html(data[i]['userName']).addClass("username_"));
 						tr.append($("<td>").html(data[i]['phone']).addClass("phone_"));
-						tr.append($("<td>").html(data[i]['email']).addClass("email_"));
+						/* tr.append($("<td>").html(data[i]['email']).addClass("email_")); */
 						tr.append($("<td>").html(data[i]['address']).addClass("address_"));
-						tr.append($("<td>").html(data[i]['enrollDate']).addClass("enrolldate_"));
+						tr.append($("<td>").html(data[i]['sdfDate']).addClass("enrolldate_"));
 						tr.append($("<td>").append($("<button>").addClass("apprBtn_").html("수락하기").attr({type:"button",onclick:"storeAppr();",value:data[i]['userId']+"|"+data[i]['email']})));
 						i ==0?tbody.html(tr):tbody.append(tr);
 						
