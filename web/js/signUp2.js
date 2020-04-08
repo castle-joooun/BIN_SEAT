@@ -3,7 +3,7 @@ var flag1;
 $(function(){
 	$("#userId").keyup(function(){
 		$.ajax({
-			url : "/EMPTY/checkIdDupplicate",
+			url : "/20AM_EMPTY_SEAT/checkIdDupplicate",
 			type : "post",
 			data : {"id" : $(this).val()},
 			success : function(data){
@@ -85,7 +85,7 @@ var flag2;
 $(function(){
 	$("#userEmail").keyup(function(){
 		$.ajax({
-			url : "/EMPTY/checkEmailDupplicate",
+			url : "/20AM_EMPTY_SEAT/checkEmailDupplicate",
 			type : "post",
 			data : {"email" : $(this).val()},
 			success : function(data){

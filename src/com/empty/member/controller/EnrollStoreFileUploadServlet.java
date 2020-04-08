@@ -7,11 +7,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.empty.member.model.service.MemberService;
-import com.empty.member.model.vo.StoreImg2;
+import com.empty.member.model.vo.Member;
+import com.empty.member.model.vo.StoreImg;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -39,19 +41,24 @@ public class EnrollStoreFileUploadServlet extends HttpServlet {
 			response.sendRedirect("/");
 			return;
 		}
-		
+		HttpSession session = request.getSession();
+		Member m = (Member) session.getAttribute("loginMember");
+		String userId= m.getUserId();
+		System.out.println(userId);
 		//저장경로
 		String path = getServletContext().getRealPath("/image");
 		//최대 파일 크기
-		int maxSize= 1024*1024*10;
-		MultipartRequest mr = new MultipartRequest(request, path, maxSize, "UTF-8",new DefaultFileRenamePolicy());
-		String storeImg1 = "image/"+mr.getFilesystemName("empty0");
-		String storeImg2 = "image/"+mr.getFilesystemName("empty1");
-		String storeImg3 = "image/"+mr.getFilesystemName("empty2");
-		String storeImg4 = "image/"+mr.getFilesystemName("empty3");
-		String storeImg5 = "image/"+mr.getFilesystemName("empty4");
-		StoreImg2 si = new StoreImg2();
-		new MemberService().insertStoreImg(si, storeImg1,storeImg2,storeImg3,storeImg4,storeImg5);
+		
+		  int maxSize= 1024*1024*10; 
+		  MultipartRequest mr = new MultipartRequest(request, path, maxSize, "UTF-8",new DefaultFileRenamePolicy()); 
+		  String storeImg1 ="image/"+mr.getFilesystemName("empty0"); 
+		  String storeImg2 ="image/"+mr.getFilesystemName("empty1"); 
+		  String storeImg3 ="image/"+mr.getFilesystemName("empty2"); 
+		  String storeImg4 ="image/"+mr.getFilesystemName("empty3"); 
+		  String storeImg5 ="image/"+mr.getFilesystemName("empty4"); 
+		  StoreImg si = new StoreImg(); 
+		  int result = new MemberService().insertStoreImg(userId, storeImg1,storeImg2,storeImg3,storeImg4,storeImg5);
+		  System.out.println("됐누!");
 	}
 
 	/**

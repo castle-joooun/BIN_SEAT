@@ -94,7 +94,6 @@ public class Member {
 		this.status = status;
 	}
 
-	
 
 	public String getUserId() {
 		return userId;

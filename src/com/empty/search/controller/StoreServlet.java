@@ -153,9 +153,12 @@ public class StoreServlet extends HttpServlet {
 		
 		// 즐겨찾기 되어 있는지 확인
 		String favoriteUrl = userId.equals("")?"image/favorite-empty.png":new SearchService().storeFavoriteCheck(userId, storeId);
-		if(favoriteUrl.equals("image/favorite-use.png")) {
-		} else {
-		}
+//		if(favoriteUrl.equals("image/favorite-use.png")) {
+//			System.out.println("favoriteUrl - use : " + favoriteUrl);
+//		} else {
+//			System.out.println("favoriteUrl - empty : " + favoriteUrl);
+//			System.out.println(userId.equals(""));
+//		}
 		
 		if (store != null && ss != null) {
 			request.setAttribute("store", store);

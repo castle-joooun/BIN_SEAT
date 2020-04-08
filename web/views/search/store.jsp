@@ -531,7 +531,7 @@
    			})
    		}
    	})
-   	<%-- 
+
    	setInterval(function() {
    	   	$.ajax({
    	   		url:"<%=request.getContextPath()%>/reservationCheck",
@@ -566,7 +566,7 @@
    	   			})
    	   		}
    	   	})
-   	}, 60000) --%>
+   	}, 60000)
 	  
    	
    		var intervalCount = 0;
