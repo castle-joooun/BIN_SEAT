@@ -23,6 +23,9 @@ public class Event {
 		this.eventDate = eventDate;
 		this.eventCount = eventCount;
 	}
+	
+	
+
 
 	public int getEventNo() {
 		return eventNo;

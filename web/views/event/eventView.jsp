@@ -16,7 +16,7 @@
 			<tr>
 				<th>번 호</th>
 				<th>제 목</th>
-				<th>PC방 ▼</th>
+				<th>PC방 보기▼</th>
 				<th>작성일</th>
 				<th>조회 수</th>
 			</tr>
@@ -24,11 +24,11 @@
 				<td><%=e.getEventNo()%></td>
 				<td id="eventTitleTd"><%=e.getEventTitle()%></td>
 				<td>
-					<form id="storeMoving" action="<%=request.getContextPath() %>/storeView" method="post">
-							<input type="hidden" name="storeId" value="<%=s.getStoreId()%>">
-							<input type="hidden" name="userId" value="<%=loginMember!=null?loginMember.getUserId():""%>">
-							<input type="hidden" name="searchText" value="<%=s.getStoreName()%>">
-							<span id="storeMove"><%=e.getEventWriter()%></span>
+  					<form id="storeMoving" action="<%=request.getContextPath() %>/storeView" method="post">
+						<input type="hidden" name="storeId" value="<%=s.getStoreId()%>"/>
+						<input type="hidden" name="userId" value="<%=loginMember!=null?loginMember.getUserId():""%>">
+						<input type="hidden" name="searchText" value="<%=s.getStoreName()%>">
+						<span id="storeMove"><%=s.getStoreName()%></span>
 					</form>
 				</td>
 				<td><%=e.getEventDate()%></td>
@@ -41,7 +41,7 @@
 			</tr>
 		</table>
 	</div>
-	<%if(loginMember != null && loginMember.getUserId().equals(e.getEventWriter())){ %>
+	<%if(loginMember != null && loginMember.getUserId().equals(s.getStoreId())){ %>
 	<div>
 		<button id="eventUpdateBtn" onclick="eventUpdate()">수 정</button>
 		<button id="eventDeleteBtn" onclick="eventDelete()">삭 제</button>
