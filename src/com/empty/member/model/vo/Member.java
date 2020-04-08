@@ -19,6 +19,15 @@ public class Member {
 	private String bankNumber;
 	private String bankMaster;
 	private String status;
+	private String sdfDate;
+	public String getSdfDate() {
+		return sdfDate;
+	}
+
+	public void setSdfDate(String sdfDate) {
+		this.sdfDate = sdfDate;
+	}
+
 	public Member() {
 		super();
 	}
@@ -84,7 +93,6 @@ public class Member {
 		this.bankMaster = bankMaster;
 		this.status = status;
 	}
-
 
 
 	public String getUserId() {
@@ -156,22 +164,6 @@ public class Member {
 	public void setUserAppr(boolean userAppr) {
 		this.userAppr = userAppr;
 	}
-	public String getBank() {
-		return bank;
-	}
-	
-	public void setBank(String bank) {
-		this.bank = bank;
-	}
-	
-	public String getBankNumber() {
-		return bankNumber;
-	}
-	
-	public void setBankNumber(String bankNumber) {
-		this.bankNumber = bankNumber;
-	}
-	
 	public String getBankMaster() {
 		return bankMaster;
 	}
@@ -195,5 +187,23 @@ public class Member {
 				+ cash + ", enrollDate=" + enrollDate + ", userAppr=" + userAppr + ", bank=" + bank + ", bankNumber="
 				+ bankNumber + ", bankMaster=" + bankMaster + ", status=" + status + "]";
 	}
+
+	public String getBank() {
+		return bank;
+	}
+
+	public void setBank(String bank) {
+		this.bank = bank;
+	}
+
+	public String getBankNumber() {
+		return bankNumber;
+	}
+
+	public void setBankNumber(String bankNumber) {
+		this.bankNumber = bankNumber;
+	}
+	
+	
 
 }

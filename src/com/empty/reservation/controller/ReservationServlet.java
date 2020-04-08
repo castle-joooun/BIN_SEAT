@@ -46,12 +46,10 @@ public class ReservationServlet extends HttpServlet {
 	      // member cash 빼주는 기능
 	      int userPay = new ReservationService().userPay(userId, pay);
 	      if (userPay > 0) {
-	         System.out.println("유저 돈 깍임!");
 	      }
 	      // 2. 유저 캐시 리로드 해줄꺼 반할 로직 짜준다.
 	      int userCash = new ReservationService().userCash(userId);
 	      if (userCash > 0) {
-	         System.out.println("돈 가져왔어! : " + userCash);
 	      }
 
 	      // 3. 스토어 해당 자리를 변경해준다.
@@ -63,7 +61,6 @@ public class ReservationServlet extends HttpServlet {
 	      // store_seat seat_check 불러오기
 	      String seats = new ReservationService().seatList(storeId);
 	      if (seats!=null) {
-	         System.out.println("시트리스트 불어왔어!");
 	      }
 
 	      int seatNum = Integer.parseInt(seat);
@@ -78,22 +75,20 @@ public class ReservationServlet extends HttpServlet {
 	            tranSeats += list[i] + ",";
 	         }
 	      }
+	      System.out.println("tranSeats : " + tranSeats);
 
 	      // store_seat seat_check 반환하기 (1=사용중)
 	      int useSeat = new ReservationService().inputSeat(storeId, tranSeats);
 	      if (useSeat > 0) {
-	         System.out.println("자리 예약됌!");
 	         int payUse = new ReservationService().updatePayUse(storeName,userId,pay,storeId);
 				
 				if(payUse>0) {
-					System.out.println("사용내역에 업데이트 완료");
 				}
 	      }
 
 	      // 변환된 시간 해당 자리에 넣기
 	      int timeOk = new ReservationService().endTime(storeId, seat, time);
 	      if (timeOk > 0) {
-	         System.out.println("끝 시간 넣었어!");
 	      }
 
 	      // 변환된 시간 가져오기
@@ -101,24 +96,18 @@ public class ReservationServlet extends HttpServlet {
 	      SimpleDateFormat transFormat = new SimpleDateFormat("HH:mm:ss", Locale.KOREA);
 	      String endUserTime = "";
 	      if (userTime!=null) {
-	         System.out.println("가져온 타임 : " + transFormat.format(userTime));
 	         long dayTime1 = System.currentTimeMillis();
 	         long dayTime2 = userTime.getTime();
 	         long nT = (dayTime2 - dayTime1) / (1000 * 60 * 60);
 	         long nM = (dayTime2 - dayTime1) % (1000 * 60 * 60) / (1000 * 60);
 	         endUserTime = nT + "시간 " + nM + "분";
 	         
-	         System.out.println("가져온시간 - 현재시간 : " + endUserTime);
 	      }
 	      
 	      // store_seat_check의 seat_yn에 사용 표시 넣기
 	      int seatYN = new ReservationService().seatYN(storeId, seat);
 	      if(seatYN >0 ) {
-	         System.out.println("seatYN 사용으로 바꿨어!");
 	      }
-
-	      System.out.println("실행됐어!!");
-	      System.out.println("사용후 금액! : " + userCash);
 
 	      JSONObject jo = new JSONObject();
 	      jo.put("userCash", userCash);

@@ -24,7 +24,6 @@ public class CheckEmailDuplicateServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 		String email = request.getParameter("email");
 		boolean isUseable = new MemberService().selectCheckEmail(email);
-		System.out.println(email);
         JSONObject obj = new JSONObject();
         try{
             obj.put("isUseable", isUseable);

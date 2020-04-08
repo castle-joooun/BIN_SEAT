@@ -56,11 +56,6 @@ public class EnrollStoreFileUploadServlet extends HttpServlet {
 		  String storeImg3 ="image/"+mr.getFilesystemName("empty2"); 
 		  String storeImg4 ="image/"+mr.getFilesystemName("empty3"); 
 		  String storeImg5 ="image/"+mr.getFilesystemName("empty4"); 
-		  System.out.println(storeImg1);
-		  System.out.println(storeImg2);
-		  System.out.println(storeImg3);
-		  System.out.println(storeImg4);
-		  System.out.println(storeImg5);
 		  StoreImg si = new StoreImg(); 
 		  int result = new MemberService().insertStoreImg(userId, storeImg1,storeImg2,storeImg3,storeImg4,storeImg5);
 		  System.out.println("됐누!");

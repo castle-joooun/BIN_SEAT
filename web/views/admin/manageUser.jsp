@@ -72,10 +72,10 @@
 
 			<thead>
 				<tr>
-					<th class="chk"><input id="allCheck" type="checkbox" value=""></th>
+					<!-- <th class="chk"><input id="allCheck" type="checkbox" value=""></th> -->
 					<th class="userid_">아이디</th>
 					<th class="username_">회원이름</th>
-					<th class="userdiv_">회원 구별</th>
+					<!-- <th class="userdiv_">회원 구별</th> -->
 					<th class="gender_">성별</th>
 					<th class="phone_">전화번호</th>
 					<th class="email_" nowrap="nowrap">이메일</th>
@@ -110,7 +110,7 @@
 		<div class="paging">
 			
 		</div>
-		<button></button>
+		
 	
 	</div>
 
@@ -143,13 +143,13 @@
 					console.log("성공했을때");
 					if(data.length>1){
 						const attach = $("#tbody");
-						
-						for (let i = 0; i < data.length-1; i++) {
+						console.log(data);
+						for (let i = 0; i < data.length-2; i++) {
 							const tr = $("<tr>");
-							tr.append($("<td>").append($("<input>").attr({name:"dataid",type : "checkbox",class :"chkone",value : data[i]['userid']})));
+							/* tr.append($("<td>").append($("<input>").attr({name:"dataid",type : "checkbox",class :"chkone",value : data[i]['userid']}))); */
 							tr.append($("<td>").html(data[i]['userid']).addClass('userid_'));
 							tr.append($("<td>").html(data[i]['username']).addClass('username_'));
-							tr.append($("<td>").html(data[i]['userdiv']).addClass('userdiv_'));
+							/* tr.append($("<td>").html(data[i]['userdiv']).addClass('userdiv_')); */
 							tr.append($("<td>").html(data[i]['gender']).addClass('gender_'));
 							tr.append($("<td>").html(data[i]['phone']).addClass('phone_'));
 							tr.append($("<td>").html(data[i]['email']).addClass('email_'));

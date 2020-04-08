@@ -11,7 +11,7 @@
 <center>
 <section>
 	<div id="FAQViewDiv">
-		<p id="FAQViewHead"><%=f.getTitle() %></p>
+		<p id="FAQViewHead">FAQ</p>
 		<table id="FAQViewTbl">
 			<tr>
 				<th>글번호</th>
@@ -28,7 +28,7 @@
 			<tr>
 			</tr>
 			<tr class="FAQContent">
-				<td colspan="4"><%=f.getContent()%></td>
+				<td colspan="4"  style="white-space: pre-wrap;"><%=f.getContent()%></td>
 			</tr>
 		</table>
 	</div>

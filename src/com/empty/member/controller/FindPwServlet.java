@@ -38,7 +38,7 @@ public class FindPwServlet extends HttpServlet {
 		Member m = new MemberService().findPw(userId, email);
 
 		if(m != null) {
-			String host = "http://localhost:9090/EMPTY/";
+			String host = "http://rclass.iptime.org:9999/20AM_EMPTY_SEAT/";
 			String from = "qkrejrgus4713@gmail.com";
 			String to = email;
 			String subject = "빈시트 비밀번호 찾기 인증 메일입니다.";
@@ -92,7 +92,6 @@ public class FindPwServlet extends HttpServlet {
 			rd.forward(request, response);
 		}
 
-		System.out.println(m);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

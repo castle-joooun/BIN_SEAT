@@ -50,7 +50,6 @@ public class MemberDao {
 		}finally {
 			close(pstmt);
 		}
-		System.out.println(result);
 		return result;
 	}
 	
@@ -278,7 +277,6 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String sql = prop.getProperty("updateStore");
-		System.out.println(s.getStoreName());
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, s.getStoreName());

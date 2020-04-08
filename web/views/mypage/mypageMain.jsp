@@ -8,7 +8,7 @@
 %>
 
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/mypage/mypageMain.css?ver=6"
+	href="<%=request.getContextPath()%>/css/mypage/mypageMain.css?ver=7"
 	type="text/css">
 <%@ include file="/views/common/header.jsp"%>
 
@@ -63,9 +63,8 @@
 			</tr>
 			<tr>
 				<th>빈캐시</th>
-				<td>50,000</td>
-				<td style="width: 50px"><input type="button" value="충전하기"
-					onclick=""></td>
+				<td><%=loginMember.getCash() %></td>
+				<td style="width: 50px"><input type="button" value="충전하기" onclick="chargeBtn()"></td>
 			</tr>
 		</table>
 	</div>
@@ -197,7 +196,7 @@ function requestData2(cPage2,numPerPage2){
 	};
 
    
-   $(function(){
+<%--    $(function(){
       $("#mypagePayDiv").click(function(){
     	  if($("#mypagePayTable").html() == ""){
          $.ajax({
@@ -212,7 +211,7 @@ function requestData2(cPage2,numPerPage2){
     	  $("#mypagePayTable").html("");
       }
       });         
-   });
+   }); --%>
    
    $(function(){
 	   $("#infoReviseBtn").click(function(){
@@ -240,6 +239,10 @@ function requestData2(cPage2,numPerPage2){
    function deleteMember(){
 		location.replace("<%=request.getContextPath()%>/deleteMember");
 	}
+   
+   function chargeBtn(){
+	   location.replace("<%=request.getContextPath()%>/views/cash/mycash");
+   }
    
    
 </script>

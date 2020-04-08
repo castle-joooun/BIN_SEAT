@@ -75,8 +75,6 @@ public class StoreSalesViewServlet extends HttpServlet {
 			
 		}
 		
-		System.out.println(plusDate);
-		System.out.println(minusDate);
 		
 		request.setAttribute("dateYoil", dateYoil);
 		request.setAttribute("date", date);

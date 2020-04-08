@@ -203,8 +203,13 @@
 						
 						</td>
 						<td>
+<<<<<<< HEAD
 							<button type="button" id='goinsetColRow'>PC방 자리 등록</button>
 						</td>
+=======
+                   			  <button type="button" onclick=''>PC방 자리 등록</button>
+                	 	 </td>
+>>>>>>> branch 'castle-joooun' of https://github.com/ique-coder/BIN_SEAT.git
 					</tr>
 					
 				</table>

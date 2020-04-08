@@ -38,8 +38,6 @@ public class AdminSearchTypeAjaxServlet extends HttpServlet {
 		String type = request.getParameter("searchType");//검색 타입 , userName, gender,phone
 		String keyword = request.getParameter("searchKeyword").trim();//검색 키워드 
 		 
-		System.out.println(type);
-		System.out.println(keyword);
 		//페이징 처리 
 		int cPage;
 		try{

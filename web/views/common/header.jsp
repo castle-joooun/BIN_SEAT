@@ -61,7 +61,7 @@
 					<a href="<%=request.getContextPath() %>" >MAIN</a>
 				</p>
 				<p id="introduce" class="mainHover">
-					<a href="<%=request.getContextPath()%>/views/introduce/introduceMain.jsp">INTRODUCE</a>
+					<a href="<%=request.getContextPath()%>/goIntroduce">INTRODUCE</a>
 				</p>
 				<p id="notice" class="mainHover">
 					<a href="<%=request.getContextPath()%>/notice">NOTICE</a>
@@ -72,7 +72,7 @@
 				</div>
 				<%if(loginMember!=null&&loginMember.getUserId().equals("admin")){ %>
                     <p id="myPage" class="mainHover">
-                    	<a href="<%=request.getContextPath()%>/admin">ADMIN PAGE</a>
+                    	<a href="<%=request.getContextPath()%>/admin/manageUser">ADMIN PAGE</a>
                     </p>
                     <%}else if(loginMember!=null&&loginMember.isUserAppr()){ %>
                     <p id="myPage" class="mainHover">
@@ -84,7 +84,7 @@
                     </p>
                     <%} %>
 				<p id="service" class="mainHover">
-					<a href="<%=request.getContextPath()%>/FAQMainServlet">SERVICE</a>
+					<a href="<%=request.getContextPath()%>/FAQMainServlet">FAQ</a>
 				</p>
 			</span>
 		</center>
@@ -96,7 +96,7 @@
 				if(loginMember != null){ 
 			%>	
 				<img onclick="location.replace('<%=request.getContextPath()%>/logout')" class="logoutBtn" src="<%=request.getContextPath()%>/image/logout.png"
-					width="30px" style="position: absolute; float: right; left: 1130px; cursor: pointer; top: 33px; z-index:3;">
+					width="30px" style="position: absolute; float: right; left: 1130px; cursor: pointer; z-index:3;">
 				<%-- <button type="button" class="logoutBtn" onclick="location.replace('<%=request.getContextPath()%>/logout')">로그아웃</button> --%>
 			<%
 				}else{

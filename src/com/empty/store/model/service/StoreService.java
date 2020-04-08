@@ -28,7 +28,6 @@ public class StoreService {
 
 	public int selectPayUse(String id, String date) {
 		Connection conn = getConnection();
-		System.out.println("서비스");
 		int sumResult = dao.selectPayUse(conn,id,date);
 		close(conn);
 		return sumResult;
@@ -60,10 +59,8 @@ public class StoreService {
 		Connection conn = getConnection();
 		int result = dao.updateDailySales(conn,s);
 		if(result>0) {
-			System.out.println("서비스 성공");
 			commit(conn);
 		}else {
-			System.out.println("서비스 실패");
 			rollback(conn);
 		}
 		close(conn);
