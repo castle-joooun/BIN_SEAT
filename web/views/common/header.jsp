@@ -32,7 +32,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/base2.css?ver=3.9" type="text/css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/choiceSignUp.css" type="text/css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/signUp_terms.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/base2.css?ver=2.0" type="text/css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/choiceSignUp.css" type="text/css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/member/signUp_terms.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jim+Nightshade&display=swap">

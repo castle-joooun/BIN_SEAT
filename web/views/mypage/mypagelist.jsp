@@ -5,7 +5,7 @@
 <%
 	Member loginMember = (Member) session.getAttribute("loginMember");
 %>
-		<script>
+	<script>
 	$(document).ready(function(){
 		var userId="<%=loginMember.getUserId()%>";
 		var cash=0;
@@ -20,6 +20,7 @@
 				console.log(data['cash']);
 				cash=data['cash'];
 				$("#cashbox").text(cash+"원");
+				var bankNumber=data['bankNumber'];
 			}
 		})
 	})
@@ -34,16 +35,19 @@
 			},
 			success:function(data){
 				console.log(data);
-				$("#storeNamebox").text(data['storeName']).css('position','relative').css('left','-340px').css('width','400px');
-				$("#storeNumberbox").text(data['storePhone']).css('position','relative').css('left','-288px');
-				$("#storeTimebox").text(data['storeTime']).css('position','relative').css('left','-283px');
-				$("#storecombox").text(data['storeInfo']).css('position','relative').css('left','-14px');
-				$("#storeaddressbox").text(data['storeAddress']).css('position','relative').css('left','-191px');
-				$("#storebudeabox").text(data['storeFacility']).css('position','relative').css('left','-15px');
+				$("#storeNamebox").text(data['storeName']).css('width','400px').css('font-weight','400').css('text-align','left');
+				$("#storeNumberbox").text(data['storePhone']).css('font-weight','400').css('text-align','left');
+				$("#storeTimebox").text(data['storeTime']).css('font-weight','400').css('float','left');
+				$("#storecombox").text(data['storeInfo']).css('width','400px').css('font-weight','400').css('text-align','left');
+				$("#storeaddressbox").text(data['storeAddress']).css('width','400px').css('font-weight','400').css('text-align','left');
+				$("#storebudeabox").text(data['storeFacility']).css('width','400px').css('font-weight','400').css('text-align','left');
 			}
 		});
 	});
+	
 	</script>
+<body>
+	
 		
 		<div class="myinfobox">
 			<table>
@@ -149,7 +153,7 @@
 						
 						</td>
 						<td rowspan='7' class='pcmainimgbox'>
-							<img alt="/image/퓨리.jpg" src="">
+							
 						</td>
 					</tr>
 					<tr>
@@ -196,11 +200,18 @@
 						<td>
 						
 						</td>
+						<td>
+							<button type="button" id='goinsetColRow'>PC방 자리 등록</button>
+						</td>
 					</tr>
 					
 				</table>
 			</div>
 		</div>
+	
+	
+	
+	
 	
 	
 	
