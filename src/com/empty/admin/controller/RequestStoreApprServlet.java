@@ -46,7 +46,7 @@ public class RequestStoreApprServlet extends HttpServlet {
 		int result = new AdminService().updateAppr(userId);
 		if(result>0) {
 			System.out.println("등록 성공");
-			String host = "http://localhost:9090/EMPTY/";
+			String host = "http://rclass.iptime.org:9999/20AM_EMPTY_SEAT/";
 			String from = "qkrejrgus4713@gmail.com";
 			String to = email;
 			String subject = "스토어 승인이 완료되었습니다.";

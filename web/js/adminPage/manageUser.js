@@ -109,5 +109,5 @@ function searchAjax(){
 	var type = $(event.target).siblings("[name='searchType']").val();
 	var numPerPage = $("#numPerPageSearch").val();
 	searchKeyType(type,key,1,numPerPage);
-	console.log("유형:"+type+" 검색어: "+key);
+	
 }
