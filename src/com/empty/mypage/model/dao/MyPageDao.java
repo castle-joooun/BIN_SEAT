@@ -180,6 +180,7 @@ public class MyPageDao {
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String sql = prop.getProperty("insertStoreSeat");
+		System.out.println(storeId);
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, storeId);

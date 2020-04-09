@@ -50,7 +50,9 @@ public class CreateSeatServlet extends HttpServlet {
 		seatNum = seatNum.substring(0, seatNum.lastIndexOf(","));
 		
 		int storeSeat = new MyPageService().insertStoreSeat(storeId, col, row, seatNum, seatCheck);
+		if(storeSeat!=0) System.out.println("storeSeat");
 		int storeSeatCheck = new MyPageService().insertStoreSeatCheck(storeId, seatNums);
+		if(storeSeatCheck!=0) System.out.println("storeSeatCheck");
 		
 	}
 

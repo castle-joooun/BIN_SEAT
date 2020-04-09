@@ -91,7 +91,7 @@
 				})
 				$.ajax({
 					url:"<%=request.getContextPath()%>/createSeat",
-					data:{"col":col, "row":row, "storeId":"llsky2ll", "seatCheck":totalSeat},
+					data:{"col":col, "row":row, "storeId":"<%=loginMember.getUserId()%>", "seatCheck":totalSeat},
 					type:"post",
 					success:function(data) {
 						alert("자리가 등록되었습니다.");
