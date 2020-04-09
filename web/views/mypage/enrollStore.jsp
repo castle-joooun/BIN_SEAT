@@ -30,10 +30,10 @@
 					</tr>
 					<tr>
 						<td>
-							매장 전화번호
+							매장 </br>전화번호
 						</td>
 						<td>
-							<input type="text" id="storePhone" placeholder="000-0000-0000">
+							<input type="text" id="storePhone" placeholder="000-0000-0000"><p id='phoneuhyo' style='display:inline'></p>
 						</td>
 					</tr>
 					<tr>
@@ -43,7 +43,7 @@
 						<td>
 							<input type="time" id="storeTimestart">
 							~
-							<input type="time" id="storeTimeclose">
+							<input type="time" id="storeTimeclose"><p id='timeuhyo' style='display:inline'></p>
 						</td>
 					</tr>
 					<tr>
@@ -67,25 +67,25 @@
 						</td>
 						<td>
 							<label>
-								매점<input type="checkbox" name="storeFacirity" class="storeFacirity" value="매점">
+								매점<input type="checkbox" name="storeFacirity1" class="storeFacirity" value="매점">
 							</label>
 							<label>
-								카페<input type="checkbox" name="storeFacirity" class="storeFacirity" value="카페">
+								카페<input type="checkbox" name="storeFacirity2" class="storeFacirity" value="카페">
 							</label>
 							<label>
-								난방시설<input type="checkbox" name="storeFacirity " class="storeFacirity" value="난방시설">
+								난방시설<input type="checkbox" name="storeFacirity3" class="storeFacirity" value="난방시설">
 							</label>
 							<label>
-								공기청정기<input type="checkbox" name="storeFacirity"  class="storeFacirity" value="공기청정기">
+								공기청정기<input type="checkbox" name="storeFacirity4"  class="storeFacirity" value="공기청정기">
 							</label>
 							<label>
-								흡연시설<input type="checkbox" name="storeFacirity" class="storeFacirity" value="흡연시설">
+								흡연시설<input type="checkbox" name="storeFacirity5" class="storeFacirity" value="흡연시설">
 							</label>
 							<label>
-								제빙기<input type="checkbox" name="storeFacirity" class="storeFacirity" value="제빙기">
+								제빙기<input type="checkbox" name="storeFacirity6" class="storeFacirity" value="제빙기">
 							</label>
 							<label>
-								주차시설<input type="checkbox" name="storeFacirity" class="storeFacirity" value="주차시설">
+								주차시설<input type="checkbox" name="storeFacirity7" class="storeFacirity" value="주차시설">
 							</label>
 							
 						</td>
@@ -129,7 +129,7 @@
 					</tr>
 					<tr>
 						<td>
-							매장인테리어사진
+							매장</br>인테리어</br>사진 5장
 						</td>
 						<td>
 							<input type="file" id="itfileupload" multiple>
@@ -253,19 +253,7 @@
 					$('input[name="storeFacirity"]:checked').each(function(i){//체크된 리스트 저장
 						storeFacirity.push($(this).val());
 	                });
-			
-					$.ajax({
-						url:"<%=request.getContextPath()%>/enroll/fileUp",
-						data:fd,
-						type:"post",
-						processData:false,
-						contentType:false,
-						success:function(data){
-							
-						},
-						error:function(r,e,m){
-						}
-					})
+					
 					
 					$.ajax({
 						url:"<%=request.getContextPath()%>/enroll/store",
@@ -285,10 +273,26 @@
 						dataType:"json",
 						type:"post",
 						success:function(data){
-							alert("등록되었습니다.");
-						}
-					})
-				});
+							alert(data['msg']);
+							$.ajax({
+								url:"<%=request.getContextPath()%>/enroll/fileUp",
+								data:fd,
+								type:"post",
+								processData:false,
+								contentType:false,
+								success:function(data){
+									location.href="<%=request.getContextPath()%>/store/mypage";
+								},
+								error:function(data){
+									
+								}
+							})
+							},error:function(data){
+								alert(data['msg']);
+							}
+						})
+					});
+					
 				
 				$("#fileupload").change(function(){   //미리버기
 					const reader=new FileReader();
@@ -318,8 +322,21 @@
 					
 				})
 			})
-			
-			
-			
+				
+				$("#storePhone").keyup(function(){
+					var uId = document.getElementById("storePhone").value;
+					var phoneCondition = document.getElementById("phoneuhyo");
+					var condition = /^\d{3}-\d{3,4}-\d{4}$/;
+					if (condition.test(uId)) {
+						phoneCondition.innerHTML = "유효한 전화번호입니다.";
+						phoneCondition.style.color = "blue";
+						return true;
+					} else {
+						phoneCondition.innerHTML = "※전화번호 형식이 아닙니다.";
+						phoneCondition.style.color = "red";
+						return false;
+					}
+				})
+				
 			</script>
 			

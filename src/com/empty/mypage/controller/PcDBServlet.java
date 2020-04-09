@@ -34,10 +34,10 @@ public class PcDBServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String userId = request.getParameter("userId");
+		if(userId!=null) {
 		Store s= new SearchService().crystalstore(userId);
 		String storeTimese []= new String[2];
 		String storeFacility []= new String[2];
-		String w = "";
 		storeTimese= s.getStoreTime().split(" ~ ");
 		String storeFacilitys = s.getStoreFacility().substring(0,s.getStoreFacility().lastIndexOf(","));
 		JSONObject jsonObj=new JSONObject();
@@ -51,8 +51,12 @@ public class PcDBServlet extends HttpServlet {
 		jsonObj.put("storePrice", s.getStorePrice());
 		jsonObj.put("storeTimes", storeTimese[0].toString());
 		jsonObj.put("storeTimee", storeTimese[1].toString());
+		jsonObj.put("storeLogo", s.getStoreLogo());
 		response.setContentType("application/json;charset=UTF-8");
 		new Gson().toJson(jsonObj,response.getWriter());
+		}else {
+			System.out.println("에러처리");
+		}
 	}
 
 	/**

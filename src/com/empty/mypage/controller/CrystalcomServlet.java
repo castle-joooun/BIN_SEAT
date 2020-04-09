@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 
-import com.empty.cash.model.service.VinService;
+import com.empty.member.model.service.MemberService;
 import com.empty.member.model.vo.Member;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class MypageServlet
+ * Servlet implementation class CrystalcomServlet
  */
-@WebServlet("/mypage.do")
-public class MypageServlet extends HttpServlet {
+@WebServlet("/mypage/crystalcom.do")
+public class CrystalcomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypageServlet() {
+    public CrystalcomServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,22 +33,24 @@ public class MypageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String userId = request.getParameter("userId");
 		Member m = new Member();
-		m = new VinService().selectUser(m,userId);
-		
+		String msg="";
 		JSONObject jsonObj=new JSONObject();
 		jsonObj=new JSONObject();
-		jsonObj.put("cash",m.getCash());
-		jsonObj.put("userId",m.getUserId());
-		jsonObj.put("email",m.getEmail());
-		jsonObj.put("phone",m.getPhone());
-		jsonObj.put("address",m.getAddress());
-		jsonObj.put("gender",m.getGender());
-		jsonObj.put("enrolldate",m.getEnrollDate());
-		jsonObj.put("bank",m.getBank());
-		jsonObj.put("bankNumber",m.getBankNumber());
-		jsonObj.put("bankMaster",m.getBankMaster());
+		m.setUserId(request.getParameter("userId"));
+		m.setPassword(request.getParameter("password"));
+		m.setAddress(request.getParameter("address"));
+		m.setBank(request.getParameter("bank"));
+		m.setBankNumber(request.getParameter("bankNumber"));
+		m.setBankMaster(request.getParameter("bankMaster"));
+		
+		int result = new MemberService().updateMember(m);
+		if(result>0) {
+			msg="수정에 성공하였습니다.";
+		}else {
+			msg="수정 실패";
+		}
+		jsonObj.put("msg",msg);
 		response.setContentType("application/json;charset=UTF-8");
 		new Gson().toJson(jsonObj,response.getWriter());
 	}

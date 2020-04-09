@@ -35,7 +35,7 @@
                     </div>
                     <div class="btn-container">
 	                    <button class="content-item-button">
-	                       <a href="<%=request.getContextPath()%>/deleteMember">Click Me</a>
+	                       <a href="<%=request.getContextPath()%>/store/deleteView">Click Me</a>
 	                    </button>
                     </div>
                 </div>

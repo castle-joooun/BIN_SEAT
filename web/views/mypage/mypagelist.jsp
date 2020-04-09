@@ -20,6 +20,7 @@
 				console.log(data['cash']);
 				cash=data['cash'];
 				$("#cashbox").text(cash+"원");
+				$("#addressbox").text(data['address']);
 				var bankNumber=data['bankNumber'];
 			}
 		})
@@ -34,6 +35,7 @@
 				"userId":userId	
 			},
 			success:function(data){
+				var go = "<%=request.getContextPath()%>/";
 				console.log(data);
 				$("#storeNamebox").text(data['storeName']).css('width','400px').css('font-weight','400').css('text-align','left');
 				$("#storeNumberbox").text(data['storePhone']).css('font-weight','400').css('text-align','left');
@@ -41,13 +43,12 @@
 				$("#storecombox").text(data['storeInfo']).css('width','400px').css('font-weight','400').css('text-align','left');
 				$("#storeaddressbox").text(data['storeAddress']).css('width','400px').css('font-weight','400').css('text-align','left');
 				$("#storebudeabox").text(data['storeFacility']).css('width','400px').css('font-weight','400').css('text-align','left');
+				$("#pcimgtag").attr('src',go+data['storeLogo']).css('width','359px').css('height','216px');
 			}
 		});
 	});
 	
 	</script>
-<body>
-	
 		
 		<div class="myinfobox">
 			<table>
@@ -101,8 +102,7 @@
 						<td>
 							주소
 						</td>
-						<td colspan='3'>
-							<%=loginMember.getAddress() %>
+						<td colspan='3' id='addressbox'>
 						</td>
 					</tr>
 					<tr>
@@ -118,14 +118,13 @@
 							캐시
 						</td>
 						<td id="cashbox">
-						
-						</td>
-						<td>
-							<button class="enrollgyoja" style='padding-left:14px;padding-right:14px;'>계좌등록</button>
-							<button class="outmoney">출금</button>
 						</td>
 					</tr>
 				</table>
+				<div>
+							<button class="outmoney">출금</button>
+							<button class="enrollgyoja" style='padding-left:14px;padding-right:14px;'>계좌등록</button>
+				</div>
 			</div>
 			
 			
@@ -153,7 +152,7 @@
 						
 						</td>
 						<td rowspan='7' class='pcmainimgbox'>
-							
+							<img id='pcimgtag' src='<%=request.getContextPath()%>'>
 						</td>
 					</tr>
 					<tr>
@@ -196,22 +195,10 @@
 						
 						</td>
 					</tr>
-					<tr>
-						<td>
-						
-						</td>
-						<td>
-							<button type="button" id='goinsetColRow'>PC방 자리 등록</button>
-						</td>
-					</tr>
-					
 				</table>
 			</div>
 		</div>
-	
-	
-	
-	
+			<button type="button" id='goinsetColRow'>PC방 자리 등록</button>
 	
 	
 	
@@ -221,6 +208,11 @@
 	
 	<script>
 	$(function(){
+		$("#goinsetColRow").click(function(){
+			location.href="<%=request.getContextPath()%>/store/insertColRowmp";
+		});
+	});
+	<%-- $(function(){
 		$(".mypagemain2").click(function(){ //사용내역으로
 			$.ajax({
 				url:"<%=request.getContextPath()%>/mypage/myUse.do", 
@@ -233,7 +225,7 @@
 				}
 			})
 		});			
-	});
+	}); 폐기--%>
 	
 	$(function(){
 		var userId="<%=loginMember.getUserId()%>";
@@ -261,32 +253,31 @@
 				success:function(data){
 					$(".alldiv").html(data);
 				}
-			})
-		})
-	})
-	
-	$(function(){
-		$(".outmoney").click(function(){  //출금으로
-			console.log(<%=loginMember.getBankNumber()%>);
-			if(<%=loginMember.getBankNumber()%>!=null){
-				$.ajax({
-					url:"<%=request.getContextPath()%>/mypage/outmoney.do",
-					type:"get",
-					dataType:"html",
-					success:function(data){
-						$(".alldiv").html(data);
-					}
-				});
-			}else if(<%=loginMember.getBankNumber()%>==null){
-				alert("계좌를 등록해주세요.");
-			}
+			});
 		});
 	});
 	
 	$(function(){
-		$(".enrollgyoja").click(function(){  //계좌등록으로
+			$(".enrollgyoja").click(function(){  //계좌등록으로
+		if(<%=loginMember.getBankNumber()==null%>){
+					$.ajax({
+						url:"<%=request.getContextPath()%>/mypage/enrollgyoja.do",
+						type:"get",
+						dataType:"html",
+						success:function(data){
+							$(".alldiv").html(data);
+						}
+					});
+		}else{
+			alert("이미 계좌가 있습니다.");
+			};
+		})
+	});
+	
+	$(function(){
+		$(".outmoney").click(function(){  //출금으로
 				$.ajax({
-					url:"<%=request.getContextPath()%>/mypage/enrollgyoja.do",
+					url:"<%=request.getContextPath()%>/mypage/outmoney.do",
 					type:"get",
 					dataType:"html",
 					success:function(data){
@@ -305,9 +296,11 @@
 				success:function(data){
 					$(".alldiv").html(data);
 				}
-			})
-		})
-	})
+			});
+		});
+	});
+	
+	
 	$(function(){
 		$("#crystalstore").click(function(){  //매장수정
 			$.ajax({
@@ -317,8 +310,8 @@
 				success:function(data){
 					$(".alldiv").html(data);
 				}
-			})
-		})
-	})
+			});
+		});
+	});
 	
 	</script>
