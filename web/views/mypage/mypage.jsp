@@ -19,7 +19,7 @@
 				cash=data['cash'];
 				$("#cashbox").text(cash+"원");
 				$("#addressbox").text(data['address']);
-				var bankNumber=data['bankNumber'];
+				$(".outmoney").attr('value',data['bankNumber']);
 			}
 		})
 	})
@@ -42,6 +42,7 @@
 				$("#storeaddressbox").text(data['storeAddress']).css('width','400px').css('font-weight','400').css('text-align','left');
 				$("#storebudeabox").text(data['storeFacility']).css('width','400px').css('font-weight','400').css('text-align','left');
 				$("#pcimgtag").attr('src',go+data['storeLogo']).css('width','359px').css('height','216px');
+				$(".enrollstore").attr('value',data['storeName']);
 			}
 		});
 	});
@@ -214,7 +215,12 @@
 	<script>
 	$(function(){
 		$("#goinsetColRow").click(function(){
-			location.href="<%=request.getContextPath()%>/store/insertColRowmp";
+			var storeName= $(".enrollstore").val();
+			if(storeName!=""){
+				location.href="<%=request.getContextPath()%>/store/insertColRowmp";
+			}else{
+				alert("매장등록부터 해주세요.");
+			}
 		});
 	});
 	<%-- $(function(){
@@ -264,7 +270,8 @@
 	
 	$(function(){
 			$(".enrollgyoja").click(function(){  //계좌등록으로
-		if(<%=loginMember.getBankNumber()==null%>){
+				var outmoney= $(".outmoney").val();
+				if(outmoney==""){
 					$.ajax({
 						url:"<%=request.getContextPath()%>/mypage/enrollgyoja.do",
 						type:"get",
@@ -273,14 +280,16 @@
 							$(".alldiv").html(data);
 						}
 					});
-		}else{
-			alert("이미 계좌가 있습니다.");
-			};
-		})
-	});
+				}else{
+				alert("이미 계좌가 있습니다.");
+				};
+			})
+		});
 	
 	$(function(){
 		$(".outmoney").click(function(){  //출금으로
+			var outmoney= $(".outmoney").val();
+			if(outmoney!=""){
 				$.ajax({
 					url:"<%=request.getContextPath()%>/mypage/outmoney.do",
 					type:"get",
@@ -289,33 +298,46 @@
 						$(".alldiv").html(data);
 					}
 				});
+			}else{
+				alert("계좌를 먼저 등록해주세요.");
+			}
 		});
 	});
 	
 	$(function(){
 		$("#enrollstore").click(function(){  //매장등록
-			$.ajax({
-				url:"<%=request.getContextPath()%>/mypage/enrollstore.do",
-				type:"get",
-				dataType:"html",
-				success:function(data){
-					$(".alldiv").html(data);
-				}
-			});
+			var storeName= $(".enrollstore").val();
+			if(storeName==""){
+				$.ajax({
+					url:"<%=request.getContextPath()%>/mypage/enrollstore.do",
+					type:"get",
+					dataType:"html",
+					success:function(data){
+						$(".alldiv").html(data);
+					}
+				});
+			}else{
+				alert("매장은 1개이상 등록하실 수 없습니다.");
+			}
 		});
 	});
 	
 	
 	$(function(){
 		$("#crystalstore").click(function(){  //매장수정
-			$.ajax({
-				url:"<%=request.getContextPath()%>/mypage/crystalstore.do",
-				type:"get",
-				dataType:"html",
-				success:function(data){
-					$(".alldiv").html(data);
-				}
-			});
+			var storeName= $(".enrollstore").val();
+			if(storeName!=""){
+				$.ajax({
+					url:"<%=request.getContextPath()%>/mypage/crystalstore.do",
+					type:"get",
+					dataType:"html",
+					success:function(data){
+						$(".alldiv").html(data);
+					}
+				});
+			}else{
+				alert("매장등록부터 해주세요.");
+			}
 		});
 	});
 	
