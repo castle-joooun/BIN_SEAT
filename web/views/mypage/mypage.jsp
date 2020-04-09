@@ -50,7 +50,8 @@
 	</script>
 <body>
 	<h3 class="mypagemain1">MY PAGE</h3>
-	<h3 class="mypagemain2"><a href="<%=request.getContextPath()%>/use/useList">USE</a></h3>
+	<h3 class="mypagemain2"><a href="<%=request.getContextPath()%>/use/imList">IN</a></h3>
+	<h3 class="mypagemain4"><a href="<%=request.getContextPath()%>/use/useList">OUT</a></h3>
 	
 	
 	<div class="alldiv clearl">
@@ -108,6 +109,7 @@
 							주소
 						</td>
 						<td colspan='3' id='addressbox'>
+						<%=loginMember.getAddress() %>
 						</td>
 					</tr>
 					<tr>

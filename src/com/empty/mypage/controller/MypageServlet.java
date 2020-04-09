@@ -11,6 +11,9 @@ import org.json.simple.JSONObject;
 
 import com.empty.cash.model.service.VinService;
 import com.empty.member.model.vo.Member;
+import com.empty.mypage.model.vo.InputMoneyList;
+import com.empty.search.model.vo.Store;
+import com.empty.search.service.SearchService;
 import com.google.gson.Gson;
 
 /**
@@ -35,8 +38,13 @@ public class MypageServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String userId = request.getParameter("userId");
 		Member m = new Member();
-		m = new VinService().selectUser(m,userId);
-		
+		Store s= new SearchService().crystalstore(userId);
+		if(s.getStoreName()!=null) {
+			InputMoneyList ipml = new InputMoneyList();
+			m=new SearchService().storemoney(userId);
+		}else {
+			m = new VinService().selectUser(m,userId);
+		}
 		JSONObject jsonObj=new JSONObject();
 		jsonObj=new JSONObject();
 		jsonObj.put("cash",m.getCash());

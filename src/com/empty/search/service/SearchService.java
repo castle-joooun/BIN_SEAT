@@ -10,6 +10,7 @@ import static com.empty.common.JDBCTemplate.getConnection;
 import java.sql.Connection;
 import java.util.List;
 
+import com.empty.member.model.vo.Member;
 import com.empty.member.model.vo.outMoneyDB;
 import com.empty.search.model.dao.SearchDao;
 import com.empty.search.model.vo.Store;
@@ -135,6 +136,13 @@ public class SearchService {
 	public Store searchName(String storeName) {
 		Connection conn = getConnection();
 		Store s = dao.searchName(conn, storeName);
+		close(conn);
+		return s;
+	}
+	
+	public Member storemoney(String userId) {
+		Connection conn = getConnection();
+		Member s = dao.storemoney(conn, userId);
 		close(conn);
 		return s;
 	}
