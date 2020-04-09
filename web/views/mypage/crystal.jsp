@@ -5,7 +5,23 @@
 <%
 	Member loginMember = (Member) session.getAttribute("loginMember");
 %>
-	
+<script>
+$(document).ready(function(){
+		var userId="<%=loginMember.getUserId()%>";
+		$.ajax({
+			url:"<%=request.getContextPath()%>/mypage/pcdb", 
+			type:"get",
+			dataType:"json",
+			data:{
+				"userId":userId	
+			},
+			success:function(data){
+				$("#crystalbank").attr('value',data['bank']);
+				console.log("dd")
+			}
+		});
+	});
+</script>	
 	<div class="myinfobox">
 			<table>
 				<tr>
@@ -30,7 +46,7 @@
 							비밀번호
 						</td>
 						<td id='crystalpwbox'>
-							<input type='password' id='crystalpw1' placeholder='변경할 비밀번호' value='<%=loginMember.getPassword() %>'>
+							<input type='password' id='crystalpw1' placeholder='변경할 비밀번호' value=''>
 						</td>
 					</tr>
 					<tr>
@@ -85,7 +101,11 @@
 							은행
 						</td>
 						<td>
-							<input type='text' value='<%=loginMember.getBank() %>' id='crystalbank'>
+							<%if(loginMember.getBank()!=null){ %>
+							<input type='text'  id='crystalbank' value="<%=loginMember.getBank()%>">
+							<%}else{ %>
+							<input type='text'  id='crystalbank' value="">
+							<%} %>
 						</td>
 					</tr>
 					<tr>
@@ -93,7 +113,11 @@
 							계좌번호
 						</td>
 						<td>
-							<input type='text' value='<%=loginMember.getBankNumber() %>' id='crystalgyoja'><p id="crystalgyojabox" style='display:inline'></p>
+							<%if(loginMember.getBank()!=null){ %>
+							<input type='text'  id='crystalgyoja' value="<%=loginMember.getBankNumber()%>"><p id="crystalgyojabox" style='display:inline'></p>
+							<%}else{ %>
+							<input type='text'  id='crystalgyoja' value=""><p id="crystalgyojabox" style='display:inline'></p>
+							<%} %>
 						</td>
 					</tr>
 					<tr>
@@ -101,7 +125,11 @@
 							예금주
 						</td>
 						<td>
-							<input type='text' value='<%=loginMember.getBankMaster() %>' id='crystalbm'>
+							<%if(loginMember.getBank()!=null){ %>
+							<input type='text'  id='crystalbm' value="<%=loginMember.getBankMaster()%>">
+							<%}else{ %>
+							<input type='text'  id='crystalbm' value="">
+							<%} %>
 						</td>
 					</tr>
 					<tr class='chobtnbox'>
@@ -120,12 +148,9 @@
 			var bank = $("#crystalbank").val();
 			var bankNumber = $("#crystalgyoja").val();
 			var bankMaster = $("#crystalbm").val();
-			console.log(userId);
-			console.log(password);
-			console.log(address);
-			console.log(bank);
-			console.log(bankNumber);
-			console.log(bankMaster);
+			if(password==""){
+				password="<%=loginMember.getPassword()%>";
+			}
 			$.ajax({
 				url:"<%=request.getContextPath()%>/mypage/crystalcom.do",
 				type:"post",
