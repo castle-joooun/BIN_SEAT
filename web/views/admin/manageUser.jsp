@@ -36,7 +36,7 @@
 					</div>
 					<div class="searchBoxGra" id="search-gender">
 						<form action ="<%=request.getContextPath()%>/admin/searchType" method="post">
-							<select name="searchKeyword" class="searchBox" >
+							<select name="searchKeyword" class="searchBox" style="top:6px;">
 								<option value="남">남자</option>
 								<option value="여">여자</option>
 							</select>

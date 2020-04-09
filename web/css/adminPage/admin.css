@@ -68,11 +68,11 @@ div#adminSubMenu>ul>li>a>span::after{
 }
 
 input.search-btn{
-    position: relative;
-    top: -1px;
-    right: 20px;
+	position: relative;
+    top: 2px;
+    right: 6px;
     width: 50px;
-    height: 39px;
+    height: 41px;
     border: 0px;
     background-color: rgb(94, 100, 177);
     outline: none;
