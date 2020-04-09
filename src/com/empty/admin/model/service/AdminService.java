@@ -124,6 +124,13 @@ public class AdminService {
 //			close(conn);
 //			return result;
 //		}
+		result = dao.deleteStoreSeatCheck(conn,id);
+		if (result>0) {
+			commit(conn);
+		}
+		else {
+			rollback(conn);
+		}
 		result=dao.deleteStore(conn,id);
 		if (result>0) {
 			commit(conn);

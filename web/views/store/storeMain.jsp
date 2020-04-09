@@ -25,7 +25,7 @@
                 </div>
                 <div class="content-item">
                     <div class="content-item-title">
-                        스토어 탈퇴하기
+                        계정 탈퇴하기
                     </div>
                     <div class="content-item-price">
                         
@@ -35,7 +35,7 @@
                     </div>
                     <div class="btn-container">
 	                    <button class="content-item-button">
-	                       <a href="<%=request.getContextPath()%>/deleteMember">Click Me</a>
+	                       <a href="<%=request.getContextPath()%>/store/deleteView">Click Me</a>
 	                    </button>
                     </div>
                 </div>

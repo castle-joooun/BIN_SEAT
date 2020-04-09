@@ -1,10 +1,4 @@
-function storeAppr(){
-		var value = $(event.target).val().split("|");
-		var id = value[0]; 
-		var email = value[1];
-		
-		location.href="/EMPTY/admin/store/requestAppr?userId="+id+"&email="+email;
-	}
+
 $(function(){
     $("#allCheck").click(function(){
         allCheckFunc($(this));
@@ -54,9 +48,4 @@ function idPlus(){
 	 console.log(str);
 	$("#submitIds").val(str);
 	$("#apprSubmit").submit();
-}
-function deleteStore(){
-	var id = $(event.target).val();
-	location.href="/EMPTY/admin/store/deleteStore?userId="+id;
-	
 }

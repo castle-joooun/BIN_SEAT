@@ -1,6 +1,7 @@
 /* 게시판 테이블 */
 section{
     position: relative;
+    border-bottom:100px;
     
 }
 ol, ul {
@@ -269,6 +270,7 @@ select.searchBox{
 }
 .paging{
     text-align: center;
+    margin-bottom:100px;
 }
 .paging a{
 	margin: 0;

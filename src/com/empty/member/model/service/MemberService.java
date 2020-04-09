@@ -77,6 +77,7 @@ public class MemberService {
 	
 	public int insertStore(Store s) {
 		Connection conn = getConnection();
+		System.out.println(s.toString());
 		int result = dao.insertStore(conn,s);
 		if(result>0) commit(conn);
 		else rollback(conn);
@@ -84,12 +85,26 @@ public class MemberService {
 		return result; 
 	}
 	
-	public int insertStoreImg(String userId,String storeImg1,String storeImg2,String storeImg3,String storeImg4,String storeImg5) {
+	public int insertStoreImg(String userId,List list) {
+		int result=0;
+		int num=0;
+		System.out.println(list.size());
+		System.out.println(userId);
+		System.out.println(list.get(0));
+		for(int i = 0; i<list.size();i++) {
+			System.out.println(num);
 		Connection conn = getConnection();
-		int result = dao.insertStoreImg(conn,userId,storeImg1,storeImg2,storeImg3,storeImg4,storeImg5);
-		if(result>0) commit(conn);
-		else rollback(conn);
+		result = dao.insertStoreImg(conn,userId,list,num,result);
+		if(result>0) {
+			commit(conn);
+			num++;
+			result++;
+		}
+		else {
+			rollback(conn);
+		}
 		close(conn);
+		}
 		return result; 
 	}
 	
@@ -125,10 +140,31 @@ public class MemberService {
 		return list;
 	}
 	
-	public int useListCount() {
+	public int useListCount(String userId) {
 	Connection conn=getConnection();
-	int count=dao.useListCount(conn);
+	int count=dao.useListCount(conn, userId);
 	close(conn);
 	return count;
+	}
+	
+	public int updateMember(Member m) {
+		Connection conn=getConnection();
+		int count=dao.updateMember(conn, m);
+		close(conn);
+		return count;
+	}
+	
+	public List selectUseList2(String userId,int cPage, int numPerPage) {
+		Connection conn=getConnection();
+		List list=dao.selectUseList2(conn,userId, cPage, numPerPage);
+		close(conn);
+		return list;
+	}
+	
+	public int useListCount2(String userId) {
+		Connection conn=getConnection();
+		int count=dao.useListCount2(conn, userId);
+		close(conn);
+		return count;
 	}
 }

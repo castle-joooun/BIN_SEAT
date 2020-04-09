@@ -270,6 +270,12 @@ hr {
 
 /* ----------------------------------------------------------------------------------------------------------------------------------------------- */
 
+/* 筌롫뗄�뵥 筌롫뗀�뤀占쎈굶 占쎌뵠�뵳占� 獄쏅뗀占쎈슣竊쒏묾占� */
+#main { 
+    
+    margin-bottom: 25px;
+}
+
 
 
 /* 캐시 */
@@ -368,12 +374,23 @@ a{color:#000;}
 	padding-left:200px;
 	display:inline-block;
 	font-size:22px;
+	cursor:pointer;
 }
 .mypagemain2{
 	display:inline-block;
 	padding-left:50px;
 }
 .mypagemain2 a{
+	display: inline-block;
+    padding-left: 0px;
+    text-decoration: none;
+    font-size: 22px;
+}
+.mypagemain3{
+	display:inline-block;
+	padding-left:200px;
+}
+.mypagemain3 a{
 	display: inline-block;
     padding-left: 0px;
     text-decoration: none;
@@ -413,13 +430,13 @@ a{color:#000;}
 	padding-top: 7px;
     text-align: right;
     padding-right: 28px;
-    width: 291px;
+    width: 141px;
     font-weight: bold;
 }
 .upzoomyinfo1 tr td button{
 	font-size: 16px;
     position: relative;
-    left: 198px;
+    left: 212px;
     padding-left: 30px;
     padding-right: 30px;
     border: solid 2px lightsteelblue;
@@ -454,6 +471,7 @@ a{color:#000;}
     background-color: lightsteelblue;
     color: white;
     font-weight: bold;
+     cursor:pointer;
 }
 
 /*업주용 내역페이지  */
@@ -477,6 +495,20 @@ a{color:#000;}
     background-color: lightsteelblue;
     color: white;
     font-weight: bold;
+    cursor:pointer;
+}
+#storeEnrollbtn{
+	font-size: 16px;
+    position: relative;
+    left: 45%;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: solid 2px lightsteelblue;
+    background-color: lightsteelblue;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+    cursor:pointer;
 }
 
 /*업주용 개인정보수정페이지  */
@@ -511,7 +543,7 @@ a{color:#000;}
 .crystalcom{
 	font-size: 16px;
     position: relative;
-    left: 370px;
+    left: 408px;
     padding-left: 30px;
     padding-right: 30px;
     margin-bootom: 10px;
@@ -519,6 +551,7 @@ a{color:#000;}
     background-color: lightsteelblue;
     color: white;
     font-weight: bold;
+    cursor:pointer;
 }
 .byevin{
 	font-size: 16px;
@@ -544,8 +577,12 @@ a{color:#000;}
 	width:966px;
 }
 .enrollbox tr td:first-child{
-	padding-left:20px;
-	width:30px;
+	padding-left: 6px;
+    width: 23px;
+    text-align: right;
+    padding-right: 18px;
+    font-weight: bold;
+}
 }
 .enrollbox tr td:last-child{
 }    
@@ -554,7 +591,6 @@ a{color:#000;}
 }
 .upzooinfobox table tr td{
 	position:relative;
-	left:9px;
 	font-size: 18px;
 }
 #goOutMoneySV{
@@ -568,6 +604,7 @@ a{color:#000;}
     color: white;
     font-weight: bold;
     margin-bottom: 10px;
+    cursor:pointer;
 }
 #map div{
 	width:200px;!important;
@@ -620,11 +657,13 @@ border: solid 5px lightsteelblue;
 .enrollgyoja{
 	font-size: 16px;
     position: relative;
-    left: 418px;
+    left: 660px;
     border: solid 2px lightsteelblue;
     background-color: lightsteelblue;
     color: white;
     font-weight: bold;
+    margin-bottom: 7px;
+    cursor:pointer;
 }
 #enrollgyojagirit{
 	font-size: 16px;
@@ -637,13 +676,59 @@ border: solid 5px lightsteelblue;
     color: white;
     font-weight: bold;
     margin-bottom: 10px;
+    cursor:pointer;
 }
 .crystalinfobox tr td:first-child{
 	padding-top: 7px;
     text-align: right;
     padding-right: 28px;
-    width: 20px;
+    width: 16%;
     font-weight: bold;
+}
+#goinsetColRow{
+	font-size: 16px;
+    padding-left: 14px;
+    padding-right: 14px;
+    border: solid 2px lightsteelblue;
+    background-color: lightsteelblue;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    left: 401px;
+    cursor:pointer;
+}
+#storecrystalbtn{
+	font-size: 16px;
+    position: relative;
+    left: 45%;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: solid 2px lightsteelblue;
+    background-color: lightsteelblue;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+    cursor:pointer;
+}
+.myuseListbaby td{
+	font-weight: bold;
+    font-size: 18px;
+}
+.outmoney{
+	font-size: 16px;
+    position: relative;
+    left: 865px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: solid 2px lightsteelblue;
+    background-color: lightsteelblue;
+    color: white;
+    font-weight: bold;
+    cursor:pointer;
+}
+#choiceOutMoney{
+	position: relative;
+    left: 15px;
 }
 =======
 body{
@@ -1257,10 +1342,6 @@ hr {
    display:inline-block;
    font-size:22px;
 }
-.mypagemain2{
-   display:inline-block;
-   padding-left:50px;
-}
 .myinfobox{
    padding-top: 10px;
     padding-bottom: 10px;
@@ -1319,6 +1400,7 @@ hr {
     background-color: lightsteelblue;
     color: white;
     font-weight: bold;
+    cursor:pointer;
 }
 
 /*업주용 내역페이지  */
@@ -1353,20 +1435,8 @@ hr {
 .enrollbox{
    width:966px;
 }
-.enrollbox tr td:first-child{
-   padding-left:20px;
-   width:30px;
-}
-.enrollbox tr td:last-child{
-}    
 .upzooinfobox table{
    width:966px;
-}
-.upzooinfobox table tr td{
-   position:relative;
-   left:2px;
-   font-weight: bold;
-   font-size: 17px;
 }
 #goOutMoneySV{
    font-size: 16px;
@@ -1424,34 +1494,8 @@ border: solid 5px lightsteelblue;
    font-weight: bold;
     font-size: 17px;
 }
-#choiceOutMoney{
-	position: relative;
-    left: 15px;
-}
-.mypagemain2 a{
-	display: inline-block;
-   position: relative;
-    left: 15px;
-}
-.mypagemain2 a{
-   display: inline-block;
-    font-size: 22px;
-    text-decoration: none;
-}
 #storecrystalbtn{
 	font-size: 16px;
-    position: relative;
-    left: 45%;
-    padding-left: 30px;
-    padding-right: 30px;
-    border: solid 2px lightsteelblue;
-    background-color: lightsteelblue;
-    color: white;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-#storecrystalbtn{
-font-size: 16px;
     position: relative;
     left: 45%;
     padding-left: 30px;

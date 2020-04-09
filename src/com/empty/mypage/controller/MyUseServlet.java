@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.empty.member.model.service.MemberService;
+import com.empty.member.model.vo.InputMoneyDB;
 import com.empty.member.model.vo.Member;
 import com.empty.member.model.vo.outMoneyDB;
 
@@ -44,7 +45,7 @@ public class MyUseServlet extends HttpServlet {
 		}
 		int numPerPage=5;
 		List<outMoneyDB> list=new MemberService().selectUseList(userId,cPage,numPerPage);
-		int totalBoard=new MemberService().useListCount();
+		int totalBoard=new MemberService().useListCount(userId);
 		
 		int totalPage=(int)Math.ceil((double)totalBoard/numPerPage);
 		
@@ -74,7 +75,8 @@ public class MyUseServlet extends HttpServlet {
 		}else {
 			pageBar+="<a href='"+request.getContextPath()+"/use/useList?cPage="+(pageNo)+"'>[다음]</a>";					
 		}
-				
+		
+
 		request.setAttribute("list",list);
 		request.setAttribute("pageBar", pageBar);
 		request.getRequestDispatcher("/views/mypage/useList.jsp").forward(request,response);

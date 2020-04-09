@@ -20,7 +20,10 @@
 				console.log(data['cash']);
 				cash=data['cash'];
 				$(".cashcomp1").text("출금가능 잔액");
-				$(".cashcomp2").text(cash+"원");
+				$(".cashcomp2").text(cash+"원").css('font-weight','300');
+				$("#bankinbox").text(data['bank']+"은행").css('font-weight','300');
+				$("#bankinnum").text(data['bankNumber']).css('font-weight','300');
+				$("#bankinma").text(data['bankMaster']).css('font-weight','300');
 			}
 		})
 	})
@@ -44,31 +47,28 @@
 					</tr>
 					<tr>
 						<td>
-							출금하실 금액 <input type="text" id="choiceOutMoney">
+							출금하실 금액 <input type="text" id="choiceOutMoney" placeholder='최소금액 1000원'></br><p id='choiceOutMoneyview' style='display:inline'></p>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							은행
 						</td>
-						<td style="position:relative;left:-165px;">
-							<%=loginMember.getBank() %>은행
+						<td style="position:relative;left:-165px;" id="bankinbox">
 						</td>
 					</tr>
 					<tr>
 						<td>
 							계좌번호
 						</td>
-						<td style="position:relative;left:-165px;">
-							<%=loginMember.getBankNumber() %>
+						<td style="position:relative;left:-165px;" id="bankinnum">
 						</td>
 					</tr>
 					<tr>
 						<td>
 							예금주
 						</td>
-						<td style="position:relative;left:-165px;">
-							<%=loginMember.getBankMaster() %>
+						<td style="position:relative;left:-165px;" id="bankinma">
 						</td>
 					</tr>
 				</table>
@@ -107,4 +107,19 @@
 				})
 			})
 		})
+		
+		$("#choiceOutMoney").keyup(function(){
+				var uId = document.getElementById("choiceOutMoney").value;
+				var choiceOutMoneyview = document.getElementById("choiceOutMoneyview");
+				var condition = /^[0-9]*$/;
+				if (condition.test(uId)) {
+					choiceOutMoneyview.innerHTML = "좋습니다.";
+					choiceOutMoneyview.style.color = "blue";
+					return true;
+				} else {
+					choiceOutMoneyview.innerHTML = "숫자만 입력해주세요.";
+					choiceOutMoneyview.style.color = "red";
+					return false;
+				}
+			})
 		</script>

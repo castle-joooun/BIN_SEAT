@@ -18,7 +18,8 @@
 				console.log(data['cash']);
 				cash=data['cash'];
 				$("#cashbox").text(cash+"원");
-				var bankNumber=data['bankNumber'];
+				$("#addressbox").text(data['address']);
+				$(".outmoney").attr('value',data['bankNumber']);
 			}
 		})
 	})
@@ -32,6 +33,7 @@
 				"userId":userId	
 			},
 			success:function(data){
+				var go = "<%=request.getContextPath()%>/";
 				console.log(data);
 				$("#storeNamebox").text(data['storeName']).css('width','400px').css('font-weight','400').css('text-align','left');
 				$("#storeNumberbox").text(data['storePhone']).css('font-weight','400').css('text-align','left');
@@ -39,6 +41,8 @@
 				$("#storecombox").text(data['storeInfo']).css('width','400px').css('font-weight','400').css('text-align','left');
 				$("#storeaddressbox").text(data['storeAddress']).css('width','400px').css('font-weight','400').css('text-align','left');
 				$("#storebudeabox").text(data['storeFacility']).css('width','400px').css('font-weight','400').css('text-align','left');
+				$("#pcimgtag").attr('src',go+data['storeLogo']).css('width','359px').css('height','216px');
+				$(".enrollstore").attr('value',data['storeName']);
 			}
 		});
 	});
@@ -103,8 +107,7 @@
 						<td>
 							주소
 						</td>
-						<td colspan='3'>
-							<%=loginMember.getAddress() %>
+						<td colspan='3' id='addressbox'>
 						</td>
 					</tr>
 					<tr>
@@ -120,14 +123,13 @@
 							캐시
 						</td>
 						<td id="cashbox">
-						
-						</td>
-						<td>
-							<button class="enrollgyoja" style='padding-left:14px;padding-right:14px;'>계좌등록</button>
-							<button class="outmoney">출금</button>
 						</td>
 					</tr>
 				</table>
+				<div>
+							<button class="outmoney">출금</button>
+							<button class="enrollgyoja" style='padding-left:14px;padding-right:14px;'>계좌등록</button>
+				</div>
 			</div>
 			
 			
@@ -155,7 +157,7 @@
 						
 						</td>
 						<td rowspan='7' class='pcmainimgbox'>
-							
+							<img id='pcimgtag' src='<%=request.getContextPath()%>'>
 						</td>
 					</tr>
 					<tr>
@@ -198,23 +200,10 @@
 						
 						</td>
 					</tr>
-					<tr>
-						<td>
-						
-						</td>
-						<td>
-<<<<<<< HEAD
-							<button type="button" id='goinsetColRow'>PC방 자리 등록</button>
-						</td>
-=======
-                   			  <button type="button" onclick=''>PC방 자리 등록</button>
-                	 	 </td>
->>>>>>> branch 'castle-joooun' of https://github.com/ique-coder/BIN_SEAT.git
-					</tr>
-					
 				</table>
 			</div>
 		</div>
+			<button type="button" id='goinsetColRow'>PC방 자리 등록</button>
 	
 	
 	
@@ -226,7 +215,12 @@
 	<script>
 	$(function(){
 		$("#goinsetColRow").click(function(){
-			location.href="<%=request.getContextPath()%>/store/insertColRowmp";
+			var storeName= $(".enrollstore").val();
+			if(storeName!=""){
+				location.href="<%=request.getContextPath()%>/store/insertColRowmp";
+			}else{
+				alert("매장등록부터 해주세요.");
+			}
 		});
 	});
 	<%-- $(function(){
@@ -275,22 +269,27 @@
 	});
 	
 	$(function(){
-		$(".enrollgyoja").click(function(){  //계좌등록으로
-				$.ajax({
-					url:"<%=request.getContextPath()%>/mypage/enrollgyoja.do",
-					type:"get",
-					dataType:"html",
-					success:function(data){
-						$(".alldiv").html(data);
-					}
-				});
+			$(".enrollgyoja").click(function(){  //계좌등록으로
+				var outmoney= $(".outmoney").val();
+				if(outmoney==""){
+					$.ajax({
+						url:"<%=request.getContextPath()%>/mypage/enrollgyoja.do",
+						type:"get",
+						dataType:"html",
+						success:function(data){
+							$(".alldiv").html(data);
+						}
+					});
+				}else{
+				alert("이미 계좌가 있습니다.");
+				};
+			})
 		});
-	});
 	
 	$(function(){
 		$(".outmoney").click(function(){  //출금으로
-			console.log(<%=loginMember.getBankNumber()%>);
-			if(<%=loginMember.getBankNumber()%>!=null){
+			var outmoney= $(".outmoney").val();
+			if(outmoney!=""){
 				$.ajax({
 					url:"<%=request.getContextPath()%>/mypage/outmoney.do",
 					type:"get",
@@ -299,36 +298,46 @@
 						$(".alldiv").html(data);
 					}
 				});
-			}else if(<%=loginMember.getBankNumber()%>==null){
-				alert("계좌를 등록해주세요.");
+			}else{
+				alert("계좌를 먼저 등록해주세요.");
 			}
 		});
 	});
 	
 	$(function(){
 		$("#enrollstore").click(function(){  //매장등록
-			$.ajax({
-				url:"<%=request.getContextPath()%>/mypage/enrollstore.do",
-				type:"get",
-				dataType:"html",
-				success:function(data){
-					$(".alldiv").html(data);
-				}
-			});
+			var storeName= $(".enrollstore").val();
+			if(storeName==""){
+				$.ajax({
+					url:"<%=request.getContextPath()%>/mypage/enrollstore.do",
+					type:"get",
+					dataType:"html",
+					success:function(data){
+						$(".alldiv").html(data);
+					}
+				});
+			}else{
+				alert("매장은 1개이상 등록하실 수 없습니다.");
+			}
 		});
 	});
 	
 	
 	$(function(){
 		$("#crystalstore").click(function(){  //매장수정
-			$.ajax({
-				url:"<%=request.getContextPath()%>/mypage/crystalstore.do",
-				type:"get",
-				dataType:"html",
-				success:function(data){
-					$(".alldiv").html(data);
-				}
-			});
+			var storeName= $(".enrollstore").val();
+			if(storeName!=""){
+				$.ajax({
+					url:"<%=request.getContextPath()%>/mypage/crystalstore.do",
+					type:"get",
+					dataType:"html",
+					success:function(data){
+						$(".alldiv").html(data);
+					}
+				});
+			}else{
+				alert("매장등록부터 해주세요.");
+			}
 		});
 	});
 	

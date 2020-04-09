@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import com.empty.member.model.vo.InputMoneyDB;
 import com.empty.member.model.vo.Member;
 import com.empty.member.model.vo.StoreImg;
 import com.empty.member.model.vo.outMoneyDB;
@@ -238,13 +239,15 @@ public class MemberDao {
 		return result;
 	}
 	
-	public int insertStoreImg(Connection conn,String userId,String storeImg1,String storeImg2,String storeImg3,String storeImg4,String storeImg5) {
+	public int insertStoreImg(Connection conn,String userId, List list,int num,int result) {
 		PreparedStatement pstmt = null;
-		int result = 0;
 		String sql = prop.getProperty("insertStoreImg2");
+		String img = (String)list.get(num);
+		System.out.println(list.get(num));
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, storeImg1+","+storeImg2+","+storeImg3+","+storeImg4+","+storeImg5);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, img);
 			result = pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -343,13 +346,83 @@ public class MemberDao {
 		return list;
 	}
 	
-	public int useListCount(Connection conn) {
+	public int useListCount(Connection conn, String userId) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		int count=0;
 		String sql=prop.getProperty("useListCount");
 		try {
 			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs=pstmt.executeQuery();
+			if(rs.next()) count=rs.getInt(1);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}return count;
+	}
+	
+	public int updateMember(Connection conn, Member m) {
+		PreparedStatement pstmt=null;
+		int result = 0;
+		String sql = prop.getProperty("updateMember");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m.getPassword());
+			pstmt.setString(2, m.getAddress());
+			pstmt.setString(3, m.getBank());
+			pstmt.setString(4, m.getBankNumber());
+			pstmt.setString(5, m.getBankMaster());
+			pstmt.setString(6, m.getUserId());
+			result = pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public List selectUseList2(Connection conn,String userId,int cPage2, int numPerPage2) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List list=new ArrayList();
+		String sql=prop.getProperty("selectUseList2");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			pstmt.setInt(2, (cPage2-1)*numPerPage2+1);
+			pstmt.setInt(3, cPage2*numPerPage2);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				InputMoneyDB ipdb = new InputMoneyDB();
+				ipdb.setUserId(rs.getString("user_id"));
+				ipdb.setStoreId(rs.getString("store_id"));
+				ipdb.setIpDate(rs.getDate("ipdate"));
+				ipdb.setInputNum(rs.getInt("input_num"));
+				ipdb.setIpMoney(rs.getInt("ipmoney"));
+				ipdb.setAfterIm(rs.getInt("after_im"));
+				list.add(ipdb);				
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	public int useListCount2(Connection conn, String userId) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int count=0;
+		String sql=prop.getProperty("useListCount2");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
 			rs=pstmt.executeQuery();
 			if(rs.next()) count=rs.getInt(1);
 		}catch(SQLException e) {
