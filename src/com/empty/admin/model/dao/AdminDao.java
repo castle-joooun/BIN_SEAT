@@ -340,7 +340,22 @@ public class AdminDao {
 //		}
 //		return result;
 //	}
-
+	public int deleteStoreSeatCheck(Connection conn, String id) {
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteStoreSeatCheck");
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			result = pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 	public int deleteStore(Connection conn, String id) {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("deleteStore");
@@ -357,6 +372,8 @@ public class AdminDao {
 		}
 		return result;
 	}
+
+	
 
 
 

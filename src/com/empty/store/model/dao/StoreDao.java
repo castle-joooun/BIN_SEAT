@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Properties;
 
 import com.empty.admin.model.dao.AdminDao;
+import com.empty.search.model.vo.Store;
 import com.empty.store.model.vo.StoreSales;
 
 public class StoreDao {
@@ -197,6 +198,31 @@ Properties prop = new Properties();
 		
 		return result;
 		
+	}
+
+	public Store selectStore(Connection conn, String id) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("selectStore");
+		Store s = null;
+				
+		try {
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1,id);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				s=new Store();
+				s.setStoreId(rs.getString("STORE_ID"));
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		System.out.println(s);
+		return s;
 	}
 	
 	

@@ -52,6 +52,7 @@ public class StoreService {
 	public int countDailySales(String storeId, String date) {
 		Connection conn = getConnection();
 		int count = dao.countDailySales(conn,storeId,date);
+		close(conn);
 		return count;
 	}
 
@@ -73,7 +74,16 @@ public class StoreService {
 		int result = dao.deleteDailySales(conn,storeId,date);
 		if(result>0)commit(conn);
 		else rollback(conn);
+		close(conn);
 		return result;
+	}
+
+
+	public Store selectStore(String id) {
+		Connection conn = getConnection();
+		Store s = dao.selectStore(conn, id);
+		close(conn);
+		return s;
 	}
 
 

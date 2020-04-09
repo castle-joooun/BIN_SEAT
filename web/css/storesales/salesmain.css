@@ -75,6 +75,7 @@ div#storeSubMenu>ul>li>a>span{
 #tableContainer{
 	position:relative;
 	margin-top:100px;
+	margin-bottom:200px;
 }
 
 #tableContainer>table{
@@ -112,7 +113,8 @@ div#storeSubMenu>ul>li>a>span{
 }
 #monthTableContainer{
 	position:relative;
-	margin-top:100px;
+	margin-top:50px;
+	margin-bottom:200px;
 }
 #monthTableContainer>table tfoot td{
 	border-top:2px solid black;
