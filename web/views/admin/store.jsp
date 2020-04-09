@@ -4,7 +4,11 @@
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/adminPage/store.css" type="text/css">
 <section>
+<%
+	int cPage =request.getParameter("cPage")==null?1:Integer.parseInt(request.getParameter("cPage"));
+	int numPerPage = request.getParameter("numPerPage")==null?10:Integer.parseInt(request.getParameter("numPerPage")); 
 
+%>
 
 	<div class="list_btn_area">
 
@@ -24,12 +28,12 @@
 		<div>
 			<span id="totalSearch"></span>
 			<form>
-				<input type="hidden" name="cPage" value="" id="cPage"> 
+				<input type="hidden" name="cPage" value="<%=cPage%>" id="cPage"> 
 				<select name="numPerPage" id="numPerPage">
-					<option value="10">목록 10개</option>
-					<option value="20">목록 20개</option>
-					<option value="30">목록 30개</option>
-					<option value="50">목록 50개</option>
+					<option value="10"<%=numPerPage==10?"selected":"" %>>목록 10개</option>
+					<option value="20"<%=numPerPage==20?"selected":"" %>>목록 20개</option>
+					<option value="30"<%=numPerPage==30?"selected":"" %>>목록 30개</option>
+					<option value="50"<%=numPerPage==50?"selected":"" %>>목록 50개</option>
 				</select>
 			</form>
 		</div>
@@ -121,6 +125,13 @@ function deleteStore(){
 	location.href="<%=request.getContextPath()%>/admin/store/deleteStore?userId="+id;
 	
 }
+$(function(){
+	$("#numPerPage").change(function(){
+		var cPage = $("#cPage").val();
+		var numPerPage = $(this).val();
+		runningStore(cPage,numPerPage);
+	})
+})
 </script>
 
 
