@@ -696,6 +696,7 @@ border: solid 5px lightsteelblue;
     position: relative;
     left: 401px;
     cursor:pointer;
+    margin-bottom:30px;
 }
 #storecrystalbtn{
 	font-size: 16px;
