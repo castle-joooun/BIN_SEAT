@@ -14,6 +14,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
+import com.empty.member.model.vo.Member;
 import com.empty.member.model.vo.outMoneyDB;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -437,6 +438,28 @@ public class SearchDao {
 		return s;
 	}
 	
+	public Member storemoney(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = prop.getProperty("storemoney");
+		Member m = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				m = new Member();
+				m.setCash(rs.getInt("after_im"));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return m;
+	}
 	/*
 	 * public List<Store> totalSearch(Connection conn, String keyword, int cPage,
 	 * int numPerPage) { PreparedStatement pstmt = null; ResultSet rs = null; String

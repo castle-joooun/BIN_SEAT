@@ -250,10 +250,10 @@
 						fd.append("empty"+i,item);
 					});
 					
-					$('input[name="storeFacirity"]:checked').each(function(i){//체크된 리스트 저장
+					$('input[class="storeFacirity"]:checked').each(function(i){//체크된 리스트 저장
 						storeFacirity.push($(this).val());
 	                });
-					
+					console.log(storeFacirity);
 					
 					$.ajax({
 						url:"<%=request.getContextPath()%>/enroll/store",
