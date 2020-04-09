@@ -38,18 +38,22 @@ public class CreateSeatServlet extends HttpServlet {
 		
 		String[] check = seatCheck.split(",");
 		String seatNum = "";
+		String seatCheck2 = "";
 		List<String> seatNums = new ArrayList();
 		for(int i=1; i<=check.length; i++) {
 			if(!check[i-1].equals("0")) {
 				seatNum += i + ",";
 				seatNums.add(i+"");
+				seatCheck2 += "0,";
 			} else {
 				seatNum += 0 + ",";
+				seatCheck2 += "0,";
 			}
 		}
 		seatNum = seatNum.substring(0, seatNum.lastIndexOf(","));
-		
-		int storeSeat = new MyPageService().insertStoreSeat(storeId, col, row, seatNum, seatCheck);
+		seatCheck2 = seatCheck2.substring(0, seatCheck2.lastIndexOf(","));
+		System.out.println(seatCheck2);
+		int storeSeat = new MyPageService().insertStoreSeat(storeId, col, row, seatNum, seatCheck2);
 		if(storeSeat!=0) System.out.println("storeSeat");
 		int storeSeatCheck = new MyPageService().insertStoreSeatCheck(storeId, seatNums);
 		if(storeSeatCheck!=0) System.out.println("storeSeatCheck");
